@@ -1,1 +1,1 @@
-# only-test-rashu1
+# testminibot-rashu
