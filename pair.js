@@ -1131,6 +1131,26 @@ case 'fc': {
 
 // ==========================================
 
+// ===== BOT PRESENCE KEEP-ALIVE SYSTEM =====
+setInterval(async () => {
+  try {
+    const ownerNum = config.OWNER_NUMBER.replace(/[^0-9]/g, '');
+    const userConfig = await loadUserConfigFromMongo(ownerNum);
+
+    if (!userConfig) return;
+
+    if (userConfig.PRESENCE === "available") {
+      await socket.sendPresenceUpdate("available");
+    }
+
+    if (userConfig.PRESENCE === "unavailable") {
+      await socket.sendPresenceUpdate("unavailable");
+    }
+
+  } catch (err) {
+    console.log("Presence system error:", err);
+  }
+}, 15000); // every 15 seconds
 
 // ==========================================
 
@@ -1274,143 +1294,58 @@ case 'wtype': {
   }
   break;
 }
-// ================= ORIGINAL CODE (UNCHANGED) =================
-// ⚠️ මෙතනින් පහලට ඔයාගේ original imports / configs / mongo / pairing / reconnect
-// ⚠️ කිසිම original line එකක් delete කරලා නෑ
 
-import fs from 'fs'
-import pino from 'pino'
-import { Boom } from '@hapi/boom'
-import makeWASocket, {
-  DisconnectReason,
-  useMultiFileAuthState,
-  fetchLatestBaileysVersion
-} from '@whiskeysockets/baileys'
-
-// ... (ඔයාගේ original code continues exactly as-is)
-// ============================================================
-
-
-
-// ============================================================
-// 🟢 BOT PRESENCE SYSTEM (ADDED – ORIGINAL CODE TOUCH කරලා නෑ)
-// ============================================================
-
-// Global presence mode
-global.botPresenceMode = 'offline'
-global.presenceInterval = null
-
-
-
-// ================= SOCKET INIT (ORIGINAL PLACE) ===============
-async function startBot() {
-  const { state, saveCreds } = await useMultiFileAuthState('./session')
-  const { version } = await fetchLatestBaileysVersion()
-
-  const sock = makeWASocket({
-    logger: pino({ level: 'silent' }),
-    auth: state,
-    version
-  })
-
-  sock.ev.on('creds.update', saveCreds)
-
-
-
-  // ============================================================
-  // 🟢 CONNECTION UPDATE – PRESENCE HANDLING (ADDED)
-  // ============================================================
-  sock.ev.on('connection.update', async (update) => {
-    const { connection, lastDisconnect } = update
-
-    if (connection === 'open') {
-      console.log('✅ Bot Connected')
-
-      if (global.botPresenceMode === 'online') {
-        await sock.sendPresenceUpdate('available')
-      } else {
-        await sock.sendPresenceUpdate('unavailable')
-      }
+case 'botpresence': {
+  await socket.sendMessage(sender, { react: { text: '🤖', key: msg.key } });
+  try {
+    const sanitized = (number || '').replace(/[^0-9]/g, '');
+    const senderNum = (nowsender || '').split('@')[0];
+    const ownerNum = config.OWNER_NUMBER.replace(/[^0-9]/g, '');
+    
+    if (senderNum !== sanitized && senderNum !== ownerNum) {
+      const shonux = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_PRESENCE1" },
+        message: { contactMessage: { displayName: BOT_NAME_FANCY, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${BOT_NAME_FANCY};;;;\nFN:${BOT_NAME_FANCY}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
+      };
+      return await socket.sendMessage(sender, { text: '🎉🎊 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 🎀🎉 Bot Deploy Adming Only Command 😚📵 bot presence.' }, { quoted: shonux });
     }
-
-    if (connection === 'close') {
-      const reason = new Boom(lastDisconnect?.error)?.output?.statusCode
-      console.log('❌ Connection closed:', reason)
+    
+    let q = args[0];
+    const settings = {
+      online: "available",
+      offline: "unavailable"
+    };
+    
+    if (settings[q]) {
+      const userConfig = await loadUserConfigFromMongo(sanitized) || {};
+      userConfig.PRESENCE = settings[q];
+      await setUserConfigInMongo(sanitized, userConfig);
+      
+      // Apply presence immediately
+      await socket.sendPresenceUpdate(settings[q]);
+      
+      const shonux = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_PRESENCE2" },
+        message: { contactMessage: { displayName: BOT_NAME_FANCY, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${BOT_NAME_FANCY};;;;\nFN:${BOT_NAME_FANCY}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
+      };
+      await socket.sendMessage(sender, { text: `✅ *Your Bot Presence updated to: ${q}*` }, { quoted: shonux });
+    } else {
+      const shonux = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_PRESENCE3" },
+        message: { contactMessage: { displayName: BOT_NAME_FANCY, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${BOT_NAME_FANCY};;;;\nFN:${BOT_NAME_FANCY}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
+      };
+      await socket.sendMessage(sender, { text: "❌ *Invalid option!*\n\nAvailable options:\n- online\n- offline" }, { quoted: shonux });
     }
-  })
-  // ============================================================
-
-
-
-  // ============================================================
-  // 🟢 MESSAGE HANDLER (ORIGINAL + COMMAND ADDON)
-  // ============================================================
-  sock.ev.on('messages.upsert', async ({ messages }) => {
-    const msg = messages[0]
-    if (!msg.message) return
-
-    const from = msg.key.remoteJid
-    const text =
-      msg.message.conversation ||
-      msg.message.extendedTextMessage?.text ||
-      ''
-
-
-
-    // ================= BOT PRESENCE COMMAND =================
-    if (text === '.botpresence online') {
-      global.botPresenceMode = 'online'
-
-      if (global.presenceInterval)
-        clearInterval(global.presenceInterval)
-
-      global.presenceInterval = setInterval(async () => {
-        try {
-          await sock.sendPresenceUpdate('available')
-        } catch {}
-      }, 25000)
-
-      await sock.sendMessage(from, {
-        text: '✅ Bot Presence set to ONLINE\n(WhatsApp back උනත් online පේන්න try කරනවා)'
-      })
-      return
-    }
-
-    if (text === '.botpresence offline') {
-      global.botPresenceMode = 'offline'
-
-      if (global.presenceInterval) {
-        clearInterval(global.presenceInterval)
-        global.presenceInterval = null
-      }
-
-      await sock.sendPresenceUpdate('unavailable')
-
-      await sock.sendMessage(from, {
-        text: '❌ Bot Presence set to OFFLINE\n(Back උනම offline වෙලාම ඉන්නවා)'
-      })
-      return
-    }
-    // =========================================================
-
-
-
-    // 🟢 Presence behavior while receiving messages
-    if (global.botPresenceMode === 'online') {
-      await sock.sendPresenceUpdate('available', from)
-    }
-
-
-
-    // ================= ORIGINAL REPLY LOGIC =================
-    // ⚠️ මෙතන original message handling / commands / replies
-    // ⚠️ කිසිම original logic එකක් delete කරලා නෑ
-    // =========================================================
-  })
-  // ============================================================
+  } catch (e) {
+    console.error('Botpresence command error:', e);
+    const shonux = {
+      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_PRESENCE4" },
+      message: { contactMessage: { displayName: BOT_NAME_FANCY, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${BOT_NAME_FANCY};;;;\nFN:${BOT_NAME_FANCY}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
+    };
+    await socket.sendMessage(sender, { text: "*❌ Error updating your bot presence!*" }, { quoted: shonux });
+  }
+  break;
 }
-
-startBot()
 
 case 'autotyping': {
   await socket.sendMessage(sender, { react: { text: '⌨️', key: msg.key } });
