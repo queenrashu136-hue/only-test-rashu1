@@ -250,7 +250,6 @@ async function getReactConfigForJid(jid) {
 }
 
 // =======================vv===================
-require('dotenv').config();
 
 const OWNER_NUMBER_RAW = process.env.OWNER_NUMBER;
 const OWNER_NUMBER = OWNER_NUMBER_RAW
