@@ -4467,33 +4467,41 @@ END:VCARD`
 
     // 🔹 Handle button & list clicks
     socket.ev.on('messages.upsert', async (m) => {
-      const msg = m.messages[0];
-      if (!msg.message) return;
+  try {
+    const msg = m.messages[0];
+    if (!msg.message) return;
 
-      const listResponse = msg.message?.listResponseMessage;
-      if (listResponse) {
-        const rowId = listResponse.singleSelectReply.selectedRowId;
-        switch(rowId){
-          case 'join_channel': await socket.sendMessage(msg.key.remoteJid, { text: "📣 Join our WhatsApp channel!" }); break;
-          case 'download_menu': await socket.sendMessage(msg.key.remoteJid, { text: "📥 Opening Download Menu..." }); break;
-          case 'tool_menu': await socket.sendMessage(msg.key.remoteJid, { text: "🛠️ Opening Tool Menu..." }); break;
-          case 'other_menu': await socket.sendMessage(msg.key.remoteJid, { text: "🚀 Opening Other Menu..." }); break;
-          case 'settings_menu': await socket.sendMessage(msg.key.remoteJid, { text: "⚙️ Opening Settings Menu..." }); break;
-          case 'owner_menu': await socket.sendMessage(msg.key.remoteJid, { text: "👑 Bot Owner Info" }); break;
-        }
+    const sender = msg.key.remoteJid;
+
+    // Check if this is a list response
+    const listResponse = msg.message?.listResponseMessage;
+    if (listResponse) {
+      const selectedRowId = listResponse.singleSelectReply.selectedRowId;
+      
+      // Button ID අනුව command run කරන්න
+      switch (selectedRowId) {
+        case 'download_menu':
+          await socket.sendMessage(sender, { text: "📥 Download Menu opened!" });
+          break;
+        case 'creative_menu':
+          await socket.sendMessage(sender, { text: "🎨 Creative Menu opened!" });
+          break;
+        case 'tools_menu':
+          await socket.sendMessage(sender, { text: "🛠️ Tool Menu opened!" });
+          break;
+        case 'bot_settings':
+          await socket.sendMessage(sender, { text: "⚙️ Bot Settings opened!" });
+          break;
+        case 'owner_info':
+          await socket.sendMessage(sender, { text: "👑 Bot Owner info!" });
+          break;
+        case 'system_info':
+          await socket.sendMessage(sender, { text: "📡 System Info..." });
+          break;
+        default:
+          await socket.sendMessage(sender, { text: "❌ Unknown option!" });
       }
-
-      const buttonResponse = msg.message?.buttonsResponseMessage;
-      if(buttonResponse){
-        const btnId = buttonResponse.selectedButtonId;
-        switch(btnId){
-          case 'select_menu': await socket.sendMessage(msg.key.remoteJid, { text: "📜 Please select a menu from the list!" }); break;
-          case 'ping_cmd': await socket.sendMessage(msg.key.remoteJid, { text: "⚡ Pong! Bot is alive." }); break;
-          case 'owner_cmd': await socket.sendMessage(msg.key.remoteJid, { text: "👑 Bot Owner Info" }); break;
-        }
-      }
-    });
-
+    }
   } catch(err){
     console.error('menu command error:', err);
     try { await socket.sendMessage(sender, { text: '❌ Failed to show menu: '+err }, { quoted: msg }); } catch(e){}
