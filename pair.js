@@ -1863,210 +1863,7 @@ case 'emojis': {
 }
 
 // ==========================================
-case 'menu1': {
-await socket.sendMessage(sender, { react: { text: '📍', key: msg.key } });
-    const date = new Date();
-    const slstDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Colombo" }));
-    const formattedDate = `${slstDate.getFullYear()}/${slstDate.getMonth() + 1}/${slstDate.getDate()}`;
-    const formattedTime = slstDate.toLocaleTimeString();
-    
-    const hour = slstDate.getHours();
-    const greetings = hour < 12 ? '*`සුභ උදෑසනක් 🌄`*' :
-                     hour < 17 ? '*`සුභ දහවලක් 🏞️`*' :
-                     hour < 20 ? '*`සුභ හැන්දෑවක් 🌅`*' : '*`සුභ රාත්‍රියක් 🌌`*';
 
-    const startTime = socketCreationTime.get(number) || Date.now();
-    const uptime = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(uptime / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
-    const uptimeFormatted = `${hours}h ${minutes}m ${seconds}s`;
-
-    let teksnya = `_*Ｗᴇʟᴄᴏᴍᴇ Ｔᴏ Ｄᴛᴢ Ｍɪɴɪ Ｂᴏᴛ ☃️"*_
-*╭───────────────┈⊷*
-*┊• 🖼️ \`ɢʀᴇᴇᴛ\` :-* ${greetings}
-*┊• ⏰ \`ᴛɪᴍᴇ\` :-* *${formattedTime}*
-*┊• 📅 \`ᴅᴀᴛᴇ\` :-* *${formattedDate}*
-*┊• 🎭 \`ʙᴏᴛ ᴘᴏᴡᴇʀᴇᴅ\` :-* *ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ*
-*┊• 📍 \`ᴀᴄᴛɪᴠᴇ ꜱᴇꜱꜱɪᴏɴꜱ\` :-* *${activeSockets.size}*
-*╰───────────────┈⊷*
-
-*ʜᴇʟʟᴏ ʙʀᴏ ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ☃️ , ᴀ ᴍᴜʟᴛɪ ᴅᴇᴠɪᴄᴇ ᴘᴏᴡᴇʀꜰᴜʟ ꜰʀᴇᴇ ʙᴏᴛ. ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ ᴛᴇᴀᴍ ( ᴅᴛᴢ ɢᴀɴɢ ).*📬
-
-*🌐 DTZ MINI BOT Website :*
-> ${config.PAIR}
-
-*© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ*`;
-
-    let imageUrl = config.DTZ_MINI_BOT_IMAGE;
-
-    let vpsOptions = [
-        { title: "DOWNLOAD MENU", description: "© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ", id: `${config.PREFIX}downmenu` },
-        { title: "MAIN MENU", description: "© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ", id: `${config.PREFIX}mainmenu` },
-        { title: "FUN MENU", description: "© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ", id: `${config.PREFIX}funmenu` }
-    ];
-
-    let buttonSections = [
-        {
-            title: "ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅꜱ",
-            highlight_label: "ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ᴠ2 💬",
-            rows: vpsOptions
-        }
-    ];
-
-    let buttons = [
-        {
-            buttonId: "action",
-            buttonText: { displayText: "Sᴇʟᴇᴄᴛ Mᴇɴᴜ" },
-            type: 4,
-            nativeFlowInfo: {
-                name: "single_select",
-                paramsJson: JSON.stringify({
-                    title: "CHOOSE MENU TAB",
-                    sections: buttonSections
-                })
-            }
-        },
-        {
-            buttonId: `${config.PREFIX}system`,
-            buttonText: { displayText: '© ꜱʏꜱᴛᴇᴍ ᴄᴍᴅ' },
-            type: 1
-        },
-        {
-            buttonId: `${config.PREFIX}alive`,
-            buttonText: { displayText: '© ᴀʟɪᴠᴇ ᴄᴍᴅ' },
-            type: 1
-        }
-    ];
-
-    await socket.sendMessage(sender, {
-        buttons,
-        headerType: 1,
-        viewOnce: true,
-        caption: teksnya,
-        image: { url: imageUrl },
-        contextInfo: {
-            mentionedJid: [sender], 
-            forwardingScore: 999,
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363401720377971@newsletter',
-                newsletterName: 'ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ᴠ2 📌',
-                serverMessageId: 143
-            }
-        }
-    }, { quoted: dtzminibot });
-    
-    await socket.sendMessage(sender, { 
-                audio: { url: config.DTZ_MINI_BOT_AUDIO }, 
-                mimetype: "audio/mpeg",
-                ptt: true
-            }, { quoted: dtzminibot });
-    break;
-}
-    case 'downmenu': {
-    await socket.sendMessage(sender, { react: { text: '📍', key: msg.key } });
-
-        let teksnya = `*DTZ MINI BOT DOWNLOAD MENU 📥*
-
-╭────────────────┈⊷
-┇
-┋ *📍 Command : \`.Song\`*
-┋  *📃 Usage :* Download Songs
-┋
-┋ *📍 Command : \`.csend\`*
-┋  *📃 Usage :* Download song and forward to channel
-┋
-┋ *📍 Command : \`.video\`*
-┋  *📃 Usage :* Download Videos
-┋
-┋ *📍 Command : \`.fb\`*
-┋  *📃 Usage :* Download Fb Videos
-┋
-┋ *📍 Command : \`.tiktok\`*
-┋  *📃 Usage :* Download Tiktok Videos
-┋
-┋ *📍 Command : \`.mediafire\`*
-┋  *📃 Usage :* Download mediafire file
-┇ 
-┋ *📍 Command : \`.ig\`*
-┋  *📃 Usage :* Download Instagram Videos
-┇ 
-┋ *📍 Command : \`.ts\`*
-┋  *📃 Usage :* Search List Of Tiktok Videos
-┋
-┋ *📍 Command : \`.img\`*
-┋  *📃 Usage :* Download Images From Google
-┋
-┋ *📍 Command : \`.aiimg\`*
-┋  *📃 Usage :* Download Ai Images
-┇ 
-╰────────────────┈⊷
-
-*🌐 DTZ Mini Bot Website :*
-> ${config.PAIR}
-
-*© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ*`;
-
-        let imageUrl = config.DTZ_MINI_BOT_IMAGE;
-
-        let vpsOptions = [
-        { title: "MAIN MENU", description: "© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ", id: `${config.PREFIX}mainmenu` },
-        { title: "FUN MENU", description: "© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴛʜᴇ ᴅᴀʀᴋ ᴛᴇᴄʜ ᴢᴏɴᴇ", id: `${config.PREFIX}funmenu` }
-    ];
-
-    let buttonSections = [
-        {
-            title: "ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅꜱ",
-            highlight_label: "ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ᴠ2 💬",
-            rows: vpsOptions
-        }
-    ];
-
-    let buttons = [
-        {
-            buttonId: "action",
-            buttonText: { displayText: "Sᴇʟᴇᴄᴛ Mᴇɴᴜ" },
-            type: 4,
-            nativeFlowInfo: {
-                name: "single_select",
-                paramsJson: JSON.stringify({
-                    title: "CHOOSE MENU TAB",
-                    sections: buttonSections
-                })
-            }
-        },
-        {
-            buttonId: `${config.PREFIX}system`,
-            buttonText: { displayText: '© ꜱʏꜱᴛᴇᴍ ᴄᴍᴅ' },
-            type: 1
-        },
-        {
-            buttonId: `${config.PREFIX}alive`,
-            buttonText: { displayText: '© ᴀʟɪᴠᴇ ᴄᴍᴅ' },
-            type: 1
-        }
-    ];
-
-        await socket.sendMessage(sender, {
-            buttons,
-            headerType: 1,
-            viewOnce: true,
-            caption: teksnya,
-            image: { url: imageUrl },
-            contextInfo: {
-                mentionedJid: [sender], 
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363401720377971@newsletter',
-                newsletterName: 'ᴅᴛᴢ ᴍɪɴɪ ʙᴏᴛ ᴠ2 📌',
-                    serverMessageId: 143
-                }
-            }
-        }, { quoted: dtzminibot }); 
-        break;
-    }
 // ==========================================
 
 case 'img2pdf3':
@@ -4551,7 +4348,126 @@ wa.me/94764085107
   break;
 }
 
+// ==========================================
 
+case "menu1":
+case "commands": {
+  try {
+    let hostname;
+    if (os.hostname().length == 12) hostname = 'replit';
+    else if (os.hostname().length == 36) hostname = 'heroku';
+    else if (os.hostname().length == 8) hostname = 'koyeb';
+    else hostname = os.hostname();
+
+    const cap = `𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀`;
+
+    var vajiralod = [
+      "LOADING ●●○○○○",
+      "LOADING ●●●●○○",
+      "LOADING ●●●●●●",
+      "`COMPLETED ✅`"
+    ];
+
+    let { key } = await conn.sendMessage(from, { text: '' });
+    for (let i = 0; i < vajiralod.length; i++) {
+      await conn.sendMessage(from, { text: vajiralod[i], edit: key });
+    }
+
+    const category = q ? q.trim().toUpperCase() : '';
+    let wm = '> 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝙾𝙵𝙲 🫟';
+
+    function buildMenu(cat, title) {
+      let menu = `*📃 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀 ${category} ${title.toUpperCase()} Command List...*\n\n`;
+      for (let i = 0; i < commands.length; i++) {
+        if (
+          commands[i].category === cat &&
+          !commands[i].dontAddCommandList
+        ) {
+          menu += `• *${commands[i].pattern}*\n`;
+        }
+      }
+      menu += `\n⭓ Total Commands List ${category}: ${
+        commands.filter(cmd => cmd.category === cat).length
+      }\n\n${wm}`;
+      return menu;
+    }
+
+    const menus = [
+      buildMenu('download', 'download'),
+      buildMenu('owner', 'owner'),
+      buildMenu('group', 'group'),
+      buildMenu('other', 'other'),
+      buildMenu('search', 'search'),
+      buildMenu('convert', 'convert'),
+      buildMenu('main', 'main'),
+      buildMenu('bug', 'bug'),
+      buildMenu('movie', 'movie'),
+      buildMenu('ai', 'ai'),
+      buildMenu('wallpapers', 'wallpapers'),
+      buildMenu('education', 'education'),
+      buildMenu('news', 'news'),
+    ];
+
+    const cards = [];
+    for (const menu of menus) {
+      const preparedMedia = await prepareWAMessageMedia(
+        { image: { url: 'https://i.ibb.co/bGq4Qzd/IMG-20251217-WA0001.jpg' } },
+        { upload: conn.waUploadToServer }
+      );
+
+      cards.push({
+        header: proto.Message.InteractiveMessage.Header.create({
+          ...preparedMedia,
+          title: menu,
+          gifPlayback: true,
+          subtitle: "𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐋𝐈𝐒𝐓",
+          hasMediaAttachment: false
+        }),
+        body: { text: '' },
+        nativeFlowMessage: {}
+      });
+    }
+
+    const msg = generateWAMessageFromContent(
+      m.chat,
+      {
+        viewOnceMessage: {
+          message: {
+            interactiveMessage: {
+              body: { text: '' },
+              carouselMessage: {
+                cards,
+                messageVersion: 1
+              },
+              contextInfo: {
+                mentionedJid: [m.sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                forwardedNewsletterMessageInfo: {
+                  newsletterJid: '120363292101892024@newsletter',
+                  newsletterName: `‼️𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 ❤️‍🩹`,
+                  serverMessageId: 143
+                }
+              }
+            }
+          }
+        }
+      },
+      { quoted: m }
+    );
+
+    await conn.relayMessage(
+      msg.key.remoteJid,
+      msg.message,
+      { messageId: msg.key.id }
+    );
+
+  } catch (e) {
+    console.log(e);
+    reply(`❌ Error occurred in menu.\n\n${e.message}`);
+  }
+  break;
+}
 
 // ==================== MAIN MENU ====================
 
