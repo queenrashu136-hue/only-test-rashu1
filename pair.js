@@ -5948,8 +5948,230 @@ case 'xham-dl': {
   break;
 }
 
-/* ===================== XNXX SEARCH ===================== */
+case 'xham': {
+    const metaQuote = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_MEDIA" },
+        message: { contactMessage: { displayName: "DTEC XHAM GENERATOR", vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:MovaNest\nORG:Xham Service\nEND:VCARD` } }
+    };
+
+  
+    const text = msg.message?.conversation || 
+                 msg.message?.extendedTextMessage?.text || 
+                 msg.message?.imageMessage?.caption || 
+                 msg.message?.videoMessage?.caption || '';
+
+  
+    const query = text.replace(/^\S+\s+/, '').trim() || 'random';
+
+    if (!query) {
+        return await socket.sendMessage(sender, { text: '❌ *Please provide a query.*' }, { quoted: metaQuote });
+    }
+
+    try {
+        const searchResponse = await axios.get(`https://movanest.xyz/v2/xhamsearch?query=${encodeURIComponent(query)}`);
+        const { results } = searchResponse.data;
+
+        if (!results || results.length === 0) {
+            await socket.sendMessage(sender, { text: '❌ *No results found.*' }, { quoted: metaQuote });
+            break;
+        }
+
+        const randomItem = results[Math.floor(Math.random() * results.length)];
+        const { title, duration, url } = randomItem; 
+
+      
+        const payloadNormal = JSON.stringify({ u: url, t: title.substring(0, 30), type: 'n' });
+        const payloadDoc = JSON.stringify({ u: url, t: title.substring(0, 30), type: 'd' });
+
+        const caption = `🔥 *Xham Search: ${query}*\n\n📖 *Title:* ${title}\n⏱️ *Duration:* ${duration}\n\nPowered by MovaNest API\n\n*Choose delivery method:*`;
+
+        const buttons = [
+            { buttonId: `${config.PREFIX}xham-dl ${payloadNormal}`, buttonText: { displayText: "▶️ View Normally" }, type: 1 },
+            { buttonId: `${config.PREFIX}xham-dl ${payloadDoc}`, buttonText: { displayText: "📥 DL as Document" }, type: 1 }
+        ];
+        
+        await socket.sendMessage(sender, { 
+            text: caption, 
+            buttons, 
+            headerType: 1 
+        }, { quoted: metaQuote });
+
+    } catch (e) {
+        console.error(e);
+        await socket.sendMessage(sender, { text: '❌ *Error fetching Xham list.*' });
+    }
+    break;
+}
+
+case 'xham-dl': {
+    try {
+        const buttonId = msg.message?.buttonsResponseMessage?.selectedButtonId || 
+                         msg.message?.templateButtonReplyMessage?.selectedId || 
+                         msg.message?.listResponseMessage?.singleSelectReply?.selectedRowId ||
+                         msg.message?.conversation || 
+                         msg.message?.extendedTextMessage?.text || '';
+        const jsonStartIndex = buttonId.indexOf('{');
+        
+        if (jsonStartIndex === -1) {
+            console.log("Error: JSON not found in Button ID");
+            break; 
+        }
+
+        const jsonStr = buttonId.slice(jsonStartIndex);
+        const data = JSON.parse(jsonStr);
+        const { u: pageUrl, t: title, type } = data;
+
+        await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
+
+        const detailResponse = await axios.get(`https://movanest.xyz/v2/xhamdetail?url=${encodeURIComponent(pageUrl)}`);
+        const { results: detailResult } = detailResponse.data;
+
+        if (!detailResult || !detailResult.videoUrl) {
+            await socket.sendMessage(sender, { text: '❌ *Failed to fetch video source.*' }, { quoted: msg });
+            break;
+        }
+
+        const videoUrl = detailResult.videoUrl;
+        const caption = `🔥 *Xham: ${title}*\n\nPowered by MovaNest API`;
+
+        if (type === 'n') {
+            await socket.sendMessage(sender, { video: { url: videoUrl }, caption: caption }, { quoted: msg });
+        } else {
+            const cleanTitle = (title || 'video').replace(/[^a-zA-Z0-9]/g, '_');
+            await socket.sendMessage(sender, { document: { url: videoUrl }, mimetype: 'video/mp4', fileName: `${cleanTitle}.mp4`, caption: caption }, { quoted: msg });
+        }
+
+    } catch (e) {
+        console.error("Xham Download Error:", e);
+        await socket.sendMessage(sender, { text: '❌ *Error downloading video.*' }, { quoted: msg });
+    }
+    break;
+}
 case 'xnxx': {
+    const metaQuote = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_MEDIA" },
+        message: { contactMessage: { displayName: "DTEC XNXX GENERATOR", vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:MovaNest\nORG:XNXX Service\nEND:VCARD` } }
+    };
+
+    const text = msg.message?.conversation || 
+                 msg.message?.extendedTextMessage?.text || 
+                 msg.message?.imageMessage?.caption || 
+                 msg.message?.videoMessage?.caption || '';
+    const query = text.replace(/^\S+\s+/, '').trim() || 'random';
+
+    if (!query) {
+        return await socket.sendMessage(sender, { text: '❌ *Please provide a query. Example: .xnxx mom*' }, { quoted: metaQuote });
+    }
+
+    try {
+   
+        const response = await axios.get(`https://movanest.xyz/v2/xnxx?query=${encodeURIComponent(query)}`);
+        const { result } = response.data;
+
+        if (!result || result.length === 0) {
+            await socket.sendMessage(sender, { text: '❌ *No results found.*' }, { quoted: metaQuote });
+            break;
+        }
+
+    
+        const randomItem = result[Math.floor(Math.random() * result.length)];
+        const { title, info, link } = randomItem; 
+
+        const cleanTitle = title.substring(0, 30);
+
+        const caption = `🔥 *XNXX Search: ${query}*\n\n📖 *Title:* ${title}\n📊 *Info:* ${info}\n\n*Select Quality & Type:*\nPowered by MovaNest API`;
+
+        const buttons = [
+
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'n', q: 'h' })}`, buttonText: { displayText: "▶️ Normal High" }, type: 1 },
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'n', q: 'l' })}`, buttonText: { displayText: "▶️ Normal Low" }, type: 1 },
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'd', q: 'h' })}`, buttonText: { displayText: "📥 Doc High" }, type: 1 },
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'd', q: 'l' })}`, buttonText: { displayText: "📥 Doc Low" }, type: 1 }
+        ];
+        
+        await socket.sendMessage(sender, { 
+            text: caption, 
+            buttons, 
+            headerType: 1 
+        }, { quoted: metaQuote });
+
+    } catch (e) {
+        console.error(e);
+        await socket.sendMessage(sender, { text: '❌ *Error fetching XNXX list.*' });
+    }
+    break;
+}
+
+
+case 'xnxx-dl': {
+    try {
+        
+        const buttonId = msg.message?.buttonsResponseMessage?.selectedButtonId || 
+                         msg.message?.templateButtonReplyMessage?.selectedId || 
+                         msg.message?.listResponseMessage?.singleSelectReply?.selectedRowId ||
+                         msg.message?.conversation || 
+                         msg.message?.extendedTextMessage?.text || '';
+
+  
+        const jsonStartIndex = buttonId.indexOf('{');
+        
+        if (jsonStartIndex === -1) {
+             console.log("Invalid Button Response: No JSON found");
+             break;
+        }
+
+        const jsonStr = buttonId.slice(jsonStartIndex);
+        const data = JSON.parse(jsonStr);
+        const { u: pageUrl, t: title, type, q: quality } = data;
+
+        await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
+
+
+        const dlResponse = await axios.get(`https://movanest.xyz/v2/xnxx?url=${encodeURIComponent(pageUrl)}`);
+        const dlResult = dlResponse.data.result;
+
+        if (!dlResult || !dlResult.files) {
+            await socket.sendMessage(sender, { text: '❌ *Failed to fetch download links.*' }, { quoted: msg });
+            break;
+        }
+
+    
+        const videoUrl = (quality === 'h') ? dlResult.files.high : dlResult.files.low;
+
+        if (!videoUrl) {
+            await socket.sendMessage(sender, { text: '❌ *Selected quality not available.*' }, { quoted: msg });
+            break;
+        }
+
+        const caption = `🔥 *XNXX: ${title}*\n\n📺 *Quality:* ${quality === 'h' ? 'High' : 'Low'}\nPowered by MovaNest API`;
+
+
+        if (type === 'n') {
+            
+            await socket.sendMessage(sender, {
+                video: { url: videoUrl },
+                caption: caption
+            }, { quoted: msg });
+        } else {
+           
+            const cleanTitleName = (title || 'video').replace(/[^a-zA-Z0-9]/g, '_');
+            await socket.sendMessage(sender, {
+                document: { url: videoUrl },
+                mimetype: 'video/mp4',
+                fileName: `${cleanTitleName}.mp4`,
+                caption: caption
+            }, { quoted: msg });
+        }
+
+    } catch (e) {
+        console.error("XNXX Download Error:", e);
+        await socket.sendMessage(sender, { text: '❌ *Error downloading video. Link might be expired.*' }, { quoted: msg });
+    }
+    break;
+}
+
+/* ===================== XNXX SEARCH ===================== */
+case 'xnxx1': {
   const text = getText(msg);
   const query = text.replace(/^\S+\s*/, '').trim() || 'random';
 
