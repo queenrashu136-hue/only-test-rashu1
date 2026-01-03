@@ -1131,26 +1131,6 @@ case 'fc': {
 
 // ==========================================
 
-// ===== BOT PRESENCE KEEP-ALIVE SYSTEM =====
-setInterval(async () => {
-  try {
-    const ownerNum = config.OWNER_NUMBER.replace(/[^0-9]/g, '');
-    const userConfig = await loadUserConfigFromMongo(ownerNum);
-
-    if (!userConfig) return;
-
-    if (userConfig.PRESENCE === "available") {
-      await socket.sendPresenceUpdate("available");
-    }
-
-    if (userConfig.PRESENCE === "unavailable") {
-      await socket.sendPresenceUpdate("unavailable");
-    }
-
-  } catch (err) {
-    console.log("Presence system error:", err);
-  }
-}, 15000); // every 15 seconds
 
 // ==========================================
 
