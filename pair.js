@@ -3353,7 +3353,14 @@ case 'xvselect': {
 break;
 
 
-case 'දාපන්':
+case '❤️❤️':
+case '🤭🤭':
+case '💗💗':
+case 'wow':
+case '🥰🥰':
+case '😁😁':
+case '😂😂':
+case '👍👍':
 case 'vv':
 case 'save': {
   try {
