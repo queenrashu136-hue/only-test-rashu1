@@ -4349,106 +4349,99 @@ wa.me/94764085107
 }
 
 // ==========================================
-
 case "menu1":
 case "commands": {
+  // ✅ reply helper (FIXED)
+  const reply = (text) =>
+    conn.sendMessage(from, { text }, { quoted: m });
+
   try {
+    // ================= HOST =================
     let hostname;
-    if (os.hostname().length == 12) hostname = 'replit';
-    else if (os.hostname().length == 36) hostname = 'heroku';
-    else if (os.hostname().length == 8) hostname = 'koyeb';
-    else hostname = os.hostname();
+    if (require("os").hostname().length == 12) hostname = "replit";
+    else if (require("os").hostname().length == 36) hostname = "heroku";
+    else if (require("os").hostname().length == 8) hostname = "koyeb";
+    else hostname = require("os").hostname();
 
-    const cap = `𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀`;
-
-    var vajiralod = [
+    // ================= LOADING =================
+    const loading = [
       "LOADING ●●○○○○",
       "LOADING ●●●●○○",
       "LOADING ●●●●●●",
-      "`COMPLETED ✅`"
+      "COMPLETED ✅"
     ];
 
-    let { key } = await conn.sendMessage(from, { text: '' });
-    for (let i = 0; i < vajiralod.length; i++) {
-      await conn.sendMessage(from, { text: vajiralod[i], edit: key });
+    let { key } = await conn.sendMessage(from, { text: "⏳ Loading menu..." });
+    for (let text of loading) {
+      await conn.sendMessage(from, { text, edit: key });
     }
 
-    const category = q ? q.trim().toUpperCase() : '';
-    let wm = '> 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝙾𝙵𝙲 🫟';
+    // ================= MENU BUILDER =================
+    const category = q ? q.trim().toUpperCase() : "";
+    const wm = "> 𝙿𝙾𝚆𝙴𝚁𝙳 𝙱𝚈 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝙾𝙵𝙲 🫟";
 
-    function buildMenu(cat, title) {
-      let menu = `*📃 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀 ${category} ${title.toUpperCase()} Command List...*\n\n`;
-      for (let i = 0; i < commands.length; i++) {
-        if (
-          commands[i].category === cat &&
-          !commands[i].dontAddCommandList
-        ) {
-          menu += `• *${commands[i].pattern}*\n`;
+    const buildMenu = (cat, title) => {
+      let menu = `*📃 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀 ${title.toUpperCase()} COMMANDS*\n\n`;
+
+      for (let cmd of commands) {
+        if (cmd.category === cat && !cmd.dontAddCommandList) {
+          menu += `• *${cmd.pattern}*\n`;
         }
       }
-      menu += `\n⭓ Total Commands List ${category}: ${
-        commands.filter(cmd => cmd.category === cat).length
-      }\n\n${wm}`;
-      return menu;
-    }
 
+      menu += `\n⭓ Total ${title}: ${
+        commands.filter(c => c.category === cat).length
+      }\n\n${wm}`;
+
+      return menu;
+    };
+
+    // ================= MENUS =================
     const menus = [
-      buildMenu('download', 'download'),
-      buildMenu('owner', 'owner'),
-      buildMenu('group', 'group'),
-      buildMenu('other', 'other'),
-      buildMenu('search', 'search'),
-      buildMenu('convert', 'convert'),
-      buildMenu('main', 'main'),
-      buildMenu('bug', 'bug'),
-      buildMenu('movie', 'movie'),
-      buildMenu('ai', 'ai'),
-      buildMenu('wallpapers', 'wallpapers'),
-      buildMenu('education', 'education'),
-      buildMenu('news', 'news'),
+      buildMenu("download", "download"),
+      buildMenu("owner", "owner"),
+      buildMenu("group", "group"),
+      buildMenu("other", "other"),
+      buildMenu("search", "search"),
+      buildMenu("convert", "convert"),
+      buildMenu("main", "main"),
+      buildMenu("bug", "bug"),
+      buildMenu("movie", "movie"),
+      buildMenu("ai", "ai"),
+      buildMenu("wallpapers", "wallpapers"),
+      buildMenu("education", "education"),
+      buildMenu("news", "news"),
     ];
 
+    // ================= CAROUSEL =================
     const cards = [];
     for (const menu of menus) {
-      const preparedMedia = await prepareWAMessageMedia(
-        { image: { url: 'https://i.ibb.co/bGq4Qzd/IMG-20251217-WA0001.jpg' } },
+      const media = await prepareWAMessageMedia(
+        { image: { url: "https://i.ibb.co/bGq4Qzd/IMG-20251217-WA0001.jpg" } },
         { upload: conn.waUploadToServer }
       );
 
       cards.push({
         header: proto.Message.InteractiveMessage.Header.create({
-          ...preparedMedia,
+          ...media,
           title: menu,
-          gifPlayback: true,
           subtitle: "𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 𝐁𝐄𝐓𝐀 𝐂𝐎𝐌𝐌𝐀𝐍𝐃 𝐋𝐈𝐒𝐓",
           hasMediaAttachment: false
         }),
-        body: { text: '' },
+        body: { text: "" },
         nativeFlowMessage: {}
       });
     }
 
+    // ================= SEND =================
     const msg = generateWAMessageFromContent(
-      m.chat,
+      from,
       {
         viewOnceMessage: {
           message: {
             interactiveMessage: {
-              body: { text: '' },
-              carouselMessage: {
-                cards,
-                messageVersion: 1
-              },
-              contextInfo: {
-                mentionedJid: [m.sender],
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363292101892024@newsletter',
-                  newsletterName: `‼️𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐃 ❤️‍🩹`,
-                  serverMessageId: 143
-                }
-              }
+              body: { text: "" },
+              carouselMessage: { cards, messageVersion: 1 }
             }
           }
         }
@@ -4456,19 +4449,15 @@ case "commands": {
       { quoted: m }
     );
 
-    await conn.relayMessage(
-      msg.key.remoteJid,
-      msg.message,
-      { messageId: msg.key.id }
-    );
+    await conn.relayMessage(from, msg.message, { messageId: msg.key.id });
 
   } catch (e) {
     console.log(e);
-    reply(`❌ Error occurred in menu.\n\n${e.message}`);
+    reply("❌ Menu error:\n" + e.message);
   }
+
   break;
 }
-
 // ==================== MAIN MENU ====================
 
 
