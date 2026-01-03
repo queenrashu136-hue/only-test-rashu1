@@ -4352,9 +4352,7 @@ wa.me/94764085107
 
 // ==========================================
 case 'menu': {
-  try { 
-    await socket.sendMessage(sender, { react: { text: "🗒️", key: msg.key } }); 
-  } catch(e){}
+  try { await socket.sendMessage(sender, { react: { text: "🎉", key: msg.key } }); } catch(e){}
 
   try {
     const startTime = socketCreationTime.get(number) || Date.now();
@@ -4363,148 +4361,163 @@ case 'menu': {
     const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
 
+    // load per-session config (logo, botName)
     let userCfg = {};
-    try { 
-      if (number && typeof loadUserConfigFromMongo === 'function') 
-        userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; 
-    } catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
+    try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; }
+    catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
-    const title = userCfg.botName || 'NURO MD 🍀';
+    const title = userCfg.botName || '⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤';
+    
+    // 🔹 Video Note Section (වෙනස් කළේ මෙතන පමණි)
+    await socket.sendMessage(sender, {
+        video: { url: 'https://files.catbox.moe/7cowmf.mp4' },
+        ptv: true 
+    });
 
+    // මැසේජ් දෙක පටලැවෙන්නේ නැති වෙන්න පොඩි Delay එකක්
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // 🔹 Fake contact for Meta AI mention
     const shonux = {
-      key: {
-        remoteJid: "status@broadcast",
-        participant: "0@s.whatsapp.net",
-        fromMe: false,
-        id: "META_AI_FAKE_ID_MENU"
-      },
-      message: {
-        contactMessage: {
-          displayName: title,
-          vcard: `BEGIN:VCARD
+        key: {
+            remoteJid: "status@broadcast",
+            participant: "0@s.whatsapp.net",
+            fromMe: true,
+            id: "META_AI_FAKE_ID_MENU"
+        },
+        message: {
+            contactMessage: {
+                displayName: title,
+                vcard: `BEGIN:VCARD
 VERSION:3.0
 N:${title};;;;
 FN:${title}
 ORG:Meta Platforms
 TEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002
 END:VCARD`
+            }
         }
-      }
     };
-
-    const date = new Date();
+	  const date = new Date();
     const slstDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Colombo" }));
     const formattedTime = slstDate.toLocaleTimeString();
     const hour = slstDate.getHours();
     const greetings = hour < 12 ? 'ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ..🌅' :
                       hour < 17 ? 'ɢᴏᴏᴅ ᴀꜰᴛᴇʀɴᴏᴏɴ..🌞' :
                       hour < 20 ? 'ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ..🌆' : 'ɢᴏᴏᴅ ɴɪɢʜᴛ..🌙';
-
-    const nuroweb = 'https://nuro-md-mini-bot.onrender.com/';
+	const nuroweb = 'https://queen-imalsha-md-1eca61eef369.herokuapp.com';
     const text = `
-*╭──〔 NURO-MD 〕─┈⊷*
-*│👋 𝙷𝙴𝙻𝙻𝙾 𝚄𝚂𝙴𝚁**
-*╰──────────────┈⊷*  
-*╭─「 𝐁ot 𝐒tatus 」 ─┈⊷*
-*│🍀* *\`ɢʀᴇᴇᴛɪɴɢ:\`* *\`${greetings}\`*
-*│📄* *\`ʙᴏᴛ ɴᴀᴍᴇ:\`* *ɴᴜʀᴏ ᴍᴅ*
-*│👑* *\`ᴏᴡɴᴇʀ :\`* ᴛʜᴀʀᴀᴋ*
-*│📆* *\`ᴅᴀᴛᴇ:\`* *${slstDate}*
-*│🕜* *\`ᴛɪᴍᴇ:\`* *${formattedTime}*
-*╰───────────────┈⊷*
-*⚠️ ᴛʜɪꜱ ɪꜱ ᴍᴇɴᴜ ᴏꜰ ɴᴜʀᴏ ᴍᴅ ᴍɪɴɪ ʙᴏᴛ.*
-*ᴜꜱᴇ ᴏᴜʀ ʙᴏᴛ ᴀɴᴅ ꜱʜᴀʀᴇ ᴡʜɪᴛʜ ʏᴏᴜʀ ꜰʀɪᴇɴᴅꜱ*
+*╭══〔🙊QUEEN IMALSHA💗〕═┈⊷*
+*║👋𝙷𝚈 𝚀𝚄𝙴𝙴𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰 𝙼𝙳 𝙱𝙾𝚃 𝚄𝚂𝙴𝚁**
+*╰═════════════┈⊷*  
+*╭═「✨BOT STATUS🧚‍♂️」 ═┈⊷*
+*║🙊* *\`ɢʀᴇᴇᴛɪɴɢ:\`* *\`${greetings}\`*
+*║〽️* *\`ʙᴏᴛ ɴᴀᴍᴇ:\`* *𝚀𝚄𝙴𝚁𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰*
+*║👑* *\`ᴏᴡɴᴇʀ :\`* *ꜱᴀɴᴜ*
+*║📆* *\`ᴅᴀᴛᴇ:\`* *${slstDate}*
+*║🕜* *\`ᴛɪᴍᴇ:\`* *${formattedTime}*
+*╰══════════════┈⊷*
+*🌐Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ ᴡᴇʙ:-* ${nuroweb}
 
-*🌐 ɴᴜʀᴏ ᴍᴅ ᴡᴇʙ:-* ${nuroweb}
-
-> *© 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝙽𝚄𝚁𝙾 〽️𝙳 ㋛*
+> *© 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝚀𝚄𝙴𝙴𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰 〽️𝙳🦋*
 `.trim();
+	  
+	  /*let vpsOptions = [
+        { title: "📥 DOWNLOAD MENU", description: "© ɢᴇᴛ ᴅᴏᴡɴʟᴏᴀᴅ ᴍᴇɴᴜ", buttonId: `${config.PREFIX}download` },
+		  { title: "🛠️ TOOL MENU", description: "© ɢᴇᴛ ᴛᴏᴏʟ ᴍᴇɴᴜ", buttonId: `${config.PREFIX}tool` },
+		  { title: "🚀 OTHER MENU", description: "© ɢᴇᴛ ᴏᴛʜᴇʀᴇ ᴍᴇɴᴜ", buttonId: `${config.PREFIX}other` },
+		  { title: "⚙️ SETTINGS MENU", description: "© ɢᴇᴛ ꜱᴇᴛᴛɪɴɢꜱ ᴍᴇɴᴜ", buttonId: `${config.PREFIX}settings` },
+        { title: "👑 OWNER", description: "© ɢᴇᴛ ᴏᴡɴᴇʀ", buttonId: `${config.PREFIX}owner` }
+    ];*/
+	  let rows = [
 
-    // 🔹 Buttons and Rows with IDs
-    let rows = [
-      { title: "JOIN CHANNEL", description: "Follow our WhatsApp Channel", id: "join_channel" },
-      { title: "📥 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙴𝙽ᴜ", description: "DOWNLOAD CMD", id: "download_menu" },
-      { title: "🛠️ ᴛᴏᴏʟ ᴍᴇɴᴜ", description: "TOOLS", id: "tool_menu" },
-      { title: "🚀 𝙾𝚃𝙷𝙴ʀ 𝙼ᴇɴᴜ", description: "OTHER TOOL", id: "other_menu" },
-      { title: "⚙️ 𝚂ᴇᴛᴛɪɴɢs ᴍᴇɴᴜ", description: "SETTINGS", id: "settings_menu" },
-      { title: "👑 OWNER", description: "OWNER", id: "owner_menu" }
-    ];
+  {
+    title: "JOIN CHANNEL",
+    description: "Follow our WhatsApp Channel",
+    id: "https://whatsapp.com/channel/XXXXXXXXXXXX"
+  },
+  {
+    title: "📥 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙴𝙽𝚄",
+    description: "DOWANLOAD",
+    id: `${config.PREFIX}download`
+  },
+  {
+    title: "🛠️ ᴛᴏᴏʟ ᴍᴇɴᴜ",
+    description: "TOOLS",
+    id: `${config.PREFIX}tool`
+  },
+  {
+    title: "🚀 𝙾𝚃𝙷𝙴𝚁 𝙼𝙴𝙽𝚄",
+    description: ".OTHER MENU",
+    id: `${config.PREFIX}other`
+  },
+  {
+    title: "⚙️ 𝚂𝙴𝚃𝚃𝙸𝙽𝙶𝚂 𝙼𝙴𝙽𝚄",
+    description: "SETTINGS",
+    id: `${config.PREFIX}settings`
+  },
+  {
+    title: "👑 OWNER",
+    description: "OWNER",
+    id: `${config.PREFIX}owner`
+  }
+];
 
-    let buttonSections = [
-      {
-        title: "ɴᴜʀᴏ ᴍɪɴɪ ʙᴏᴛ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
-        highlight_label: "ɴᴜʀᴏ ᴍᴅ ᴠ1 🤍",
-        rows: rows
-      }
+   let buttonSections = [
+        {
+            title: "Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Mᴅ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅꜱ",
+            highlight_label: "Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Mᴅ💗🙊",
+            rows: rows
+        }
     ];
 
     let buttons = [
-      {
-        buttonId: "select_menu",
-        buttonText: { displayText: "Sᴇʟᴇᴄᴛ Mᴇɴᴜ" },
-        type: 4,
-        nativeFlowInfo: {
-          name: "single_select",
-          paramsJson: JSON.stringify({
-            title: "CHOOSE MENU TAB",
-            sections: buttonSections
-          })
+        {
+            buttonId: "action",
+            buttonText: { displayText: "Sᴇʟᴇᴄᴛ Mᴇɴᴜ" },
+            type: 4,
+            nativeFlowInfo: {
+                name: "single_select",
+                paramsJson: JSON.stringify({
+                    title: "QUEEN MENU TAB💗🙊",
+                    sections: buttonSections
+                })
+            }
+        },
+        {
+            buttonId: `${config.PREFIX}ping`,
+            buttonText: { displayText: '⚡ PING' },
+            type: 1
+        },
+        {
+            buttonId: `${config.PREFIX}owner`,
+            buttonText: { displayText: '👑 OWNER' },
+            type: 1
         }
-      },
-      { buttonId: "ping_cmd", buttonText: { displayText: '⚡ PING' }, type: 1 },
-      { buttonId: "owner_cmd", buttonText: { displayText: '👑 OWNER' }, type: 1 }
     ];
-
-    const MenuImg = 'https://files.catbox.moe/paap2h.jpg';
+    const MenuImg = 'https://files.catbox.moe/2y5cr4.jpeg';
+    const useLogo = userCfg.logo || MenuImg;
+    
     await socket.sendMessage(sender, {
         buttons,
         headerType: 1,
         viewOnce: true,
         caption: text,
         image:{ url:MenuImg },
-        contextInfo: { mentionedJid: [sender] }
+        contextInfo: {
+            mentionedJid: [sender], 
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: '120363402094635383@newsletter',
+                newsletterName: 'Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Mᴅ',
+                serverMessageId: 143
+            }
+        }
     }, { quoted: shonux });
-
-    // 🔹 Handle button & list clicks
-    socket.ev.on('messages.upsert', async (m) => {
-  try {
-    const msg = m.messages[0];
-    if (!msg.message) return;
-
-    const sender = msg.key.remoteJid;
-
-    // Check if this is a list response
-    const listResponse = msg.message?.listResponseMessage;
-    if (listResponse) {
-      const selectedRowId = listResponse.singleSelectReply.selectedRowId;
-      
-      // Button ID අනුව command run කරන්න
-      switch (selectedRowId) {
-        case 'download_menu':
-          await socket.sendMessage(sender, { text: "📥 Download Menu opened!" });
-          break;
-        case 'creative_menu':
-          await socket.sendMessage(sender, { text: "🎨 Creative Menu opened!" });
-          break;
-        case 'tools_menu':
-          await socket.sendMessage(sender, { text: "🛠️ Tool Menu opened!" });
-          break;
-        case 'bot_settings':
-          await socket.sendMessage(sender, { text: "⚙️ Bot Settings opened!" });
-          break;
-        case 'owner_info':
-          await socket.sendMessage(sender, { text: "👑 Bot Owner info!" });
-          break;
-        case 'system_info':
-          await socket.sendMessage(sender, { text: "📡 System Info..." });
-          break;
-        default:
-          await socket.sendMessage(sender, { text: "❌ Unknown option!" });
-      }
-    }
-  } catch(err){
+  } catch (err) {
     console.error('menu command error:', err);
-    try { await socket.sendMessage(sender, { text: '❌ Failed to show menu: '+err }, { quoted: msg }); } catch(e){}
+    try { await socket.sendMessage(sender, { text: '❌ Failed to show menu.'+err }, { quoted: msg }); } catch(e){}
   }
   break;
 }
