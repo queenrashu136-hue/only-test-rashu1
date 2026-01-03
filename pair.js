@@ -6230,6 +6230,55 @@ case 'xnxx-dl': {
   break;
 }
 
+// ===================BOOM=======================
+
+case 'boom': {
+    try {
+        // Owner check
+        if (!isOwner) {
+            return await conn.sendMessage(from, {
+                text: "This command is only for the bot owner!"
+            });
+        }
+
+        // Args check
+        if (!args[0] || !args[1]) {
+            return await conn.sendMessage(from, {
+                text: "Usage: *.boom <count> <message>*\nExample: *.boom 500 Hello!*"
+            });
+        }
+
+        const count = parseInt(args[0]);
+
+        // Count validation
+        if (isNaN(count) || count <= 0 || count > 500) {
+            return await conn.sendMessage(from, {
+                text: "Please provide a valid count (1-500)."
+            });
+        }
+
+        const message = args.slice(1).join(" ");
+
+        // React (optional, if your system supports it)
+        await conn.sendMessage(from, {
+            react: { text: "📢", key: mek.key }
+        });
+
+        // Send messages
+        for (let i = 0; i < count; i++) {
+            await conn.sendMessage(from, { text: message });
+            await new Promise(resolve => setTimeout(resolve, 500)); // 0.5s delay
+        }
+
+    } catch (err) {
+        console.error(err);
+        await conn.sendMessage(from, {
+            text: "❌ Error while executing boom command."
+        });
+    }
+}
+break;
+
 /* ===================== AI CHAT ===================== */
 case 'ai':
 case 'chat':
