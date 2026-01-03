@@ -4458,12 +4458,124 @@ case "commands": {
 
   break;
 }
+
+// ==========================================
+case 'menu1':
+case 'panel':
+case 'list': {
+  // 1. React to the command
+  await socket.sendMessage(sender, { react: { text: '📜', key: msg.key } });
+
+  try {
+    const sanitized = (number || '').replace(/[^0-9]/g, '');
+    const currentConfig = await loadUserConfigFromMongo(sanitized) || {};
+    const botName = currentConfig.botName || config.BOT_NAME || 'MY BOT';
+    const prefix = currentConfig.PREFIX || config.PREFIX || '.';
+    const ownerNum = config.OWNER_NUMBER;
+
+    const date = new Date().toLocaleDateString('si-LK');
+    const time = new Date().toLocaleTimeString('si-LK');
+
+    const sections = [
+      {
+        title: "📥 DOWNLOADER",
+        rows: [
+          { title: "Download Menu", rowId: "download_menu", description: "Download Menu" }
+        ]
+      },
+      {
+        title: "Creative Menu",
+        rows: [
+          { title: "Creative Main Menu", rowId: "creative_menu", description: "Creative Menu" }
+        ]
+      },
+      {
+        title: "🛠️ TOOLS & EXTRAS",
+        rows: [
+          { title: "Tool Menu", rowId: "tools_menu", description: "Dtec Tool Menu" }
+        ]
+      },
+      {
+        title: "⚙️ SETTINGS & OWNER",
+        rows: [
+          { title: "Bot Settings", rowId: "bot_settings", description: "Open control panel" },
+          { title: "Owner", rowId: "owner_info", description: "Owner Of the bot" },
+          { title: "System Info", rowId: "system_info", description: "Check ping speed" }
+        ]
+      }
+    ];
+
+    const text = `
+╭───「 🤖 *${botName} MENU* 」
+│
+│ 👋 *Hi,* @${sender.split('@')[0]}
+│ 📅 *Date:* ${date}
+│ ⌚ *Time:* ${time}
+│ 🧩 *Prefix:* [ ${prefix} ]
+│ 👑 *Owner:* ${ownerNum}
+│
+│ 👇 *Click "OPEN MENU" to see commands*
+╰────────────────────●
+`;
+    const menuimg = "https://files.catbox.moe/paap2h.jpg";
+
+    const listMessage = {
+      text: text,
+      image: { url: menuimg },
+      footer: `🔥 POWERED BY ${botName} 🔥`,
+      title: "Main Command List",
+      buttonText: "📜 OPEN MENU",
+      sections,
+      mentions: [sender]
+    };
+
+    await socket.sendMessage(sender, listMessage, { quoted: msg });
+
+    // 2. Handle List Button Clicks
+    socket.ev.on('messages.upsert', async (m) => {
+      const msg = m.messages[0];
+      if (!msg.message) return;
+
+      const listResponse = msg.message?.listResponseMessage;
+      if (listResponse) {
+        const selectedRowId = listResponse.singleSelectReply.selectedRowId;
+        switch (selectedRowId) {
+          case 'download_menu':
+            await socket.sendMessage(sender, { text: "📥 Download Menu opened!" });
+            break;
+          case 'creative_menu':
+            await socket.sendMessage(sender, { text: "🎨 Creative Menu opened!" });
+            break;
+          case 'tools_menu':
+            await socket.sendMessage(sender, { text: "🛠️ Tool Menu opened!" });
+            break;
+          case 'bot_settings':
+            await socket.sendMessage(sender, { text: "⚙️ Bot Settings opened!" });
+            break;
+          case 'owner_info':
+            await socket.sendMessage(sender, { text: "👑 Bot Owner info!" });
+            break;
+          case 'system_info':
+            await socket.sendMessage(sender, { text: "📡 System Info..." });
+            break;
+          default:
+            await socket.sendMessage(sender, { text: "❌ Unknown option!" });
+        }
+      }
+    });
+
+  } catch (e) {
+    console.error('Menu command error:', e);
+    await socket.sendMessage(sender, { text: "*❌ Menu එක ලෝඩ් කරන්න බැරි උනා!*" }, { quoted: msg });
+  }
+  break;
+}
 // ==================== MAIN MENU ====================
 
 
 const { proto } = require('@whiskeysockets/baileys');
 
-case 'menu': {
+case 'download_menu': {
 try { await socket.sendMessage(sender, { react: { text: "🎉", key: msg.key } }); } catch(e){}
 
 try {
