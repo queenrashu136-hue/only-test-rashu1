@@ -4351,113 +4351,152 @@ wa.me/94764085107
 // ==========================================
 
 // ==========================================
-case 'menu':
-case 'panel':
-case 'list': {
-  // 1. React to the command
-  await socket.sendMessage(sender, { react: { text: '📜', key: msg.key } });
+case 'menu': {
+  try { 
+    await socket.sendMessage(sender, { react: { text: "🗒️", key: msg.key } }); 
+  } catch(e){}
 
   try {
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    const currentConfig = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = currentConfig.botName || config.BOT_NAME || 'MY BOT';
-    const prefix = currentConfig.PREFIX || config.PREFIX || '.';
-    const ownerNum = config.OWNER_NUMBER;
+    const startTime = socketCreationTime.get(number) || Date.now();
+    const uptime = Math.floor((Date.now() - startTime) / 1000);
+    const hours = Math.floor(uptime / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
+    const seconds = Math.floor(uptime % 60);
 
-    const date = new Date().toLocaleDateString('si-LK');
-    const time = new Date().toLocaleTimeString('si-LK');
+    let userCfg = {};
+    try { 
+      if (number && typeof loadUserConfigFromMongo === 'function') 
+        userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; 
+    } catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
-    const sections = [
-      {
-        title: "📥 DOWNLOADER",
-        rows: [
-          { title: "Download Menu", rowId: "download_menu", description: "Download Menu" }
-        ]
+    const title = userCfg.botName || 'NURO MD 🍀';
+
+    const shonux = {
+      key: {
+        remoteJid: "status@broadcast",
+        participant: "0@s.whatsapp.net",
+        fromMe: false,
+        id: "META_AI_FAKE_ID_MENU"
       },
+      message: {
+        contactMessage: {
+          displayName: title,
+          vcard: `BEGIN:VCARD
+VERSION:3.0
+N:${title};;;;
+FN:${title}
+ORG:Meta Platforms
+TEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002
+END:VCARD`
+        }
+      }
+    };
+
+    const date = new Date();
+    const slstDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Colombo" }));
+    const formattedTime = slstDate.toLocaleTimeString();
+    const hour = slstDate.getHours();
+    const greetings = hour < 12 ? 'ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ..🌅' :
+                      hour < 17 ? 'ɢᴏᴏᴅ ᴀꜰᴛᴇʀɴᴏᴏɴ..🌞' :
+                      hour < 20 ? 'ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ..🌆' : 'ɢᴏᴏᴅ ɴɪɢʜᴛ..🌙';
+
+    const nuroweb = 'https://nuro-md-mini-bot.onrender.com/';
+    const text = `
+*╭──〔 NURO-MD 〕─┈⊷*
+*│👋 𝙷𝙴𝙻𝙻𝙾 𝚄𝚂𝙴𝚁**
+*╰──────────────┈⊷*  
+*╭─「 𝐁ot 𝐒tatus 」 ─┈⊷*
+*│🍀* *\`ɢʀᴇᴇᴛɪɴɢ:\`* *\`${greetings}\`*
+*│📄* *\`ʙᴏᴛ ɴᴀᴍᴇ:\`* *ɴᴜʀᴏ ᴍᴅ*
+*│👑* *\`ᴏᴡɴᴇʀ :\`* ᴛʜᴀʀᴀᴋ*
+*│📆* *\`ᴅᴀᴛᴇ:\`* *${slstDate}*
+*│🕜* *\`ᴛɪᴍᴇ:\`* *${formattedTime}*
+*╰───────────────┈⊷*
+*⚠️ ᴛʜɪꜱ ɪꜱ ᴍᴇɴᴜ ᴏꜰ ɴᴜʀᴏ ᴍᴅ ᴍɪɴɪ ʙᴏᴛ.*
+*ᴜꜱᴇ ᴏᴜʀ ʙᴏᴛ ᴀɴᴅ ꜱʜᴀʀᴇ ᴡʜɪᴛʜ ʏᴏᴜʀ ꜰʀɪᴇɴᴅꜱ*
+
+*🌐 ɴᴜʀᴏ ᴍᴅ ᴡᴇʙ:-* ${nuroweb}
+
+> *© 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝙽𝚄𝚁𝙾 〽️𝙳 ㋛*
+`.trim();
+
+    // 🔹 Buttons and Rows with IDs
+    let rows = [
+      { title: "JOIN CHANNEL", description: "Follow our WhatsApp Channel", id: "join_channel" },
+      { title: "📥 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙴𝙽ᴜ", description: "DOWNLOAD CMD", id: "download_menu" },
+      { title: "🛠️ ᴛᴏᴏʟ ᴍᴇɴᴜ", description: "TOOLS", id: "tool_menu" },
+      { title: "🚀 𝙾𝚃𝙷𝙴ʀ 𝙼ᴇɴᴜ", description: "OTHER TOOL", id: "other_menu" },
+      { title: "⚙️ 𝚂ᴇᴛᴛɪɴɢs ᴍᴇɴᴜ", description: "SETTINGS", id: "settings_menu" },
+      { title: "👑 OWNER", description: "OWNER", id: "owner_menu" }
+    ];
+
+    let buttonSections = [
       {
-        title: "Creative Menu",
-        rows: [
-          { title: "Creative Main Menu", rowId: "creative_menu", description: "Creative Menu" }
-        ]
-      },
-      {
-        title: "🛠️ TOOLS & EXTRAS",
-        rows: [
-          { title: "Tool Menu", rowId: "tools_menu", description: "Dtec Tool Menu" }
-        ]
-      },
-      {
-        title: "⚙️ SETTINGS & OWNER",
-        rows: [
-          { title: "Bot Settings", rowId: "bot_settings", description: "Open control panel" },
-          { title: "Owner", rowId: "owner_info", description: "Owner Of the bot" },
-          { title: "System Info", rowId: "system_info", description: "Check ping speed" }
-        ]
+        title: "ɴᴜʀᴏ ᴍɪɴɪ ʙᴏᴛ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅs",
+        highlight_label: "ɴᴜʀᴏ ᴍᴅ ᴠ1 🤍",
+        rows: rows
       }
     ];
 
-    const text = `
-╭───「 🤖 *${botName} MENU* 」
-│
-│ 👋 *Hi,* @${sender.split('@')[0]}
-│ 📅 *Date:* ${date}
-│ ⌚ *Time:* ${time}
-│ 🧩 *Prefix:* [ ${prefix} ]
-│ 👑 *Owner:* ${ownerNum}
-│
-│ 👇 *Click "OPEN MENU" to see commands*
-╰────────────────────●
-`;
-    const menuimg = "https://i.ibb.co/bGq4Qzd/IMG-20251217-WA0001.jpg";
+    let buttons = [
+      {
+        buttonId: "select_menu",
+        buttonText: { displayText: "Sᴇʟᴇᴄᴛ Mᴇɴᴜ" },
+        type: 4,
+        nativeFlowInfo: {
+          name: "single_select",
+          paramsJson: JSON.stringify({
+            title: "CHOOSE MENU TAB",
+            sections: buttonSections
+          })
+        }
+      },
+      { buttonId: "ping_cmd", buttonText: { displayText: '⚡ PING' }, type: 1 },
+      { buttonId: "owner_cmd", buttonText: { displayText: '👑 OWNER' }, type: 1 }
+    ];
 
-    const listMessage = {
-      text: text,
-      image: { url: menuimg },
-      footer: `🔥 POWERED BY ${botName} 🔥`,
-      title: "Main Command List",
-      buttonText: "📜 OPEN MENU",
-      sections,
-      mentions: [sender]
-    };
+    const MenuImg = 'https://files.catbox.moe/paap2h.jpg';
+    await socket.sendMessage(sender, {
+        buttons,
+        headerType: 1,
+        viewOnce: true,
+        caption: text,
+        image:{ url:MenuImg },
+        contextInfo: { mentionedJid: [sender] }
+    }, { quoted: shonux });
 
-    await socket.sendMessage(sender, listMessage, { quoted: msg });
-
-    // 2. Handle List Button Clicks
+    // 🔹 Handle button & list clicks
     socket.ev.on('messages.upsert', async (m) => {
       const msg = m.messages[0];
       if (!msg.message) return;
 
       const listResponse = msg.message?.listResponseMessage;
       if (listResponse) {
-        const selectedRowId = listResponse.singleSelectReply.selectedRowId;
-        switch (selectedRowId) {
-          case 'download_menu':
-            await socket.sendMessage(sender, { text: "📥 Download Menu opened!" });
-            break;
-          case 'creative_menu':
-            await socket.sendMessage(sender, { text: "🎨 Creative Menu opened!" });
-            break;
-          case 'tools_menu':
-            await socket.sendMessage(sender, { text: "🛠️ Tool Menu opened!" });
-            break;
-          case 'bot_settings':
-            await socket.sendMessage(sender, { text: "⚙️ Bot Settings opened!" });
-            break;
-          case 'owner_info':
-            await socket.sendMessage(sender, { text: "👑 Bot Owner info!" });
-            break;
-          case 'system_info':
-            await socket.sendMessage(sender, { text: "📡 System Info..." });
-            break;
-          default:
-            await socket.sendMessage(sender, { text: "❌ Unknown option!" });
+        const rowId = listResponse.singleSelectReply.selectedRowId;
+        switch(rowId){
+          case 'join_channel': await socket.sendMessage(msg.key.remoteJid, { text: "📣 Join our WhatsApp channel!" }); break;
+          case 'download_menu': await socket.sendMessage(msg.key.remoteJid, { text: "📥 Opening Download Menu..." }); break;
+          case 'tool_menu': await socket.sendMessage(msg.key.remoteJid, { text: "🛠️ Opening Tool Menu..." }); break;
+          case 'other_menu': await socket.sendMessage(msg.key.remoteJid, { text: "🚀 Opening Other Menu..." }); break;
+          case 'settings_menu': await socket.sendMessage(msg.key.remoteJid, { text: "⚙️ Opening Settings Menu..." }); break;
+          case 'owner_menu': await socket.sendMessage(msg.key.remoteJid, { text: "👑 Bot Owner Info" }); break;
+        }
+      }
+
+      const buttonResponse = msg.message?.buttonsResponseMessage;
+      if(buttonResponse){
+        const btnId = buttonResponse.selectedButtonId;
+        switch(btnId){
+          case 'select_menu': await socket.sendMessage(msg.key.remoteJid, { text: "📜 Please select a menu from the list!" }); break;
+          case 'ping_cmd': await socket.sendMessage(msg.key.remoteJid, { text: "⚡ Pong! Bot is alive." }); break;
+          case 'owner_cmd': await socket.sendMessage(msg.key.remoteJid, { text: "👑 Bot Owner Info" }); break;
         }
       }
     });
 
-  } catch (e) {
-    console.error('Menu command error:', e);
-    await socket.sendMessage(sender, { text: "*❌ Menu එක ලෝඩ් කරන්න බැරි උනා!*" }, { quoted: msg });
+  } catch(err){
+    console.error('menu command error:', err);
+    try { await socket.sendMessage(sender, { text: '❌ Failed to show menu: '+err }, { quoted: msg }); } catch(e){}
   }
   break;
 }
