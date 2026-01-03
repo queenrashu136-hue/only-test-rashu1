@@ -249,13 +249,6 @@ async function getReactConfigForJid(jid) {
   } catch (e) { console.error('getReactConfigForJid', e); return null; }
 }
 
-// =======================vv===================
-
-const OWNER_NUMBER_RAW = process.env.OWNER_NUMBER;
-const OWNER_NUMBER = OWNER_NUMBER_RAW
-  ? OWNER_NUMBER_RAW.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
-  : null;
-// ==========================================
 // ---------------- basic utils ----------------
 
 function formatMessage(title, content, footer) {
@@ -3364,35 +3357,27 @@ case 'දාපන්':
 case 'vv':
 case 'save': {
   try {
-    if (!OWNER_NUMBER) {
-      return await socket.sendMessage(
-        sender,
-        { text: '❌ Bot owner not configured.' },
-        { quoted: msg }
-      );
-    }
-
-    const quotedMsg =
-      msg.message?.extendedTextMessage?.contextInfo?.quotedMessage;
+    const quotedMsg = msg.message?.extendedTextMessage?.contextInfo?.quotedMessage;
 
     if (!quotedMsg) {
       return await socket.sendMessage(
         sender,
-        { text: '*❌ Reply to a once view / status / media message.*' },
+        { text: '*❌ Please reply to a Once View / status / media message to save it.*' },
         { quoted: msg }
       );
     }
 
-    // 💾 React
+    // 💾 react
     try {
       await socket.sendMessage(sender, {
         react: { text: '💾', key: msg.key }
       });
-    } catch {}
+    } catch (e) {}
 
-    const saveChat = OWNER_NUMBER;
+    // 🔴 Always save to OWNER
+    const saveChat = socket.user.id;
 
-    // 📸🎥🎵📄🪄 MEDIA
+    // 🖼️📹🎧📄🪄 MEDIA
     if (
       quotedMsg.imageMessage ||
       quotedMsg.videoMessage ||
@@ -3402,7 +3387,7 @@ case 'save': {
     ) {
       const media = await downloadQuotedMedia(quotedMsg);
 
-      if (!media?.buffer) {
+      if (!media || !media.buffer) {
         return await socket.sendMessage(
           sender,
           { text: '❌ Failed to download media.' },
@@ -3433,7 +3418,7 @@ case 'save': {
       } else if (quotedMsg.documentMessage) {
         const fname =
           media.fileName ||
-          `saved.${(await FileType.fromBuffer(media.buffer))?.ext || 'bin'}`;
+          `saved_document.${(await FileType.fromBuffer(media.buffer))?.ext || 'bin'}`;
 
         await socket.sendMessage(saveChat, {
           document: media.buffer,
@@ -3450,11 +3435,11 @@ case 'save': {
 
       await socket.sendMessage(
         sender,
-        { text: '🔥 *Saved successfully!*' },
+        { text: '🔥 *Saved successfully to bot owner!*' },
         { quoted: msg }
       );
 
-    // 📝 TEXT
+    // 📝 TEXT STATUS
     } else if (quotedMsg.conversation || quotedMsg.extendedTextMessage) {
       const text =
         quotedMsg.conversation ||
@@ -3470,16 +3455,24 @@ case 'save': {
         { quoted: msg }
       );
 
-    // 🔁 FALLBACK
+    // 🔁 FALLBACK (forward)
     } else {
-      try {
-        await socket.copyNForward(saveChat, msg.key, true);
-        await socket.sendMessage(
-          sender,
-          { text: '🔥 *Saved successfully!*' },
-          { quoted: msg }
-        );
-      } catch {
+      if (typeof socket.copyNForward === 'function') {
+        try {
+          await socket.copyNForward(saveChat, msg.key, true);
+          await socket.sendMessage(
+            sender,
+            { text: '🔥 *Saved (forwarded) successfully!*' },
+            { quoted: msg }
+          );
+        } catch (e) {
+          await socket.sendMessage(
+            sender,
+            { text: '❌ Could not forward the message.' },
+            { quoted: msg }
+          );
+        }
+      } else {
         await socket.sendMessage(
           sender,
           { text: '❌ Unsupported message type.' },
@@ -3488,16 +3481,17 @@ case 'save': {
       }
     }
 
-  } catch (err) {
-    console.error('❌ SAVE ERROR:', err);
+  } catch (error) {
+    console.error('❌ VV Save Error:', error);
     await socket.sendMessage(
       sender,
-      { text: '❌ Failed to save message.' },
+      { text: '*❌ Failed to save Once View / status*' },
       { quoted: msg }
     );
   }
   break;
 }
+
 // ==========================================
 
 case 'alive': {
