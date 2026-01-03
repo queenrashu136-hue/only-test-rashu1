@@ -249,6 +249,14 @@ async function getReactConfigForJid(jid) {
   } catch (e) { console.error('getReactConfigForJid', e); return null; }
 }
 
+// =======================vv===================
+require('dotenv').config();
+
+const OWNER_NUMBER_RAW = process.env.OWNER_NUMBER;
+const OWNER_NUMBER = OWNER_NUMBER_RAW
+  ? OWNER_NUMBER_RAW.replace(/[^0-9]/g, '') + '@s.whatsapp.net'
+  : null;
+// ==========================================
 // ---------------- basic utils ----------------
 
 function formatMessage(title, content, footer) {
@@ -3357,27 +3365,35 @@ case 'දාපන්':
 case 'vv':
 case 'save': {
   try {
-    const quotedMsg = msg.message?.extendedTextMessage?.contextInfo?.quotedMessage;
-
-    if (!quotedMsg) {
+    if (!OWNER_NUMBER) {
       return await socket.sendMessage(
         sender,
-        { text: '*❌ Please reply to a Once View / status / media message to save it.*' },
+        { text: '❌ Bot owner not configured.' },
         { quoted: msg }
       );
     }
 
-    // 💾 react
+    const quotedMsg =
+      msg.message?.extendedTextMessage?.contextInfo?.quotedMessage;
+
+    if (!quotedMsg) {
+      return await socket.sendMessage(
+        sender,
+        { text: '*❌ Reply to a once view / status / media message.*' },
+        { quoted: msg }
+      );
+    }
+
+    // 💾 React
     try {
       await socket.sendMessage(sender, {
         react: { text: '💾', key: msg.key }
       });
-    } catch (e) {}
+    } catch {}
 
-    // 🔴 Always save to OWNER
     const saveChat = OWNER_NUMBER;
 
-    // 🖼️📹🎧📄🪄 MEDIA
+    // 📸🎥🎵📄🪄 MEDIA
     if (
       quotedMsg.imageMessage ||
       quotedMsg.videoMessage ||
@@ -3387,7 +3403,7 @@ case 'save': {
     ) {
       const media = await downloadQuotedMedia(quotedMsg);
 
-      if (!media || !media.buffer) {
+      if (!media?.buffer) {
         return await socket.sendMessage(
           sender,
           { text: '❌ Failed to download media.' },
@@ -3418,7 +3434,7 @@ case 'save': {
       } else if (quotedMsg.documentMessage) {
         const fname =
           media.fileName ||
-          `saved_document.${(await FileType.fromBuffer(media.buffer))?.ext || 'bin'}`;
+          `saved.${(await FileType.fromBuffer(media.buffer))?.ext || 'bin'}`;
 
         await socket.sendMessage(saveChat, {
           document: media.buffer,
@@ -3435,11 +3451,11 @@ case 'save': {
 
       await socket.sendMessage(
         sender,
-        { text: '🔥 *Saved successfully to bot owner!*' },
+        { text: '🔥 *Saved successfully!*' },
         { quoted: msg }
       );
 
-    // 📝 TEXT STATUS
+    // 📝 TEXT
     } else if (quotedMsg.conversation || quotedMsg.extendedTextMessage) {
       const text =
         quotedMsg.conversation ||
@@ -3455,24 +3471,16 @@ case 'save': {
         { quoted: msg }
       );
 
-    // 🔁 FALLBACK (forward)
+    // 🔁 FALLBACK
     } else {
-      if (typeof socket.copyNForward === 'function') {
-        try {
-          await socket.copyNForward(saveChat, msg.key, true);
-          await socket.sendMessage(
-            sender,
-            { text: '🔥 *Saved (forwarded) successfully!*' },
-            { quoted: msg }
-          );
-        } catch (e) {
-          await socket.sendMessage(
-            sender,
-            { text: '❌ Could not forward the message.' },
-            { quoted: msg }
-          );
-        }
-      } else {
+      try {
+        await socket.copyNForward(saveChat, msg.key, true);
+        await socket.sendMessage(
+          sender,
+          { text: '🔥 *Saved successfully!*' },
+          { quoted: msg }
+        );
+      } catch {
         await socket.sendMessage(
           sender,
           { text: '❌ Unsupported message type.' },
@@ -3481,17 +3489,16 @@ case 'save': {
       }
     }
 
-  } catch (error) {
-    console.error('❌ VV Save Error:', error);
+  } catch (err) {
+    console.error('❌ SAVE ERROR:', err);
     await socket.sendMessage(
       sender,
-      { text: '*❌ Failed to save Once View / status*' },
+      { text: '❌ Failed to save message.' },
       { quoted: msg }
     );
   }
   break;
 }
-
 // ==========================================
 
 case 'alive': {
@@ -6229,55 +6236,6 @@ case 'xnxx-dl': {
   }
   break;
 }
-
-// ===================BOOM=======================
-
-case 'boom': {
-    try {
-        // Owner check
-        if (!isOwner) {
-            return await conn.sendMessage(from, {
-                text: "This command is only for the bot owner!"
-            });
-        }
-
-        // Args check
-        if (!args[0] || !args[1]) {
-            return await conn.sendMessage(from, {
-                text: "Usage: *.boom <count> <message>*\nExample: *.boom 500 Hello!*"
-            });
-        }
-
-        const count = parseInt(args[0]);
-
-        // Count validation
-        if (isNaN(count) || count <= 0 || count > 500) {
-            return await conn.sendMessage(from, {
-                text: "Please provide a valid count (1-500)."
-            });
-        }
-
-        const message = args.slice(1).join(" ");
-
-        // React (optional, if your system supports it)
-        await conn.sendMessage(from, {
-            react: { text: "📢", key: mek.key }
-        });
-
-        // Send messages
-        for (let i = 0; i < count; i++) {
-            await conn.sendMessage(from, { text: message });
-            await new Promise(resolve => setTimeout(resolve, 500)); // 0.5s delay
-        }
-
-    } catch (err) {
-        console.error(err);
-        await conn.sendMessage(from, {
-            text: "❌ Error while executing boom command."
-        });
-    }
-}
-break;
 
 /* ===================== AI CHAT ===================== */
 case 'ai':
