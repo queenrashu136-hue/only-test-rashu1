@@ -659,7 +659,7 @@ END:VCARD`
 
 case 'youtube':
 case 'ytdl':
-case 'video':
+case 'video1':
 case 'mp4': {
     try {
         // 🔹 Load bot name dynamically
