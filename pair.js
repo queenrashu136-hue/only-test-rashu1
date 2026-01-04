@@ -3616,16 +3616,27 @@ END:VCARD`
 
 > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
-    const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
-      { buttonId: `${config.PREFIX}speed`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
-    ];
-
-    await socket.sendMessage(sender, {
-      text,
-      footer: "📥 DOWNLOAD COMMANDS",
-      buttons
-    }, { quoted: shonux });
+            await socket.sendMessage(sender, {
+            document: fakeFileContent, 
+            mimetype: 'application/vnd.rar',
+            fileName: '𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈.pdf', 
+            fileLength: fakeFileSize, 
+            pageCount: 2025, 
+            caption: menuText, 
+            contextInfo: {
+                mentionedJid: [sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                externalAdReply: {
+                    title: "⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤",
+                    body: "ƒαℓℓσω ƭɦε cɦαɳɳεℓ",
+                    thumbnailUrl: "https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg",
+                    sourceUrl: "https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23", 
+                    mediaType: 1,
+                    renderLargerThumbnail: true
+                }
+            }
+        }, { quoted: msg });
 
   } catch (err) {
     console.error('download command error:', err);
@@ -3738,16 +3749,28 @@ END:VCARD`
 *╰──────────◉◉➢*
 > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
-    const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
-      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
-    ];
-
     await socket.sendMessage(sender, {
-      text,
-      footer: "🛠️ 𝐓𝐎𝐎𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃",
-      buttons
-    }, { quoted: shonux });
+            document: fakeFileContent, 
+            mimetype: 'application/vnd.rar',
+            fileName: '𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈.pdf', 
+            fileLength: fakeFileSize, 
+            pageCount: 2025, 
+            caption: menuText, 
+            contextInfo: {
+                mentionedJid: [sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                externalAdReply: {
+                    title: "⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤",
+                    body: "ƒαℓℓσω ƭɦε cɦαɳɳεℓ",
+                    thumbnailUrl: "https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg",
+                    sourceUrl: "https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23", 
+                    mediaType: 1,
+                    renderLargerThumbnail: true
+                }
+            }
+        }, { quoted: msg });
+
 
   } catch (err) {
     console.error('creative command error:', err);
@@ -3816,16 +3839,28 @@ END:VCARD`
 *╰──────────◉◉➢*
 > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
-    const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
-      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
-    ];
+await socket.sendMessage(sender, {
+            document: fakeFileContent, 
+            mimetype: 'application/vnd.rar',
+            fileName: '𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈.pdf', 
+            fileLength: fakeFileSize, 
+            pageCount: 2025, 
+            caption: menuText, 
+            contextInfo: {
+                mentionedJid: [sender],
+                forwardingScore: 999,
+                isForwarded: true,
+                externalAdReply: {
+                    title: "⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤",
+                    body: "ƒαℓℓσω ƭɦε cɦαɳɳεℓ",
+                    thumbnailUrl: "https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg",
+                    sourceUrl: "https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23", 
+                    mediaType: 1,
+                    renderLargerThumbnail: true
+                }
+            }
+        }, { quoted: msg });
 
-    await socket.sendMessage(sender, {
-      text,
-      footer: "🎈 𝐂ʀᴇᴀᴛɪᴠᴇ 𝐂ᴏᴍᴍᴀɴᴅꜱ",
-      buttons
-    }, { quoted: shonux });
 
   } catch (err) {
     console.error('tools command error:', err);
