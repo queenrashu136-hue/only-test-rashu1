@@ -1,4 +1,3 @@
-
 const express = require('express');
 const fs = require('fs-extra');
 const path = require('path');
@@ -35,7 +34,6 @@ const config = {
   AUTO_VIEW_STATUS: 'true',
   AUTO_LIKE_STATUS: 'true',
   AUTO_RECORDING: 'true',
-  AUTO_VOICE: 'true',
   AUTO_LIKE_EMOJI: ['☘️','💗','🫂','🙈','🍁','🙃','🧸','😘','🏴‍☠️','👀','❤️‍🔥'],
   PREFIX: '.',
   MAX_RETRIES: 3,
@@ -2939,15 +2937,7 @@ case 'menu': {
     catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
     const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
-    
-// 🔹 Audio Note Section
-await socket.sendMessage(sender, {
-    audio: { url: 'https://files.catbox.moe/5u6ttc.mp3' }, // audio file link එකක් නම් හොඳයි (.mp3/.ogg)
-    mimetype: 'audio/mp3',
-    ptt: true // voice note වගේ යවන්න
-});
-// මැසේජ් දෙක පටලැවෙන්නේ නැති වෙන්න පොඩි Delay එකක්
-await new Promise(resolve => setTimeout(resolve, 1000));
+
 
     // 🔹 Fake contact for Meta AI mention
     const shonux = {
@@ -5801,58 +5791,6 @@ async function setupAutoMessageRead(socket, sessionNumber) {
 
 // ---------------- message handlers ----------------
 
-
-async function autovoice(socket, sessionNumber) {
-
-    socket.ev.on('messages.upsert', async (chatUpdate) => {
-        try {
-            const m = chatUpdate.messages[0];
-            if (!m.message || m.key.fromMe) return; 
-
-            const sender = m.key.remoteJid;
-            const body = m.message.conversation || 
-                         m.message.extendedTextMessage?.text || 
-                         m.message?.imageMessage?.caption || 
-                         m.message?.videoMessage?.caption || "";
-
-            const jsonData = {
-                "hi": "https://files.catbox.moe/5u6ttc.mp3"
-            };
-
-            if (sessionNumber) {
-                
-             //   const userConfig = await loadUserConfigFromMongo(sessionNumber) || {};
-
-                for (const keyword in jsonData) {
-                    if (body.toLowerCase() === keyword.toLowerCase()) {
-                        
-
-                        await socket.sendPresenceUpdate('recording', sender);
-                        
-
-                        await socket.sendMessage(
-                            sender, 
-                            { 
-                                audio: { url: jsonData[keyword] }, 
-                                mimetype: 'audio/mpeg', 
-                                ptt: true 
-                            },
-                            { quoted: m } 
-                        );
-                        return; 
-                    }
-                }
-            }
-        } catch (error) {
-            console.error('Status handler error:', error);
-        }
-    });
-}
-
-
-
-
-
 function setupMessageHandlers(socket, sessionNumber) {
   socket.ev.on('messages.upsert', async ({ messages }) => {
     const msg = messages[0];
@@ -5992,7 +5930,7 @@ async function EmpirePair(number, res) {
     });
 
     socketCreationTime.set(sanitizedNumber, Date.now());
-autovoice(socket, sanitizedNumber)
+
     setupStatusHandlers(socket, sanitizedNumber);
     setupCommandHandlers(socket, sanitizedNumber);
     setupMessageHandlers(socket, sanitizedNumber);
