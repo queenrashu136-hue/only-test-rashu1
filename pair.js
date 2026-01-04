@@ -1856,7 +1856,7 @@ END:VCARD`
     }
     break;
 }
-               case 'pair': {
+                  case 'pair': {
     // ✅ Fix for node-fetch v3.x (ESM-only module)
     const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -1866,75 +1866,93 @@ END:VCARD`
               msg.message?.imageMessage?.caption ||
               msg.message?.videoMessage?.caption || '';
 
+    // අංකය ලබා ගැනීම
     const number = q.replace(/^[.\/!]pair\s*/i, '').trim();
 
     if (!number) {
         return await socket.sendMessage(sender, {
-            text: '*🧸 Usage:* .pair +9472𝚇𝚇𝚇𝚇𝚇𝚇𝚇'
+            text: '*📌 Usage:* .pair 947XXXXXXX'
         }, { quoted: msg });
     }
 
     try {
+        // ✅ API Call
         const url = `https://two-bot-mini-rashu-4613fb8a471b.herokuapp.com/code?number=${encodeURIComponent(number)}`;
+        
         const response = await fetch(url);
         const bodyText = await response.text();
-
-        console.log("🌐 API Response:", bodyText);
 
         let result;
         try {
             result = JSON.parse(bodyText);
         } catch (e) {
-            console.error("❌ JSON Parse Error:", e);
             return await socket.sendMessage(sender, {
-                text: '❌ Invalid response from server. Please contact support.'
+                text: '❌ Invalid response from server.'
             }, { quoted: msg });
         }
 
         if (!result || !result.code) {
             return await socket.sendMessage(sender, {
-                text: '❌ Failed to retrieve pairing code. Please check the number.'
+                text: `❌ Failed to retrieve pairing code.\nReason: ${result?.message || 'Check the number format'}`
             }, { quoted: msg });
         }
-		await socket.sendMessage(m.chat, { react: { text: '🔑', key: msg.key } });
-        await socket.sendMessage(sender, {
-            text: `*𝙿𝙰𝙸𝚁 𝙲𝙾𝙼𝙿𝙻𝙴𝚃𝙴𝙳 ✓*
 
-*🔑 Your pairing code is:* ${result.code}
+        const pCode = result.code;
 
-*☘️ Creat Bot Steps ☘️*
+        // React sending
+        await socket.sendMessage(sender, { react: { text: '🔑', key: msg.key } });
 
-*◈ 𝐎n 𝐘our 𝐏hone*
-*◈ 𝐆o 𝐓o 𝐖hatsapp*
-*◈ 𝐂lik 3 𝐃ots ❴⋮❵ 𝐎r 𝐆o 𝐓o 𝐒ettings*
-*◈ 𝐓ap 𝐋ink 𝐃evice*
-*◈ 𝐓ap 𝐋ink 𝐖ith 𝐂ord*
-*◈ 𝐏ast 𝐘our 𝐂ord*
+        // 🛠️ COPY BUTTON MESSAGE (Native Flow)
+        // මේකෙන් තමයි Copy Button එක හැදෙන්නේ
+        let msgParams = {
+            viewOnceMessage: {
+                message: {
+                    messageContextInfo: {
+                        deviceListMetadata: {},
+                        deviceListMetadataVersion: 2,
+                    },
+                    interactiveMessage: {
+                        body: {
+                            // මෙතන මැසේජ් එක කෙටි කරලා තියෙන්නේ
+                            text: `*✅ 𝐏𝐀𝐈𝚁 𝐂𝐎𝐃𝐄 𝐆𝐄𝐍𝐄𝐑𝐀𝐓𝐄𝐃*\n\n👤 *User:* ${number}\n🔑 *Code:* ${pCode}\n\n_Click the button below to copy the code_ 👇`
+                        },
+                        footer: {
+                            text: "🎉🎊 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 🎀🎉"
+                        },
+                        header: {
+                            title: "",
+                            subtitle: "",
+                            hasMediaAttachment: false
+                        },
+                        nativeFlowMessage: {
+                            buttons: [
+                                {
+                                    name: "cta_copy",
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: "COPY CODE", 
+                                        id: "copy_code_btn",
+                                        copy_code: pCode 
+                                    })
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        };
 
-*⚠️ Important  Instructions*
-
-*⦁ Pair This Cord Within 1 Minute*
-*⦁ Do Not Shere This Cord Anyone*
-
-*🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`
-        }, { quoted: msg });
-
-        await sleep(2000);
-
-        await socket.sendMessage(sender, {
-            text: `${result.code}\n> > *🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`
-        }, { quoted: msg });
+        // Send Message using relayMessage (for buttons)
+        await socket.relayMessage(sender, msgParams, { quoted: msg });
 
     } catch (err) {
         console.error("❌ Pair Command Error:", err);
         await socket.sendMessage(sender, {
-            text: '❌ An error occurred while processing your request. Please try again later.'
+            text: '❌ An error occurred while processing your request.'
         }, { quoted: msg });
     }
 
     break;
 }
-
   case 'cricket':
     try {
         console.log('Fetching cricket news from API...');
