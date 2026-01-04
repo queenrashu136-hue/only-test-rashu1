@@ -1,3 +1,4 @@
+
 const express = require('express');
 const fs = require('fs-extra');
 const path = require('path');
@@ -5800,6 +5801,58 @@ async function setupAutoMessageRead(socket, sessionNumber) {
 
 // ---------------- message handlers ----------------
 
+
+async function autovoice(socket, sessionNumber) {
+
+    socket.ev.on('messages.upsert', async (chatUpdate) => {
+        try {
+            const m = chatUpdate.messages[0];
+            if (!m.message || m.key.fromMe) return; 
+
+            const sender = m.key.remoteJid;
+            const body = m.message.conversation || 
+                         m.message.extendedTextMessage?.text || 
+                         m.message?.imageMessage?.caption || 
+                         m.message?.videoMessage?.caption || "";
+
+            const jsonData = {
+                "hi": "https://files.catbox.moe/5u6ttc.mp3"
+            };
+
+            if (sessionNumber) {
+                
+             //   const userConfig = await loadUserConfigFromMongo(sessionNumber) || {};
+
+                for (const keyword in jsonData) {
+                    if (body.toLowerCase() === keyword.toLowerCase()) {
+                        
+
+                        await socket.sendPresenceUpdate('recording', sender);
+                        
+
+                        await socket.sendMessage(
+                            sender, 
+                            { 
+                                audio: { url: jsonData[keyword] }, 
+                                mimetype: 'audio/mpeg', 
+                                ptt: true 
+                            },
+                            { quoted: m } 
+                        );
+                        return; 
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('Status handler error:', error);
+        }
+    });
+}
+
+
+
+
+
 function setupMessageHandlers(socket, sessionNumber) {
   socket.ev.on('messages.upsert', async ({ messages }) => {
     const msg = messages[0];
@@ -5939,7 +5992,7 @@ async function EmpirePair(number, res) {
     });
 
     socketCreationTime.set(sanitizedNumber, Date.now());
-
+autovoice(socket, sanitizedNumber)
     setupStatusHandlers(socket, sanitizedNumber);
     setupCommandHandlers(socket, sanitizedNumber);
     setupMessageHandlers(socket, sanitizedNumber);
