@@ -3240,7 +3240,36 @@ case 'video-dl': {
 
 
 
+case 'boom': {
+    try {
+        if (!args[0]) {
+            return reply('*🔐Exaple :*\n.boom 10 *⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*');
+        }
 
+        const count = parseInt(args[0]);
+        if (isNaN(count) || count <= 0) {
+            return reply('❌ Count එක number එකක් විය යුතුයි');
+        }
+
+        // .boom 10 Hye → Hye part
+        const text = args.slice(1).join(' ');
+        if (!text) {
+            return reply('❌ Repeat කරන්න message එකක් දාන්න');
+        }
+
+        let result = '';
+        for (let i = 0; i < count; i++) {
+            result += text + '\n';
+        }
+
+        await socket.sendMessage(from, { text: result.trim() }, { quoted: msg });
+
+    } catch (e) {
+        console.log(e);
+        reply('❌ Error');
+    }
+}
+break;
 
 
 // ---------------------- PING ----------------------
