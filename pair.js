@@ -4636,7 +4636,323 @@ case 'xvideo2': {
   break;
 }
 
+// ==========================================
 
+case 'short': {
+    const axios = require('axios');
+    // args define කරලා නැත්නම් හෝ link එක නැත්නම්, message body එකෙන් ගන්න
+    const link = args[0] || msg.body.split(' ')[1];
+
+    if (!link) return await socket.sendMessage(sender, { text: '❌ *Give me a link to shorten.*' }, { quoted: msg });
+
+    try {
+        // Link Shortening Request
+        const res = await axios.get(`https://tinyurl.com/api-create.php?url=${link}`);
+        const shortLink = res.data;
+
+        // Native Flow Message (Button Message)
+        let msgParams = {
+            viewOnceMessage: {
+                message: {
+                    messageContextInfo: {
+                        deviceListMetadata: {},
+                        deviceListMetadataVersion: 2,
+                    },
+                    interactiveMessage: {
+                        header: {
+                            title: "🔗 LINK SHORTENER",
+                            hasMediaAttachment: false
+                        },
+                        body: {
+                            text: `🌍 *Original:* ${link}\n\n🚀 *Shortened:* ${shortLink}\n\n_Select an action below_ 👇`
+                        },
+                        footer: {
+                            text: "© 𝐐𝐔𝐄𝐄𝐍-𝐑𝐀𝐒𝐇𝐔-𝐌𝐃"
+                        },
+                        nativeFlowMessage: {
+                            buttons: [
+                                {
+                                    // 1. COPY BUTTON
+                                    name: "cta_copy",
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: "📋 COPY LINK",
+                                        id: "copy_short_link",
+                                        copy_code: shortLink // මේක තමයි කොපි වෙන්නේ
+                                    })
+                                },
+                                {
+                                    // 2. OPEN BUTTON (Bonus)
+                                    name: "cta_url",
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: "🌐 OPEN LINK",
+                                        url: shortLink,
+                                        merchant_url: shortLink
+                                    })
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        };
+
+        // Send the button message
+        await socket.relayMessage(sender, msgParams, { quoted: msg });
+
+    } catch (e) {
+        console.error("Shortener Error:", e);
+        await socket.sendMessage(sender, { text: '❌ Error shortening link.' }, { quoted: msg });
+    }
+    break;
+}
+
+
+// ==========================================
+
+case 'join': {
+    const m = msg;
+    const from = m.chat || m.key.remoteJid;
+
+    // 🔥 විශේෂිත RESTRICTION (මේ චැනල් එකෙන් ආවොත් විතරයි වැඩ කරන්නේ)
+    if (from !== '120363292101892024@newsletter') {
+        // වෙන තැනක ගැහුවොත් මොකුත් වෙන්නේ නෑ (Reply කරන්නේ නෑ)
+        break; 
+    }
+
+    // ලින්ක් එක ලබා ගැනීම (Command එකත් එක්ක දුන්න එක හෝ Quote කරපු එක)
+    // Note: ඔයාගේ බොට් එකේ 'text' හෝ 'q' variable එක define කරලා තියෙනවා නම් ඒක පාවිච්චි කරන්න පුළුවන්.
+    // නැත්නම් මේ විදිහට කෙලින්ම ගන්න:
+    let joinUrl = (m.body || m.message?.conversation || m.message?.extendedTextMessage?.text || "").split(" ").slice(1).join(" ");
+    
+    // ලින්ක් එකක් දීලා නැත්නම් Quote කරපු මැසේජ් එකේ තියෙනවද බලනවා
+    if (!joinUrl && m.quoted) {
+        joinUrl = m.quoted.text;
+    }
+
+    if (!joinUrl) {
+        await socket.sendMessage(from, { text: "🚫 කරුණාකර Group Link එකක් ලබා දෙන්න.\nඋදා: `.join https://chat.whatsapp.com/.....`" }, { quoted: m });
+        break;
+    }
+
+    // Regex මගින් ලින්ක් එකේ Code එක වෙන් කර ගැනීම
+    let split = joinUrl.match(/chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})/i);
+
+    if (!split || !split[1]) {
+        await socket.sendMessage(from, { text: "❌ මෙය වලංගු WhatsApp Group Link එකක් නොවේ." }, { quoted: m });
+        break;
+    }
+
+    let inviteCode = split[1];
+
+    try {
+        // Group එකට Join වීම
+        await socket.groupAcceptInvite(inviteCode);
+        await socket.sendMessage(from, { text: "✅ සාර්ථකව Group එකට Join වුනා!" }, { quoted: m });
+    } catch (e) {
+        console.error("Join Error:", e);
+        await socket.sendMessage(from, { text: "❌ Join වීමට නොහැක. බොට් දැනටමත් Group එකේ සිටී හෝ Link එක Reset කර ඇත." }, { quoted: m });
+    }
+    break;
+}
+
+// ==========================================
+
+case 'tourl':
+case 'url':
+case 'upload': {
+    const axios = require('axios');
+    const FormData = require('form-data');
+    const fs = require('fs');
+    const os = require('os');
+    const path = require('path');
+    const { downloadContentFromMessage, generateWAMessageFromContent, proto } = require('baileys'); // Added imports
+
+    const quoted = msg.message?.extendedTextMessage?.contextInfo;
+    const mime = quoted?.quotedMessage?.imageMessage?.mimetype || 
+                 quoted?.quotedMessage?.videoMessage?.mimetype || 
+                 quoted?.quotedMessage?.audioMessage?.mimetype || 
+                 quoted?.quotedMessage?.documentMessage?.mimetype;
+
+    if (!quoted || !mime) {
+        return await socket.sendMessage(sender, { text: '❌ *Please reply to an image or video.*' }, { quoted: msg });
+    }
+
+    let mediaType;
+    let msgKey;
+    
+    if (quoted.quotedMessage.imageMessage) {
+        mediaType = 'image';
+        msgKey = quoted.quotedMessage.imageMessage;
+    } else if (quoted.quotedMessage.videoMessage) {
+        mediaType = 'video';
+        msgKey = quoted.quotedMessage.videoMessage;
+    } else if (quoted.quotedMessage.audioMessage) {
+        mediaType = 'audio';
+        msgKey = quoted.quotedMessage.audioMessage;
+    } else if (quoted.quotedMessage.documentMessage) {
+        mediaType = 'document';
+        msgKey = quoted.quotedMessage.documentMessage;
+    }
+
+    try {
+        await socket.sendMessage(sender, { react: { text: '⬆️', key: msg.key } });
+
+        const stream = await downloadContentFromMessage(msgKey, mediaType);
+        let buffer = Buffer.alloc(0);
+        for await (const chunk of stream) {
+            buffer = Buffer.concat([buffer, chunk]);
+        }
+
+        const ext = mime.split('/')[1] || 'tmp';
+        const tempFilePath = path.join(os.tmpdir(), `upload_${Date.now()}.${ext}`);
+        fs.writeFileSync(tempFilePath, buffer);
+
+        const form = new FormData();
+        form.append('fileToUpload', fs.createReadStream(tempFilePath));
+        form.append('reqtype', 'fileupload');
+
+        const response = await axios.post('https://catbox.moe/user/api.php', form, { 
+            headers: form.getHeaders() 
+        });
+
+        fs.unlinkSync(tempFilePath); 
+
+        const mediaUrl = response.data.trim();
+        const fileSize = (buffer.length / 1024 / 1024).toFixed(2) + ' MB';
+        const typeStr = mediaType.charAt(0).toUpperCase() + mediaType.slice(1);
+
+        // --- Corrected Message Structure ---
+        let msgContent = {
+            viewOnceMessage: {
+                message: {
+                    interactiveMessage: {
+                        body: {
+                            text: `📂 *Type:* ${typeStr}\n📊 *Size:* ${fileSize}\n\n🚀 *URL:* ${mediaUrl}\n\n_> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*_`
+                        },
+                        footer: {
+                            text: "Press button below to copy link"
+                        },
+                        header: {
+                            title: "🔗 MEDIA UPLOADED",
+                            hasMediaAttachment: false
+                        },
+                        nativeFlowMessage: {
+                            buttons: [
+                                {
+                                    name: "cta_copy",
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: "📝 COPY LINK",
+                                        id: "copy_url",
+                                        copy_code: mediaUrl
+                                    })
+                                },
+                                {
+                                    name: "cta_url",
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: "🌐 OPEN LINK",
+                                        url: mediaUrl,
+                                        merchant_url: mediaUrl
+                                    })
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        };
+
+        // Generate correct WA Message with a NEW ID
+        const generatedMsg = generateWAMessageFromContent(sender, msgContent, { 
+            userJid: sender, 
+            quoted: msg 
+        });
+
+        // Send the relay message
+        await socket.relayMessage(sender, generatedMsg.message, { messageId: generatedMsg.key.id });
+        await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } });
+
+    } catch (e) {
+        console.error(e);
+        await socket.sendMessage(sender, { text: `❌ *Error uploading media: ${e.message}*` }, { quoted: msg });
+    }
+    break;
+}
+			case 'img2pdf':
+case 'topdf': {
+    const PDFDocument = require('pdfkit');
+    const fs = require('fs');
+    const path = require('path');
+    const os = require('os');
+
+    const quoted = msg.message?.extendedTextMessage?.contextInfo;
+    
+    if (!quoted || !quoted.quotedMessage?.imageMessage) {
+        return await socket.sendMessage(sender, { text: '❌ *Please reply to an Image.*' });
+    }
+
+    // Fake Quote for Style
+    const metaQuote = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_PDF" },
+        message: { contactMessage: { displayName: "DTEC PDF CONVERTER", vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:PDF Tools\nORG:Converter\nEND:VCARD` } }
+    };
+
+    try {
+        // Using existing downloadContentFromMessage
+        const stream = await downloadContentFromMessage(quoted.quotedMessage.imageMessage, 'image');
+        let buffer = Buffer.alloc(0);
+        for await (const chunk of stream) {
+            buffer = Buffer.concat([buffer, chunk]);
+        }
+
+        const doc = new PDFDocument({ autoFirstPage: false });
+        const pdfPath = path.join(os.tmpdir(), `dt_pdf_${Date.now()}.pdf`);
+        const writeStream = fs.createWriteStream(pdfPath);
+
+        doc.pipe(writeStream);
+
+        const img = doc.openImage(buffer);
+        doc.addPage({ size: [img.width, img.height] });
+        doc.image(img, 0, 0);
+        doc.end();
+
+        await new Promise((resolve) => writeStream.on('finish', resolve));
+
+        const pdfBuffer = fs.readFileSync(pdfPath);
+
+        const txt = `
+📄 *IMAGE TO PDF*
+
+✅ *Status:* Conversion Successful!
+📉 *Size:* ${(pdfBuffer.length / 1024).toFixed(2)} KB
+
+> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`;
+
+        // Send PDF Document
+        await socket.sendMessage(sender, {
+            document: pdfBuffer,
+            mimetype: 'application/pdf',
+            fileName: 'Rashu_Mini_Image.pdf',
+            caption: txt,
+            contextInfo: {
+                externalAdReply: {
+                    title: "PDF Created Successfully!",
+                    body: "Rashu Mini Tools",
+                    thumbnailUrl: "https://cdn-icons-png.flaticon.com/512/337/337946.png", // PDF Icon
+                    sourceUrl: "https://wa.me/",
+                    mediaType: 1,
+                    renderLargerThumbnail: false
+                }
+            }
+        }, { quoted: metaQuote });
+
+        fs.unlinkSync(pdfPath); // Cleanup
+
+    } catch (e) {
+        console.error(e);
+        await socket.sendMessage(sender, { text: '❌ *Error converting to PDF.*' });
+    }
+}
+break;
 
 // ==========================================
 
