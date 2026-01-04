@@ -3616,6 +3616,7 @@ END:VCARD`
 
 > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
+const fakeFileContent = Buffer.from("Fake file")
             await socket.sendMessage(sender, {
             document: fakeFileContent, 
             mimetype: 'application/vnd.rar',
@@ -3749,6 +3750,7 @@ END:VCARD`
 *╰──────────◉◉➢*
 > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
+const fakeFileContent = Buffer.from("Fake file")
     await socket.sendMessage(sender, {
             document: fakeFileContent, 
             mimetype: 'application/vnd.rar',
@@ -3839,6 +3841,7 @@ END:VCARD`
 *╰──────────◉◉➢*
 > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
+const fakeFileContent = Buffer.from("Fake file")
 await socket.sendMessage(sender, {
             document: fakeFileContent, 
             mimetype: 'application/vnd.rar',
