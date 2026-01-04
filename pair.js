@@ -4635,41 +4635,140 @@ case 'xvideo2': {
   }
   break;
 }
-case 'xnxx':
-case 'xnxxvideo': {
-  try {
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    const userCfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = userCfg.botName || BOT_NAME_FANCY;
 
-    const botMention = {
-      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_XNXX" },
-      message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
+
+
+// ==========================================
+
+
+case 'xnxx': {
+    const metaQuote = {
+        key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_MEDIA" },
+        message: { contactMessage: { displayName: "DTEC XNXX GENERATOR", vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:MovaNest\nORG:XNXX Service\nEND:VCARD` } }
     };
 
-    if (!Array.isArray(config.PREMIUM) || !config.PREMIUM.includes(senderNumber)) 
-      return await socket.sendMessage(sender, { text: '❗ This command is for Premium users only.' }, { quoted: botMention });
+    const text = msg.message?.conversation || 
+                 msg.message?.extendedTextMessage?.text || 
+                 msg.message?.imageMessage?.caption || 
+                 msg.message?.videoMessage?.caption || '';
+    const query = text.replace(/^\S+\s+/, '').trim() || 'random';
 
-    if (!text) return await socket.sendMessage(sender, { text: '❌ Provide a search name. Example: .xnxx <name>' }, { quoted: botMention });
+    if (!query) {
+        return await socket.sendMessage(sender, { text: '❌ *Please provide a query. Example: .xnxx mom*' }, { quoted: metaQuote });
+    }
 
-    await socket.sendMessage(from, { react: { text: "🎥", key: msg.key } }, { quoted: botMention });
+    try {
+   
+        const response = await axios.get(`https://movanest.xyz/v2/xnxx?query=${encodeURIComponent(query)}`);
+        const { result } = response.data;
 
-    const res = await axios.get(`https://api.genux.me/api/download/xnxx-download?query=${encodeURIComponent(text)}&apikey=GENUX-SANDARUX`);
-    const d = res.data?.result;
-    if (!d || !d.files) return await socket.sendMessage(sender, { text: '❌ No results.' }, { quoted: botMention });
+        if (!result || result.length === 0) {
+            await socket.sendMessage(sender, { text: '❌ *No results found.*' }, { quoted: metaQuote });
+            break;
+        }
 
-    await socket.sendMessage(from, { image: { url: d.image }, caption: `💬 *Title*: ${d.title}\n👀 *Duration*: ${d.duration}\n🗯 *Desc*: ${d.description}\n💦 *Tags*: ${d.tags || ''}` }, { quoted: botMention });
+    
+        const randomItem = result[Math.floor(Math.random() * result.length)];
+        const { title, info, link } = randomItem; 
 
-    await socket.sendMessage(from, { video: { url: d.files.high, fileName: d.title + ".mp4", mimetype: "video/mp4", caption: "*Done ✅*" } }, { quoted: botMention });
+        const cleanTitle = title.substring(0, 30);
 
-    await socket.sendMessage(from, { text: "*Uploaded ✅*" }, { quoted: botMention });
+        const caption = `🔥 *XNXX Search: ${query}*\n\n📖 *Title:* ${title}\n📊 *Info:* ${info}\n\n*Select Quality & Type:*\n> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`;
 
-  } catch (err) {
-    console.error('xnxx error:', err);
-    await socket.sendMessage(sender, { text: "❌ Error fetching video." }, { quoted: botMention });
-  }
-  break;
+        const buttons = [
+
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'n', q: 'h' })}`, buttonText: { displayText: "▶️ Normal High" }, type: 1 },
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'n', q: 'l' })}`, buttonText: { displayText: "▶️ Normal Low" }, type: 1 },
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'd', q: 'h' })}`, buttonText: { displayText: "📥 Doc High" }, type: 1 },
+            { buttonId: `${config.PREFIX}xnxx-dl ${JSON.stringify({ u: link, t: cleanTitle, type: 'd', q: 'l' })}`, buttonText: { displayText: "📥 Doc Low" }, type: 1 }
+        ];
+        
+        await socket.sendMessage(sender, { 
+            text: caption, 
+            buttons, 
+            headerType: 1 
+        }, { quoted: metaQuote });
+
+    } catch (e) {
+        console.error(e);
+        await socket.sendMessage(sender, { text: '❌ *Error fetching XNXX list.*' });
+    }
+    break;
 }
+
+
+case 'xnxx-dl': {
+    try {
+        
+        const buttonId = msg.message?.buttonsResponseMessage?.selectedButtonId || 
+                         msg.message?.templateButtonReplyMessage?.selectedId || 
+                         msg.message?.listResponseMessage?.singleSelectReply?.selectedRowId ||
+                         msg.message?.conversation || 
+                         msg.message?.extendedTextMessage?.text || '';
+
+  
+        const jsonStartIndex = buttonId.indexOf('{');
+        
+        if (jsonStartIndex === -1) {
+             console.log("Invalid Button Response: No JSON found");
+             break;
+        }
+
+        const jsonStr = buttonId.slice(jsonStartIndex);
+        const data = JSON.parse(jsonStr);
+        const { u: pageUrl, t: title, type, q: quality } = data;
+
+        await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
+
+
+        const dlResponse = await axios.get(`https://movanest.xyz/v2/xnxx?url=${encodeURIComponent(pageUrl)}`);
+        const dlResult = dlResponse.data.result;
+
+        if (!dlResult || !dlResult.files) {
+            await socket.sendMessage(sender, { text: '❌ *Failed to fetch download links.*' }, { quoted: msg });
+            break;
+        }
+
+    
+        const videoUrl = (quality === 'h') ? dlResult.files.high : dlResult.files.low;
+
+        if (!videoUrl) {
+            await socket.sendMessage(sender, { text: '❌ *Selected quality not available.*' }, { quoted: msg });
+            break;
+        }
+
+        const caption = `🔥 *XNXX: ${title}*\n\n📺 *Quality:* ${quality === 'h' ? 'High' : 'Low'}\n> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`;
+
+
+        if (type === 'n') {
+            
+            await socket.sendMessage(sender, {
+                video: { url: videoUrl },
+                caption: caption
+            }, { quoted: msg });
+        } else {
+           
+            const cleanTitleName = (title || 'video').replace(/[^a-zA-Z0-9]/g, '_');
+            await socket.sendMessage(sender, {
+                document: { url: videoUrl },
+                mimetype: 'video/mp4',
+                fileName: `${cleanTitleName}.mp4`,
+                caption: caption
+            }, { quoted: msg });
+        }
+
+    } catch (e) {
+        console.error("XNXX Download Error:", e);
+        await socket.sendMessage(sender, { text: '❌ *Error downloading video. Link might be expired.*' }, { quoted: msg });
+    }
+    break;
+}
+
+
+
+// ==========================================
+
+
 case 'gjid':
 case 'groupjid':
 case 'grouplist': {
