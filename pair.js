@@ -2941,10 +2941,9 @@ case 'menu': {
 // 🔹 Audio Note Section
 await socket.sendMessage(sender, {
     audio: { url: 'https://files.catbox.moe/5u6ttc.mp3' }, // audio file link එකක් නම් හොඳයි (.mp3/.ogg)
-    mimetype: 'audio/mpeg',
+    mimetype: 'audio/mp3',
     ptt: true // voice note වගේ යවන්න
 });
-
 // මැසේජ් දෙක පටලැවෙන්නේ නැති වෙන්න පොඩි Delay එකක්
 await new Promise(resolve => setTimeout(resolve, 1000));
 
