@@ -2910,7 +2910,7 @@ case 'system': {
       image: imagePayload,
       caption: text,
       footer: `*${botName} 𝐒ʏꜱᴛᴇᴍ 𝐈ɴꜰᴏ* `,
-      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📜 MENU" },type: 1 },
+      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" },type: 1 },
 				{ buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "👑 OWNEE" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote });
@@ -2968,12 +2968,13 @@ END:VCARD`
                       hour < 20 ? '𝐆օօժ 𝐄ѵíղíղց..🌆' : '𝐆օօժ 𝐍íցհԵ...🌙';
 	const nuroweb = 'https://wa.me/message/5ZZGFAM3W5S4E1';
     const text = `
-*╭══〔${title}〕═┈⊷*
-*║👋𝙷𝚈 𝚀𝚄𝙴𝙴𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰 𝙼𝙳 𝙱𝙾𝚃 𝚄𝚂𝙴𝚁**
+*╭══〔🆁🅰︎🆂🅷🆄〕═┈⊷*
+*║${title}*
 *╰═════════════┈⊷*  
-*╭═「✨BOT STATUS🧚‍♂️」 ═┈⊷*
-*║🙊* *\`𝐆ɾҽҽԵíղց :\`* *\`${greetings}\`*
-*║〽️* *\`𝐁օԵ 𝐍αตҽ :\`* *𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2*
+
+*╭═「🔐 🆂🆃🅰︎🆃🆄🆂 🧸」 ═┈⊷*
+*║🥰* *\`𝐆ɾҽҽԵíղց :\`* *\`${greetings}\`*
+*║🤖* *\`𝐁օԵ 𝐍αตҽ :\`* *𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2*
 *║👑* *\`𝐎աղҽɾ :\`* *Nipun Harshana*
 *║📆* *\`𝐃αԵҽ :\`* *${slstDate}*
 *║🕜* *\`𝐓íตҽ :\`* *${formattedTime}*
@@ -3009,7 +3010,7 @@ END:VCARD`
   },
   {
     title: "🎈 𝐂𝐑𝐄𝐀𝐓𝐈𝐕𝐄 𝐌𝐄𝐍𝐔",
-    description: ".αℓℓ cɾεαƭเѵε",
+    description: "αℓℓ cɾεαƭเѵε",
     id: `${config.PREFIX}creative`
   }
 ];
@@ -3030,7 +3031,7 @@ END:VCARD`
             nativeFlowInfo: {
                 name: "single_select",
                 paramsJson: JSON.stringify({
-                    title: "𝗠𝗘𝗡𝗨 𝗟𝗜𝗦𝗧 🎀",
+                    title: "𝐌єηυ 𝐋ιѕт 🎀",
                     sections: buttonSections
                 })
             }
@@ -3103,41 +3104,50 @@ END:VCARD`
         }
     };
 
-       const text = `
-╭═════❀🌙❀═════╮
-│ 🙊 𝓓𝓸𝔀𝓷𝓵𝓸𝓪𝓭 𝓜𝓮𝓷𝓾 💗
-╰═════❀🌙❀═════╯
+       const text = `*╭─「🔽 𝐃𝐀𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 𝐋𝐈𝐒𝐓」 ──◉◉➢*   
 
-╭━━✦〔 🎵 𝓜𝓾𝓼𝓲𝓬 𝓒𝓶𝓭 ✦〕━━╮
-│ 🎧 ${config.PREFIX}song [query]
-│ 🎶 ${config.PREFIX}csong [jid] [query]
-│ 🔔 ${config.PREFIX}ringtone [name]
-╰━━━━━━━━━━━━━━╯
+*╭──────────◉◉➢*
+*📱 ᴍᴇᴅɪᴀ & ꜱᴏᴄɪᴀʟ Dᴀᴡʟᴏᴀᴅ :*
 
-╭━━✦〔 🎬 𝓥𝓲𝓭𝓮𝓸 𝓒𝓶𝓭 ✦〕━━╮
-│ 📱 ${config.PREFIX}tiktok [url]
-│ 🎞️ ${config.PREFIX}video [query]
-│ ❌ ${config.PREFIX}xvideo [query]
-│ 🔞 ${config.PREFIX}xnxx [query]
-│ 📘 ${config.PREFIX}fb [url]
-│ 📸 ${config.PREFIX}ig [url]
-╰━━━━━━━━━━━━━━╯
+* ${config.PREFIX}song 
+> < ꜱᴏɴɢ ɴᴀᴍᴇ ᴏʀ ʟɪɴᴋ >
+* ${config.PREFIX}csong
+> < ᴊɪᴅ >< ꜱᴏɴɢ ɴᴀᴍᴇ >
+* ${config.PREFIX}ringtone
+> < ʀɪɴɢᴛᴏɴᴇ ɴᴀᴍᴇ >
+* ${config.PREFIX}tiktok
+> < ᴛɪᴋ ᴛᴏᴋ ᴜʀʟ >
+* ${config.PREFIX}video
+> < ᴠɪᴅᴇᴏ ɴᴀᴍᴇ ᴏʀ ʟɪɴᴋ >
+* ${config.PREFIX}xvideo
+> < ɴᴀᴍᴇ ᴏʀ ᴜʀʟ >
+* ${config.PREFIX}xnxx
+> < ɴᴀᴍᴇ ᴏʀ ᴜʀʟ >
+* ${config.PREFIX}fb
+> < ꜰʙ ᴜʀʟ >
+* ${config.PREFIX}instagram
+> < ɪɢ ᴜʀʟ >
+* ${config.PREFIX}save
+> < ꜱᴛᴀᴛᴜꜱ ʀᴇᴘʟʏ >
 
-╭━✦〔 📦 𝓐𝓹𝓴 & 𝓕𝓲𝓵𝓮 ✦〕━━╮
-│ ⚙️ ${config.PREFIX}apk [app id]
-│ 🔍 ${config.PREFIX}apksearch [app name]
-│ 📂 ${config.PREFIX}mediafire [url]
-│ ☁️ ${config.PREFIX}gdrive [url]
-╰━━━━━━━━━━━━━━╯
-╭══════❖══════╮
-│ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀
-╰══════❖══════╯
-> > *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*
-`.trim();
+*📱 ᴀʟʟ ᴀᴘᴘ ᴀɴᴅ ꜰɪʟᴇ :*
+
+* ${config.PREFIX}apk
+> < ᴀᴘᴘ ɴᴀᴍᴇ ᴏʀ ᴘʟᴀʏꜱᴛᴏʀᴇ ᴜʀʟ >
+* ${config.PREFIX}apksearch
+> < ᴀᴘᴋ ɴᴀᴍᴇ >
+* ${config.PREFIX}mediafire
+> < ᴍᴇᴅɪᴀꜰɪʀᴇ ᴜʀʟ >
+* ${config.PREFIX}gdrive
+> < ɢᴅʀɪᴠᴇ ᴜʀʟ >
+
+*╰──────────◉◉➢*
+
+> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
     const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "🔙 MAIN MENU" }, type: 1 },
-      { buttonId: `${config.PREFIX}creative`, buttonText: { displayText: "🎨 CREATIVE" }, type: 1 }
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
+      { buttonId: `${config.PREFIX}speed`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
     ];
 
     await socket.sendMessage(sender, {
@@ -3182,30 +3192,84 @@ END:VCARD`
         }
     };
 
-    const text = `
-*╭─────────────●►*  
-*│🛠️ 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔
-*╰─────────────●►*
-*╭─「𝐀𝐈 𝐓𝐎𝐎𝐋」────┈⊷*
-*│* ${config.PREFIX}ai [message]
-*│* ${config.PREFIX}aiimg [prompt]
-*│* ${config.PREFIX}aiimg2 [prompt]
-*╰──────────────┈⊷*
-*╭─「𝐅𝐀𝐍𝐒𝐘 𝐓𝐎𝐎𝐋」─┈⊷
-*│* ${config.PREFIX}font [text]
-*╰───────────────┈⊷*
-*╭─「𝐃𝐏 𝐓𝐎𝐎𝐋」────┈⊷
-*│*${config.PREFIX}getdp [number]
-*╰───────────────┈⊷
-*╭─「𝐌𝐄𝐃𝐄𝐀 𝐓𝐎𝐎𝐋」─┈⊷
-*│*${config.PREFIX}save (reply to status) 
-*╰──────────────┈⊷*
-> *> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**
-`.trim();
+    const text = `*╭─「🔽 𝐓𝐎𝐎𝐋𝐒 𝐋𝐈𝐒𝐓」 ──◉◉➢*  
+
+*╭──────────◉◉➢*
+*🆔 Iɴꜰᴏ Tᴏᴏʟ :*
+
+* ${config.PREFIX}jid
+> < ᴄʜᴀᴛ / ɢʀᴏᴜᴘ ꜱᴇɴᴅ >
+* ${config.PREFIX}cid
+> < ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ >
+* ${config.PREFIX}system
+> < ᴄʜᴇᴄᴋ ʙᴏᴛ ꜱʏꜱᴛᴇᴍ>
+
+*👥 Gʀᴏᴜᴘ Tᴏᴏʟꜱ :*
+
+* ${config.PREFIX}tagall
+> < ᴛᴀɢ ᴍᴇꜱꜱᴀɢᴇ >
+* ${config.PREFIX}hidetag
+> < ᴛᴀɢ ᴍᴇꜱꜱᴀɢᴇ >
+* ${config.PREFIX}online
+> < ɢʀᴏᴜᴘ ꜱᴇɴᴅ >
+
+*📰 Nᴇᴡꜱ Tᴏᴏʟ :*
+
+* ${config.PREFIX}adanews
+* ${config.PREFIX}sirasanews
+* ${config.PREFIX}lankadeepanews
+* ${config.PREFIX}gagananews
+* ${config.PREFIX}gossip
+* ${config.PREFIX}weather
+* ${config.PREFIX}cricket
+* ${config.PREFIX}google
+* ${config.PREFIX}github
+
+*🔐 Uꜱᴇʀ Mᴀɴᴀɢᴍᴇɴᴛ :*
+* ${config.PREFIX}block
+> < ʙʟᴏᴄᴋ ɴᴜᴍʙᴇʀ ᴛɪᴘᴇ >
+* ${config.PREFIX}unblock
+> < ᴜɴʙʟᴏᴄᴋ ɴᴜᴍʙᴇʀ ᴛɪᴘᴇ >
+* ${config.PREFIX}prefix
+> < ᴄʜᴀɴɢᴇ ʏᴏᴜʀ ᴘʀɪꜰɪx >
+* ${config.PREFIX}autorecording
+> < ᴀᴜᴛᴏ ʀᴇᴄᴏᴅɪɴɢ >
+* ${config.PREFIX}mread
+> < ᴀᴜᴛᴏ ᴍꜱɢ ʀᴇᴀᴅ ᴏɴ/ᴏꜰꜰ
+* ${config.PREFIX}creject
+> < ᴄᴀʟʟ.ʀᴇᴊᴇᴄᴛ ᴏɴ/ᴏꜰꜰ
+* ${config.PREFIX}wtype
+> < ᴘʀɪᴠᴇᴛ / ᴘᴜʙʟɪᴄ / ɢʀᴏᴜᴘ / ɪɴʙᴏx >
+* ${config.PREFIX}arm
+> < ᴀᴜᴛᴏ ꜱᴛᴀᴛᴜꜱ ʀᴇact ᴏɴ/ᴏꜰꜰ
+* ${config.PREFIX}rstatus
+> < ᴀᴜᴛᴏ ꜱᴛᴀᴛᴜꜱ ʀᴇᴀᴅ ᴏɴ/ᴏꜰꜰ
+* ${config.PREFIX}botpresence
+> < ʙᴏᴛ ᴏɴʟɪɴᴇ ᴏɴ/ᴏꜰꜰ >
+* ${config.PREFIX}setlogo
+> < ɪᴍᴀɢᴇ ᴜʀʟ ᴘᴀꜱᴛ >
+* ${config.PREFIX}setbotname
+> < ʏᴏᴜʀ ɴᴀᴍᴇ >
+* ${config.PREFIX}resetconfig
+* ${config.PREFIX}showconfig
+* ${config.PREFIX}deleteme
+
+
+*👥 Gᴏᴏɢʟᴇ Sᴇᴀʀᴄʜ Tᴏᴏʟ :*
+* ${config.PREFIX}img
+> < Qᴜᴇʀʏ >
+* ${config.PREFIX}google
+> < Qᴜᴇʀʏ >
+ 
+*📊 Bᴏᴛ Sᴛᴀᴛᴜꜱ :*
+* ${config.PREFIX}ping
+* ${config.PREFIX}alive
+*╰──────────◉◉➢*
+> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
     const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📜 𝐌𝐀𝐈𝐍 𝐌𝐄𝐍𝐔" }, type: 1 },
-      { buttonId: `${config.PREFIX}download`, buttonText: { displayText: "📥 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃 𝐌𝐄𝐍𝐔" }, type: 1 }
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
+      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
     ];
 
     await socket.sendMessage(sender, {
@@ -3222,8 +3286,8 @@ END:VCARD`
 }
 
 // ==================== TOOLS MENU ====================
-case 'other': {
-  try { await socket.sendMessage(sender, { react: { text: "🔧", key: msg.key } }); } catch(e){}
+case 'creative': {
+  try { await socket.sendMessage(sender, { react: { text: "🎈", key: msg.key } }); } catch(e){}
 
   try {
     let userCfg = {};
@@ -3251,56 +3315,44 @@ END:VCARD`
         }
     };
 
-    const text = `
-*╭─────────────────●►*
-*│🛠️ OTHE MENU*
-*╰─────────────────●►*
+    const text = `*╭─「🔽 𝐂𝐑𝐄𝐀𝐓𝐈𝐕𝐄 𝐋𝐈𝐒𝐓」 ──◉◉➢*  
 
-*╭─「𝐈𝐍𝐅𝐎 𝐂𝐌𝐃」─┈⊷*
-*│* ${config.PREFIX}jid
-*│* ${config.PREFIX}cid [channel-link]
-*│* ${config.PREFIX}system
-*╰───────────────────┈⊷
-*╭─「 𝐆𝐑𝐎𝐔𝐏 𝐂𝐌𝐃 」─┈⊷*
-*│* ${config.PREFIX}tagall [message]
-*│* ${config.PREFIX}online
-*╰───────────────────┈⊷
-*╭─「𝐍𝐄𝐖𝐒 𝐂𝐌𝐃」────┈⊷*
-*│* ${config.PREFIX}adanews
-*│* ${config.PREFIX}sirasanews
-*│* ${config.PREFIX}lankadeepanews
-*│* ${config.PREFIX}gagananews
-*╰───────────────────┈⊷
-*╭─「𝐔𝐒𝐄𝐑 𝐂𝐌𝐃」────┈⊷*
-*│* ${config.PREFIX}block [number]
-*│* ${config.PREFIX}unblock [number]
-*│* ${config.PREFIX}prefix
-*│* ${config.PREFIX}autorecording
-*│* ${config.PREFIX}mread
-*│* ${config.PREFIX}creject
-*│* ${config.PREFIX}wtyp
-*│* ${config.PREFIX}arm
-*│* ${config.PREFIX}rstatus
-*│* ${config.PREFIX}botpresence
-*╰───────────────────┈⊷
-*╭─「𝐒𝐄𝐀𝐑𝐂𝐇 𝐂𝐌𝐃」────┈⊷*
-*│* ${config.PREFIX}img [query]
-*│* ${config.PREFIX}google [query]
-*╰───────────────────┈⊷
-*╭─「𝐂𝐇𝐄𝐂𝐊 𝐂𝐌𝐃」─┈⊷*
-*│* ${config.PREFIX}ping
-*│* ${config.PREFIX}alive
-*╰──────────────┈⊷
-`.trim();
+*╭──────────◉◉➢*
+*🤖 *Aɪ Fᴇᴀᴛᴜʀᴇ :*
+
+* ${config.PREFIX}ai
+> < ᴍᴇꜱꜱᴀɢᴇ >
+* ${config.PREFIX}aiimg
+> < ᴘʀᴏᴍᴘᴛ >
+* ${config.PREFIX}aiimg2
+> < ᴘʀᴏᴍᴘᴛ >
+
+*✍️ Tᴇxᴛ Tᴏᴏʟꜱ :*
+
+* ${config.PREFIX}font
+> < ʏᴏᴜʀ ᴛᴇxᴛ >
+* ${config.PREFIX}short
+> < ʏᴏᴜʀ ᴜʀʟ >
+* ${config.PREFIX}calc
+> < 70+68 >
+* ${config.PREFIX}translate
+> < ᴛᴇxᴛ >
+ 
+*🖼️ Iᴍᴀɢᴇ Tᴏᴏʟꜱ :*
+
+* ${config.PREFIX}getdp 
+> < ᴅᴘ ᴅᴀᴡɴʟᴏᴀᴅ ɴᴜᴍʙᴇʀ >
+*╰──────────◉◉➢*
+> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
 
     const buttons = [
-      { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "📜 OWNER" }, type: 1 },
-      { buttonId: `${config.PREFIX}settings`, buttonText: { displayText: "⚙️ SETTING" }, type: 1 }
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
+      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
     ];
 
     await socket.sendMessage(sender, {
       text,
-      footer: "🛠️ 𝐓ᴏᴏʟꜱ 𝐂ᴏᴍᴍᴀɴᴅꜱ",
+      footer: "🎈 𝐂ʀᴇᴀᴛɪᴠᴇ 𝐂ᴏᴍᴍᴀɴᴅꜱ",
       buttons
     }, { quoted: shonux });
 
@@ -3335,7 +3387,7 @@ case 'getdp': {
         try {
             ppUrl = await socket.profilePictureUrl(jid, "image");
         } catch {
-            ppUrl = "https://files.catbox.moe/paap2h.jpg"; // default dp
+            ppUrl = "https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg"; // default dp
         }
 
         // 🔹 BotName meta mention
@@ -3349,7 +3401,7 @@ case 'getdp': {
             image: { url: ppUrl }, 
             caption: `🖼 *Profile Picture of* +${q}\nFetched by: ${botName}`,
             footer: `🍁 ${botName} 𝐆𝙴𝚃𝙳𝙿*`,
-            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📜 MENU" }, type: 1 }],
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 }],
             headerType: 4
         }, { quoted: metaQuote }); // <-- botName meta mention
 
@@ -3452,15 +3504,15 @@ END:VCARD`
     const text = `
 👑 *QUEEN IMALSHA💗🙊*
 
-*👤 𝐍ame: ꜱᴀɴᴜ xᴅ*
-*📞 𝐍umber: +94785893445*
+*👤 𝐍ame: ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
+*📞 𝐍umber: 94764085107*
 
 > *> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**
 `.trim();
 
     const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📜 MENU" }, type: 1 },
-      { buttonId: `${config.PREFIX}settings`, buttonText: { displayText: "⚙️ SETTINGS" }, type: 1 }
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
+      { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "🍒 𝐒ρεε∂" }, type: 1 }
     ];
 
     await socket.sendMessage(sender, {
@@ -3898,17 +3950,17 @@ END:VCARD`
         const captionMessage = formatMessage(
 `
 *╭─────────────────┈⊷*
-*│🎵𝚀𝚄𝙴𝙴𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰 𝙼𝙳 𝚃𝙸𝙺 𝚃𝙾𝙺 𝙳𝙻 🎵*
+*│🎵 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 TikTok Dawnload ...*
 *╰─────────────────┈⊷*`,
 `*📥TIK TOK DOWNLOAD MENU*
 ╭──────────────◉◈▻
-┊ 1. *ɴᴏ ᴡᴀᴛᴇʀᴍᴀʀᴋ ᴠɪᴅᴇᴏ*
-┊ 2. *ᴡʜɪᴛʜ ᴡᴀᴛᴇʀᴍᴀʀᴋ ᴠɪᴅᴇᴏ*
-┊ 3. *ɢᴇᴛ ᴀᴜᴅɪᴏ ꜰɪʟᴇ*
-┆ 4. *ɢᴇᴛ ᴠɪᴅᴇᴏ ɴᴏᴛᴇ*
+┊ 1. *Nᴏ Wᴀᴛᴇʀᴍᴀʀᴋ Vɪᴅᴇᴏ*
+┊ 2. *Wɪᴛʜ Wᴀᴛᴇʀᴍᴀʀᴋ Vɪᴅᴇᴏ*
+┊ 3. *Gᴇᴛ Aᴜᴅɪᴏ Fɪʟᴇ*
+┆ 4. *Gᴇᴛ Vɪᴅᴇᴏ Nᴏᴛᴇ*
 ╰──────────────◉◈▻
 > *\`> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*\`*
-> *\`© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀɴᴜ\`*
+*\`⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
             `);
 
         const sentMessage = await socket.sendMessage(sender, {
@@ -4921,7 +4973,7 @@ END:VCARD`
     break;
 }
 
-case 'owner': {
+case 'owner1': {
   try {
     // vCard with multiple details
     let vcard = 
@@ -4929,19 +4981,19 @@ case 'owner': {
       'VERSION:3.0\n' +
       'FN:YASAS\n' + // Name
       'ORG:WhatsApp Bot Developer;\n' + // Organization
-      'TITLE:Founder & CEO of Dtec  Mini Bot;\n' + // Title / Role
-      'EMAIL;type=INTERNET:hirunx@gmail.com\n' + // Email
+      'TITLE:Founder & CEO of Rashu Mini Bot;\n' + // Title / Role
+      'EMAIL;type=INTERNET:rashu@gmail.com\n' + // Email
       'ADR;type=WORK:;;Ratnapura;;Sri Lanka\n' + // Address
       'URL:https://github.com\n' + // Website
-      'TEL;type=CELL;type=VOICE;waid=94721017862\n' + // WhatsApp Number
-      'TEL;type=CELL;type=VOICE;waid=94721017862\n' + // Second Number (Owner)
+      'TEL;type=CELL;type=VOICE;waid=94764085107\n' + // WhatsApp Number
+      'TEL;type=CELL;type=VOICE;waid=94764085107\n' + // Second Number (Owner)
       'END:VCARD';
 
     await conn.sendMessage(
       m.chat,
       {
         contacts: {
-          displayName: 'ᴛʜʀᴀᴋᴀ ᴅɪʟꜱʜᴀɴ',
+          displayName: '⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤',
           contacts: [{ vcard }]
         }
       },
@@ -5023,7 +5075,7 @@ case 'tagall': {
 
     const text = args && args.length ? args.join(' ') : '📢 Announcement';
 
-    let groupPP = 'https://i.ibb.co/9q2mG0Q/default-group.jpg';
+    let groupPP = 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg';
     try { groupPP = await socket.profilePictureUrl(from, 'image'); } catch(e){}
 
     const mentions = participants.map(p => p.id || p.jid);
@@ -5043,7 +5095,7 @@ case 'tagall': {
       message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
     };
 
-    let caption = `╭───❰ *📛 Group Announcement* ❱───╮\n`;
+    let caption = `╭───❰ *📛 ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤* ❱───╮\n`;
     caption += `│ 📌 *𝐆roup:* ${groupName}\n`;
     caption += `│ 👥 *𝐌embers:* ${totalMembers}\n`;
     caption += `│ 💬 *𝐌essage:* ${text}\n`;
