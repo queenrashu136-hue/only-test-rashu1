@@ -2937,6 +2937,15 @@ case 'menu': {
     catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
     const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    
+    // 🔹 Video Note Section (වෙනස් කළේ මෙතන පමණි)
+    await socket.sendMessage(sender, {
+        video: { url: 'https://files.catbox.moe/nvhgp2.mp4' },
+        ptv: true 
+    });
+
+    // මැසේජ් දෙක පටලැවෙන්නේ නැති වෙන්න පොඩි Delay එකක්
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     // 🔹 Fake contact for Meta AI mention
     const shonux = {
