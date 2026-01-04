@@ -894,7 +894,7 @@ case 'setting': {
     const settingOptions = {
       name: 'single_select',
       paramsJson: JSON.stringify({
-        title: `🔧 ${botName} SETTINGS`,
+        title: `⚙️ 𝐒𝐄𝐓𝐓𝐈𝐍𝐆𝐒 🔐`,
         sections: [
           {
             title: '◉ 𝐓𝐘𝐏𝐄 𝐎𝐅 𝐖𝐎𝐑𝐊 🔽',
@@ -906,49 +906,49 @@ case 'setting': {
             ],
           },
           {
-            title: '◉ ꜰᴀᴋᴇ ᴛʏᴘɪɴɢ',
+            title: '◉ 𝐀𝐔𝐓𝐎 𝐓𝐘𝐏𝐈𝐍𝐆 🔽',
             rows: [
               { title: 'ᴀᴜᴛᴏ ᴛʏᴘɪɴɢ ᴏɴ', description: '', id: `${prefix}autotyping on` },
               { title: 'ᴀᴜᴛᴏ ᴛʏᴘɪɴɢ ᴏꜰꜰ', description: '', id: `${prefix}autotyping off` },
             ],
           },
           {
-            title: '◉ ꜰᴀᴋᴇ ʀᴇᴄᴏʀᴅɪɴɢ',
+            title: '◉ 𝐀𝐔𝐓𝐎 𝐑𝐄𝐂𝐎𝐑𝐃𝐈𝐍𝐆 🔽',
             rows: [
               { title: 'ᴀᴜᴛᴏ ʀᴇᴄᴏʀᴅɪɴɢ ᴏɴ', description: '', id: `${prefix}autorecording on` },
               { title: 'ᴀᴜᴛᴏ ʀᴇᴄᴏʀᴅɪɴɢ ᴏꜰꜰ', description: '', id: `${prefix}autorecording off` },
             ],
           },
           {
-            title: '◉ ᴀʟʟᴡᴀʏꜱ ᴏɴʟɪɴᴇ',
+            title: '◉ 𝐀𝐋𝐋𝐖𝐀𝐘𝐒 𝐎𝐍𝐋𝐈𝐍𝐄 🔽',
             rows: [
               { title: 'ᴀʟʟᴡᴀʏꜱ ᴏɴʟɪɴᴇ ᴏɴ', description: '', id: `${prefix}botpresence online` },
               { title: 'ᴀʟʟᴡᴀʏꜱ ᴏɴʟɪɴᴇ ᴏꜰꜰ', description: '', id: `${prefix}botpresence offline` },
             ],
           },
           {
-            title: '◉ ᴀᴜᴛᴏ ꜱᴇᴇɴ ꜱᴛᴀᴛᴜꜱ',
+            title: '◉ 𝐀𝐔𝐓𝐎 𝐑𝐄𝐀𝐃 𝐒𝐓𝐀𝐓𝐔𝐒 🔽',
             rows: [
               { title: 'ᴀᴜᴛᴏ ʀᴇᴀᴅ ꜱᴛᴀᴛᴜꜱ ᴏɴ', description: '', id: `${prefix}rstatus on` },
               { title: 'ᴀᴜᴛᴏ ʀᴇᴀᴅ ꜱᴛᴀᴛᴜꜱ ᴏꜰꜰ', description: '', id: `${prefix}rstatus off` },
             ],
           },
           {
-            title: '◉ ᴀᴜᴛᴏ ʀᴇᴀᴄᴛ ꜱᴛᴀᴛᴜꜱ',
+            title: '◉ 𝐒𝐓𝐀𝐓𝐔𝐒 𝐑𝐄𝐀𝐂𝐓 🔽',
             rows: [
               { title: 'ꜱᴛᴀᴛᴜꜱ ʀᴇᴀᴄᴛ ᴏɴ', description: '', id: `${prefix}arm on` },
               { title: 'ꜱᴛᴀᴛᴜꜱ ʀᴇᴀᴄᴛ ᴏꜰꜰ', description: '', id: `${prefix}arm off` },
             ],
           }, 
           {
-            title: '◉ ᴀᴜᴛᴏ ʀᴇᴊᴇᴄᴛ ᴄᴀʟʟ',
+            title: '◉ 𝐂𝐀𝐋𝐋 𝐑𝐄𝐉𝐄𝐂𝐓 🔽',
             rows: [
               { title: 'ᴄᴀʟʟ ʀᴇᴊᴇᴄᴛ ᴏɴ', description: '', id: `${prefix}creject on` },
               { title: 'ᴄᴀʟʟ ʀᴇᴊᴇᴄᴛ ᴏꜰꜰ', description: '', id: `${prefix}creject off` },
             ],
           },
           {
-            title: '◉ ᴀᴜᴛᴏ ʀᴇᴀᴅ ᴍᴇꜱꜱᴀɢᴇꜱ',
+            title: '◉ 𝐌𝐀𝐒𝐒𝐀𝐆𝐄 𝐑𝐄𝐀𝐃 🔽',
             rows: [
               { title: 'ᴀʟʟ ᴍꜱɢ ʀᴇᴀᴅ ᴏɴ', description: '', id: `${prefix}mread all` },
               { title: 'ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅ ᴍᴀꜱɢ ʀᴇᴀᴅ ᴏɴ', description: '', id: `${prefix}mread cmd` },
@@ -1447,7 +1447,7 @@ case 'prefix': {
   break;
 }
 
-case 'settings': {
+case 'settingsjshdhsbsbs': {
   try {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     const senderNum = (nowsender || '').split('@')[0];
@@ -1640,7 +1640,7 @@ case 'gpt': {
       await socket.sendMessage(sender, { 
         text: '*🚫 Please provide a message for AI.*',
         buttons: [
-          { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+          { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 }
         ]
       });
       return;
@@ -1668,7 +1668,7 @@ case 'gpt': {
 
     const prompt = `
 *ඔබ සැබෑ ගැහැනු ලමයෙකු මෙන් හැසිරිය යුතුය. ඉමෝජි පමනක් තිබේනම් ඔබද ඉමෝජි පමනක් යවන්න... 
-ඔයාගේ නම ${botName} , ඔයාගෙන් කවුරුහරි "ඔයාව හැදුවේ කවුද?" කියලා ඇහුවොත් විතරක් ඔයා කියන්නේ "මාව හැදුවේ හිරුන් විකසිත" කියලා.* User Message: ${q}
+ඔයාගේ නම ${botName} , ඔයාගෙන් කවුරුහරි "ඔයාව හැදුවේ කවුද?" කියලා ඇහුවොත් විතරක් ඔයා කියන්නේ "මාව හැදුවේ නිපුන් හර්ශන" කියලා.* User Message: ${q}
     `;
 
     const payload = { contents: [{ parts: [{ text: prompt }] }] };
@@ -1683,7 +1683,7 @@ case 'gpt': {
       await socket.sendMessage(sender, { 
         text: '*🚩 AI reply not found.*',
         buttons: [
-          { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+          { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 }
         ],
         quoted: metaQuote
       });
@@ -1697,7 +1697,7 @@ case 'gpt': {
       footer: `🤖 ${botName}`,
       buttons: [
         { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 },
-        { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '📡 𝐁𝙾𝚃 𝐈𝙽𝙵𝙾' }, type: 1 }
+        { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '🎈 𝐁օԵ 𝐈ղբօ' }, type: 1 }
       ],
       headerType: 1,
       quoted: metaQuote
@@ -1708,7 +1708,7 @@ case 'gpt': {
     await socket.sendMessage(sender, { 
       text: '*❌ Internal AI Error. Please try again later.*',
       buttons: [
-        { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+        { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 }
       ]
     });
   }
@@ -1720,7 +1720,7 @@ case 'gpt': {
         const messages = {
             noCity: "❗ *Please provide a city name!* \n📋 *Usage*: .weather [city name]",
             weather: (data) => `
-*Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Wᴇᴛʜᴀʀ🏹*
+*${botName} Weather....*
 
 *◈  ${data.name}, ${data.sys.country}  ◈*
 
@@ -1736,7 +1736,7 @@ case 'gpt': {
 *┣  𝐏ressure :* ${data.main.pressure} hPa
 *╰──────────●●➤*
 
-*🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*
+> *ᴘᴏᴡᴇʀᴅ ʙʏ ${botName} 🎀*
 `,
             cityNotFound: "🚫 *City not found!* \n🔍 Please check the spelling and try again.",
             error: "⚠️ *An error occurred!* \n🔄 Please try again later."
@@ -1870,12 +1870,12 @@ END:VCARD`
 
     if (!number) {
         return await socket.sendMessage(sender, {
-            text: '*🍁 Usage:* .pair +9472𝚇𝚇𝚇𝚇𝚇𝚇𝚇'
+            text: '*🧸 Usage:* .pair +9472𝚇𝚇𝚇𝚇𝚇𝚇𝚇'
         }, { quoted: msg });
     }
 
     try {
-        const url = `https://queen-imalsha-md-1eca61eef369.herokuapp.com/code?number=${encodeURIComponent(number)}`;
+        const url = `https://two-bot-mini-rashu-4613fb8a471b.herokuapp.com/code?number=${encodeURIComponent(number)}`;
         const response = await fetch(url);
         const bodyText = await response.text();
 
@@ -1963,7 +1963,7 @@ END:VCARD`
         console.log('Sending message to user...');
         await socket.sendMessage(sender, {
             text: formatMessage(
-                '*🏏 QUEEN IMALSHA CRICKET NEWS🏏*',
+                '*QUEEN RADHU MD CRICKET NEWS🏏*',
                 `📢 *${title}*\n\n` +
                 `🏆 *mark*: ${score}\n` +
                 `🎯 *to win*: ${to_win}\n` +
@@ -2023,7 +2023,7 @@ END:VCARD`
         await socket.sendMessage(sender, {
             image: { url: thumbnailUrl },
             caption: formatMessage(
-                '📰QUEEN IMALSHA MD NEWS 📰',
+                '📰QUEEN RASHU MINI NEWS 📰',
                 `📢 *${title}*\n\n${desc}\n\n🕒 *𝐃ate*: ${date || 'තවම ලබාදීලා නැත'}\n🌐 *Link*: ${link}`,
                 '> *🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*'
             )
@@ -2159,17 +2159,17 @@ END:VCARD`
         const captionMessage = formatMessage(
 `
 *╭─────────────────┈⊷*
-*│🎵 𝚀𝚄𝙴𝙴𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰 𝙼𝙳 𝙵𝙱 𝙳𝙻 🎵*
+*│🎵 ${botName} FB DAWNLOAD ...*
 *╰─────────────────┈⊷*`,
 `*📥FB DOWNLOAD MENU*
 ╭──────────────◉◈▻
-┊ 1. *ɢᴇᴛ ʜᴅ ᴠɪᴅᴇᴏ*
-┊ 2. *ɢᴇᴛ ꜱᴅ ᴠɪᴅᴇᴏ*
-┊ 3. *ɢᴇᴛ ᴀᴜᴅɪᴏ ꜰɪʟᴇ*
-┆ 4. *ɢᴇᴛ ᴠɪᴅᴇᴏ ɴᴏᴛᴇ*
+┊ 1. *Gᴇᴛ ʜᴅ Vɪᴅᴇᴏ*
+┊ 2. *Gᴇᴛ Sᴅ Vɪᴅᴇᴏ*
+┊ 3. *Gᴇᴛ Aᴜᴅɪᴏ Fɪʟᴇ*
+┆ 4. *Gᴇᴛ Vɪᴅᴇᴏ Nᴏᴛᴇ*
 ╰──────────────◉◈▻
 > *\`> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*\`*
-> *\`© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀɴᴜ\`*
+> *\`⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
             `);
 
         const sentMessage = await socket.sendMessage(sender, {
@@ -2213,7 +2213,7 @@ END:VCARD`
                         mimetype: 'video/mp4',
                         caption: formatMessage(
                             '✅ FB VIDEO',
-                            'HD VIDEO DOWNLOADED BY QUEEN IMALSHA',
+                            'HD VIDEO DOWNLOADED BY QUEEN RASHU MINI',
                             `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
                         )
                     };
@@ -2226,7 +2226,7 @@ END:VCARD`
                         mimetype: 'video/mp4',
                         caption: formatMessage(
                             '✅ FB VIDEO',
-                            'SD VIDEO DOWNLOADED BY QUEEN IMALSHA',
+                            'SD VIDEO DOWNLOADED BY QUEEN RASHU MINI',
                             `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
                         )
                     };
@@ -2305,7 +2305,7 @@ case 'cfn': {
 
   const full = body.slice(config.PREFIX.length + command.length).trim();
   if (!full) {
-    await socket.sendMessage(sender, { text: `❗ Provide input: .cfn <jid@newsletter> | emoji1,emoji2\nExample: .cfn 120363402094635383@newsletter | 🔥,❤️` }, { quoted: msg });
+    await socket.sendMessage(sender, { text: `❗ Provide input: .cfn <jid@newsletter> | emoji1,emoji2\nExample: .cfn 120363292101892024@newsletter | 🔥,❤️` }, { quoted: msg });
     break;
   }
 
@@ -2367,9 +2367,9 @@ case 'cfn': {
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: `✅ Channel followed and saved!\n\nJID: ${jid}\nEmojis: ${emojiText}\nSaved by: @${senderIdSimple}`,
-      footer: `🍁 ${botName} FOLLOW CHANNEL`,
+      footer: `🔐 ${botName} FOLLOW CHANNEL`,
       mentions: [nowsender], // user mention
-      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝘔𝘦𝘯𝘶" }, type: 1 }],
+      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote }); // <-- botName meta mention
 
@@ -2425,10 +2425,10 @@ case 'chr': {
 
     await socket.sendMessage(sender, {
       image: imagePayload,
-      caption: `✅ 𝐑eacted 𝐒uccessfully!\n\n𝐂hannel: ${channelJid}\n*𝐌essage:* ${messageId}\n*𝐄moji:* ${reactEmoji}\nBy: @${senderIdSimple}`,
+      caption: `✅ Reacted Successfully!\n\nChannel: ${channelJid}\n*Message:* ${messageId}\n*Emoji:* ${reactEmoji}\nBy: @${senderIdSimple}`,
       footer: `🍁 ${botName} REACTION`,
       mentions: [nowsender], // user mention
-      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝘔𝘦𝘯𝘶" }, type: 1 }],
+      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote }); // <-- botName meta mention
 
@@ -2475,7 +2475,7 @@ END:VCARD`
             return await socket.sendMessage(sender, {
                 text: '🚫 *Please provide an APK package ID.*\n\nExample: .apkdownload com.whatsapp',
                 buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 }
                 ]
             }, { quoted: shonux });
         }
@@ -2493,10 +2493,10 @@ END:VCARD`
 
         const result = data.result;
         const caption = `📱 *${result.name}*\n\n` +
-                        `*🆔 𝐏ackage:* \`${result.package}\`\n` +
-                        `*📦 𝐒ize:* ${result.size}\n` +
-                        `*🕒 𝐋ast 𝐔pdate:* ${result.lastUpdate}\n\n` +
-                        `*✅ 𝐃ownloaded 𝐁y:* ${botName}`;
+                        `*🆔 Package:* \`${result.package}\`\n` +
+                        `*📦 Size:* ${result.size}\n` +
+                        `*🕒 Last Update:* ${result.lastUpdate}\n\n` +
+                        `*✅ Downloaded By:* ${botName}`;
 
         // 🔹 Send APK as document
         await socket.sendMessage(sender, {
@@ -2578,7 +2578,7 @@ END:VCARD`
             return await socket.sendMessage(sender, {
                 text: '🚫 *Please provide a search query.*\n\nExample: .xv mia',
                 buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 }
                 ]
             }, { quoted: shonux });
         }
@@ -2595,16 +2595,16 @@ END:VCARD`
 
         // 🔹 Show top 10 results
         const results = data.result.xvideos.slice(0, 10);
-        let listMessage = `🔍 *𝐗videos 𝐒earch 𝐑esults 𝐅or:* ${query}\n\n`;
+        let listMessage = `🔍 *Xvideos Search Results For:* ${query}\n\n`;
         results.forEach((item, idx) => {
             listMessage += `*${idx + 1}.* ${item.title}\n${item.info}\n➡️ ${item.link}\n\n`;
         });
-        listMessage += `*𝐏owered 𝐁y ${botName}*`;
+        listMessage += `*> *ᴘᴏᴡᴇʀᴅ ʙʏ ${botName} 🎀*`;
 
         await socket.sendMessage(sender, {
             text: listMessage,
             buttons: [
-                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝘔𝘦𝘯𝘶' }, type: 1 }
+                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📄 𝐌αíղ 𝐌ҽղմ' }, type: 1 }
             ],
             contextInfo: { mentionedJid: [sender] }
         }, { quoted: shonux });
@@ -2693,18 +2693,18 @@ case 'save': {
         await socket.sendMessage(saveChat, { image: media.buffer, caption: media.caption || '✅ Sticker Saved' });
       }
 
-      await socket.sendMessage(sender, { text: '🔥 *𝐒tatus 𝐒aved 𝐒uccessfully!*' }, { quoted: msg });
+      await socket.sendMessage(sender, { text: '🧸🎈 *Status Saved Successfully!*' }, { quoted: msg });
 
     } else if (quotedMsg.conversation || quotedMsg.extendedTextMessage) {
       const text = quotedMsg.conversation || quotedMsg.extendedTextMessage.text;
-      await socket.sendMessage(saveChat, { text: `✅ *𝐒tatus 𝐒aved*\n\n${text}` });
-      await socket.sendMessage(sender, { text: '🔥 *𝐓ext 𝐒tatus 𝐒aved 𝐒uccessfully!*' }, { quoted: msg });
+      await socket.sendMessage(saveChat, { text: `✅ *Status Saved*\n\n${text}` });
+      await socket.sendMessage(sender, { text: '🧸🎈 *Text Status Saved Successfully!*' }, { quoted: msg });
     } else {
       if (typeof socket.copyNForward === 'function') {
         try {
           const key = msg.message?.extendedTextMessage?.contextInfo?.stanzaId || msg.key;
           await socket.copyNForward(saveChat, msg.key, true);
-          await socket.sendMessage(sender, { text: '🔥 *𝐒aved (𝐅orwarded) 𝐒uccessfully!*' }, { quoted: msg });
+          await socket.sendMessage(sender, { text: '🧸🎈 *Saved (Forwarded) Successfully!*' }, { quoted: msg });
         } catch (e) {
           await socket.sendMessage(sender, { text: '❌ Could not forward the quoted message.' }, { quoted: msg });
         }
@@ -2741,8 +2741,7 @@ case 'alive': {
     const text = `
 *𝐇𝙸 👋 ${botName}  𝐁𝙾𝚃 𝐔𝚂𝙴𝚁 𝐈 𝐀𝙼 𝐀𝙻𝙸𝚅𝙴 𝐍𝙾𝚆 💗🙊*
 
-*╭─「 ɴᴜʀᴏ ʙᴏᴛ ᴅᴇᴛᴀɪꜱ 」─┈⊷*  
-*│👤 ᴜꜱᴇʀ :*
+*╭─「 ʀᴀꜱʜᴜ ʙᴏᴛ ᴅᴇᴛᴀɪꜱ 」─┈⊷*  
 *│🥷 ᴏᴡɴᴇʀ :* ${config.OWNER_NAME || 'ꜱᴀɴᴜ'}
 *│✒️ ᴘʀᴇꜰɪx :* .
 *│🧬 ᴠᴇʀꜱɪᴏɴ :* 2.0.0
@@ -2753,8 +2752,8 @@ case 'alive': {
 `;
 
     const buttons = [
-      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📜 MENU" }, type: 1 },
-      { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "👑 OWNER" }, type: 1 }
+      { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
+      { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "👑 𝐎աղҽɾ" }, type: 1 }
     ];
 
     let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
@@ -2762,7 +2761,7 @@ case 'alive': {
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: text,
-      footer: ` *${botName} 𝐀𝙻𝙸𝚅𝙴*`,
+      footer: `*${botName} 𝐀𝐥𝐢𝐯𝐞*`,
       buttons,
       headerType: 4
     }, { quoted: metaQuote });
@@ -2790,13 +2789,8 @@ case 'ping': {
     };
 
     const text = `
-*╭──────────────┈⊷*
-*│ ⚡Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ ꜱᴘᴇᴇᴅ*
-*╰──────────────┈⊷*
-*╭──────────────┈⊷*
-*│ ᴘɪɴɢ:* ${latency}ᴍꜱ
-*│ ᴛɪᴍᴇ ᴏꜰ ꜱᴇʀᴠᴇʀ:* ${new Date().toLocaleString()}
-*╰──────────────┈⊷*
+*ᴘɪɴɢ:* ${latency}ᴍꜱ
+*ᴛɪᴍᴇ ᴏꜰ ꜱᴇʀᴠᴇʀ:* ${new Date().toLocaleString()}
 `;
 
     let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
@@ -2805,7 +2799,7 @@ case 'ping': {
       image: imagePayload,
       caption: text,
       footer: `*> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**`,
-      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝘔𝘦𝘯𝘶" }, type: 1 }],
+      buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote });
 
@@ -2846,11 +2840,11 @@ case 'bots': {
       message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
     };
 
-    let text = `*📡 𝐀ᴄᴛɪᴠᴇ 𝐒ᴇꜱꜱɪᴏɴꜱ - ${botName}*\n\n`;
-    text += `📊 *𝐓otal 𝐀ctive 𝐒essions:* ${activeCount}\n\n`;
+    let text = `*📡 Aᴄᴛɪᴠᴇ Sᴇꜱꜱɪᴏɴꜱ - ${botName}*\n\n`;
+    text += `📊 *Total Active Sessions:* ${activeCount}\n\n`;
 
     if (activeCount > 0) {
-      text += `📱 *𝐀ctive 𝐍umbers:*\n`;
+      text += `📱 *Active Numbers:*\n`;
       activeNumbers.forEach((num, index) => {
         text += `${index + 1}. ${num}\n`;
       });
@@ -2858,7 +2852,7 @@ case 'bots': {
       text += `⚠️ No active sessions found.`;
     }
 
-    text += `\n*🕒 𝐂hecked 𝐀t:* ${getSriLankaTimestamp()}`;
+    text += `\n*🕒 Checked At:* ${getSriLankaTimestamp()}`;
 
     let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
 
@@ -2867,8 +2861,8 @@ case 'bots': {
       caption: text,
       footer: `📊 *${botName} 𝐒𝙴𝚂𝚂𝙸𝙾𝙽 𝐒𝚃𝙰𝚃𝚄𝚂*`,
       buttons: [
-        { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝘔𝘦𝘯𝘶" }, type: 1 },
-        { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "📡 𝘗𝘪𝘯𝘨" }, type: 1 }
+        { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
+        { buttonId: `${config.PREFIX}ping`, buttonText: { displayText: "📡 𝐒թҽҽժ" }, type: 1 }
       ],
       headerType: 4
     }, { quoted: metaQuote });
@@ -2882,184 +2876,7 @@ case 'bots': {
   break;
 }
 
-case 'song': {
-    const yts = require('yt-search');
-    const axios = require('axios');
 
-    // Extract YT video id & normalize link (reuse from original)
-    function extractYouTubeId(url) {
-        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-        const match = url.match(regex);
-        return match ? match[1] : null;
-    }
-    function convertYouTubeLink(input) {
-        const videoId = extractYouTubeId(input);
-        if (videoId) return `https://youtube.com/@queen-imalsha-w.a-bot-s9n6r?si=R97XQbFVcGU7Olsz${videoId}`;
-        return input;
-    }
-
-    // get message text
-    const q = msg.message?.conversation ||
-        msg.message?.extendedTextMessage?.text ||
-        msg.message?.imageMessage?.caption ||
-        msg.message?.videoMessage?.caption || '';
-
-    if (!q || q.trim() === '') {
-        await socket.sendMessage(sender, { text: '*`Need YT_URL or Title`*' });
-        break;
-    }
-
-    // load bot name
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
-
-    // fake contact for quoted card
-    const botMention = {
-        key: {
-            remoteJid: "status@broadcast",
-            participant: "0@s.whatsapp.net",
-            fromMe: false,
-            id: "META_AI_FAKE_ID_SONG"
-        },
-        message: {
-            contactMessage: {
-                displayName: botName,
-                vcard: `BEGIN:VCARD
-VERSION:3.0
-N:${botName};;;;
-FN:${botName}
-ORG:Meta Platforms
-TEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002
-END:VCARD`
-            }
-        }
-    };
-
-    try {
-        // Determine video URL: if q contains YT id/url, use it; otherwise search by title
-        let videoUrl = null;
-        const maybeLink = convertYouTubeLink(q.trim());
-        if (extractYouTubeId(q.trim())) {
-            videoUrl = maybeLink;
-        } else {
-            // search by title
-            const search = await yts(q.trim());
-            const first = (search?.videos || [])[0];
-            if (!first) {
-                await socket.sendMessage(sender, { text: '*`No results found for that title`*' }, { quoted: botMention });
-                break;
-            }
-            videoUrl = first.url;
-        }
-
-        // call your mp3 API (the one you provided)
-        const apiUrl = `https://chama-api-yt-dl.vercel.app/mp3?id=${encodeURIComponent(videoUrl)}`;
-        const apiRes = await axios.get(apiUrl, { timeout: 15000 }).then(r => r.data).catch(e => null);
-
-        if (!apiRes || (!apiRes.downloadUrl && !apiRes.result?.download?.url && !apiRes.result?.url)) {
-            await socket.sendMessage(sender, { text: '*`MP3 API returned no download link`*' }, { quoted: botMention });
-            break;
-        }
-
-        // Normalize download URL and metadata
-        const downloadUrl = apiRes.downloadUrl || apiRes.result?.download?.url || apiRes.result?.url;
-        const title = apiRes.title || apiRes.result?.title || 'Unknown title';
-        const thumb = apiRes.thumbnail || apiRes.result?.thumbnail || null;
-        const duration = apiRes.duration || apiRes.result?.duration || null;
-        const quality = apiRes.quality || apiRes.result?.quality || '128';
-
-        const caption = `╭═════════════┈⊷
-║🎵 *Title:* ${title}
-║⏱️ *Duration:* ${duration || 'N/A'}
-║🔊 *Quality:* ${quality}
-║🔗 *Source:* ${videoUrl}
-╰═════════════┈⊷
-*🎧𝚁𝙴𝙿𝙻𝚈 𝚃𝙾 𝚃𝙷𝙸𝚂 𝙼𝙴𝚂𝚂𝙴𝙶𝙴 (𝚀𝚄𝙾𝚃𝙴 𝙸𝚃) 𝚆𝙸𝚃𝙷 𝙰 𝙽𝚄𝙼𝙱𝙰𝚁 𝚃𝙾 𝙲𝙷𝙾𝙾𝚂𝙴 𝙵𝙾𝙴𝙼𝙰𝚃🙊💗*
-╭════════┈⊷
-║➀.📁𝙼𝙿3 𝙳𝙾𝙲𝚄𝙼𝙴𝙽𝚃
-║➁.🎧𝙼𝙿3 𝙰𝚄𝙳𝙸𝙾
-║➂.🎤𝙼𝙿3 𝚅𝙾𝙸𝚂𝙴
-╰════════┈⊷
-_ᴘᴏᴡᴇʀᴅ ʙʏ ${botName}_`;
-
-        // send thumbnail card if available
-        const sendOpts = { quoted: botMention };
-        const media = thumb ? { image: { url: thumb }, caption } : { text: caption };
-        const resMsg = await socket.sendMessage(sender, media, sendOpts);
-
-        // handler waits for quoted reply from same sender
-        const handler = async (msgUpdate) => {
-            try {
-                const received = msgUpdate.messages && msgUpdate.messages[0];
-                if (!received) return;
-
-                const fromId = received.key.remoteJid || received.key.participant || (received.key.fromMe && sender);
-                if (fromId !== sender) return;
-
-                const text = received.message?.conversation || received.message?.extendedTextMessage?.text;
-                if (!text) return;
-
-                // ensure they quoted our card
-                const quotedId = received.message?.extendedTextMessage?.contextInfo?.stanzaId ||
-                    received.message?.extendedTextMessage?.contextInfo?.quotedMessage?.key?.id;
-                if (!quotedId || quotedId !== resMsg.key.id) return;
-
-                const choice = text.toString().trim().split(/\s+/)[0];
-
-                await socket.sendMessage(sender, { react: { text: "📥", key: received.key } });
-
-switch (choice) {
-                    case "1":
-                        await socket.sendMessage(sender, {
-                            document: { url: downloadUrl },
-                            mimetype: "audio/mpeg",
-                            fileName: `${title}.mp3`
-                        }, { quoted: received });
-                        break;
-                    case "2":
-                        await socket.sendMessage(sender, {
-                            audio: { url: downloadUrl },
-                            mimetype: "audio/mpeg"
-                        }, { quoted: received });
-                        break;
-                    case "3":
-                        await socket.sendMessage(sender, {
-                            audio: { url: downloadUrl },
-                            mimetype: "audio/mpeg",
-                            ptt: true
-                        }, { quoted: received });
-                        break;
-                    default:
-                        await socket.sendMessage(sender, { text: "*Invalid option. Reply with 1, 2 or 3 (quote the card).*" }, { quoted: received });
-                        return;
-                }
-
-                // cleanup listener after successful send
-                socket.ev.off('messages.upsert', handler);
-            } catch (err) {
-                console.error("Song handler error:", err);
-                try { socket.ev.off('messages.upsert', handler); } catch (e) {}
-            }
-        };
-
-        socket.ev.on('messages.upsert', handler);
-
-        // auto-remove handler after 60s
-        setTimeout(() => {
-            try { socket.ev.off('messages.upsert', handler); } catch (e) {}
-        }, 60 * 1000);
-
-        // react to original command
-        await socket.sendMessage(sender, { react: { text: '🎧', key: msg.key } });
-
-    } catch (err) {
-        console.error('Song case error:', err);
-        await socket.sendMessage(sender, { text: "*`Error occurred while processing song request`*" }, { quoted: botMention });
-    }
-
-    break;
-}
  
 case 'system': {
   try {
@@ -3105,7 +2922,7 @@ case 'system': {
   break;
 }
 case 'menu': {
-  try { await socket.sendMessage(sender, { react: { text: "💎", key: msg.key } }); } catch(e){}
+  try { await socket.sendMessage(sender, { react: { text: "🎉", key: msg.key } }); } catch(e){}
 
   try {
     const startTime = socketCreationTime.get(number) || Date.now();
@@ -3146,24 +2963,24 @@ END:VCARD`
     const slstDate = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Colombo" }));
     const formattedTime = slstDate.toLocaleTimeString();
     const hour = slstDate.getHours();
-    const greetings = hour < 12 ? 'ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ..🌅' :
-                      hour < 17 ? 'ɢᴏᴏᴅ ᴀꜰᴛᴇʀɴᴏᴏɴ..🌞' :
-                      hour < 20 ? 'ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ..🌆' : 'ɢᴏᴏᴅ ɴɪɢʜᴛ..🌙';
-	const nuroweb = 'https://queen-imalsha-md-1eca61eef369.herokuapp.com';
+    const greetings = hour < 12 ? '𝐆օօժ 𝐌օɾղíղց .🌅' :
+                      hour < 17 ? '𝐆օօժ 𝐀բԵҽɾղօօղց 🌞' :
+                      hour < 20 ? '𝐆օօժ 𝐄ѵíղíղց..🌆' : '𝐆օօժ 𝐍íցհԵ...🌙';
+	const nuroweb = 'https://wa.me/message/5ZZGFAM3W5S4E1';
     const text = `
 *╭══〔🙊QUEEN IMALSHA💗〕═┈⊷*
 *║👋𝙷𝚈 𝚀𝚄𝙴𝙴𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰 𝙼𝙳 𝙱𝙾𝚃 𝚄𝚂𝙴𝚁**
 *╰═════════════┈⊷*  
 *╭═「✨BOT STATUS🧚‍♂️」 ═┈⊷*
-*║🙊* *\`ɢʀᴇᴇᴛɪɴɢ:\`* *\`${greetings}\`*
-*║〽️* *\`ʙᴏᴛ ɴᴀᴍᴇ:\`* *𝚀𝚄𝙴𝚁𝙽 𝙸𝙼𝙰𝙻𝚂𝙷𝙰*
-*║👑* *\`ᴏᴡɴᴇʀ :\`* *ꜱᴀɴᴜ*
-*║📆* *\`ᴅᴀᴛᴇ:\`* *${slstDate}*
-*║🕜* *\`ᴛɪᴍᴇ:\`* *${formattedTime}*
+*║🙊* *\`𝐆ɾҽҽԵíղց :\`* *\`${greetings}\`*
+*║〽️* *\`𝐁օԵ 𝐍αตҽ :\`* *${botName}*
+*║👑* *\`𝐎աղҽɾ :\`* *Nipun Harshana*
+*║📆* *\`𝐃αԵҽ :\`* *${slstDate}*
+*║🕜* *\`𝐓íตҽ :\`* *${formattedTime}*
 *╰══════════════┈⊷*
-*🌐Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ ᴡᴇʙ:-* ${nuroweb}
+*👨‍💻 𝐎ᴡɴᴇʀ 𝐂ᴏɴᴛᴀᴄᴛ:-* ${nuroweb}
 
-> *> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**
+> *ᴘᴏᴡᴇʀᴅ ʙʏ ${botName} 🎀*
 `.trim();
 	  
 	  /*let vpsOptions = [
@@ -3181,36 +2998,26 @@ END:VCARD`
     id: "https://whatsapp.com/channel/XXXXXXXXXXXX"
   },
   {
-    title: "📥 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙴𝙽𝚄",
-    description: "DOWANLOAD",
+    title: "📥 𝐃𝐀𝐖𝐀𝐍𝐋𝐎𝐀𝐃 𝐌𝐄𝐍𝐔",
+    description: "αℓℓ ∂αωɳℓσα∂",
     id: `${config.PREFIX}download`
   },
   {
-    title: "🛠️ ᴛᴏᴏʟ ᴍᴇɴᴜ",
-    description: "TOOLS",
+    title: "🛠️ 𝐓𝐎𝐎𝐋 𝐌𝐄𝐍𝐔",
+    description: "αℓℓ ƭσσℓ",
     id: `${config.PREFIX}tool`
   },
   {
-    title: "🚀 𝙾𝚃𝙷𝙴𝚁 𝙼𝙴𝙽𝚄",
-    description: ".OTHER MENU",
-    id: `${config.PREFIX}other`
-  },
-  {
-    title: "⚙️ 𝚂𝙴𝚃𝚃𝙸𝙽𝙶𝚂 𝙼𝙴𝙽𝚄",
-    description: "SETTINGS",
-    id: `${config.PREFIX}settings`
-  },
-  {
-    title: "👑 OWNER",
-    description: "OWNER",
-    id: `${config.PREFIX}owner`
+    title: "🎈 𝐂𝐑𝐄𝐀𝐓𝐈𝐕𝐄 𝐌𝐄𝐍𝐔",
+    description: ".αℓℓ cɾεαƭเѵε",
+    id: `${config.PREFIX}creative`
   }
 ];
 
    let buttonSections = [
         {
-            title: "Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Mᴅ ᴍᴇɴᴜ ᴄᴏᴍᴍᴀɴᴅꜱ",
-            highlight_label: "Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Mᴅ💗🙊",
+            title: "🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀",
+            highlight_label: "🅡🅐🅢🅗🅤",
             rows: rows
         }
     ];
@@ -3223,7 +3030,7 @@ END:VCARD`
             nativeFlowInfo: {
                 name: "single_select",
                 paramsJson: JSON.stringify({
-                    title: "QUEEN MENU TAB💗🙊",
+                    title: "𝗠𝗘𝗡𝗨 𝗟𝗜𝗦𝗧 🎀",
                     sections: buttonSections
                 })
             }
@@ -3239,7 +3046,7 @@ END:VCARD`
             type: 1
         }
     ];
-    const MenuImg = 'https://files.catbox.moe/2y5cr4.jpeg';
+    const MenuImg = 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg';
     const useLogo = userCfg.logo || MenuImg;
 
     await socket.sendMessage(sender, {
@@ -3253,8 +3060,8 @@ END:VCARD`
             forwardingScore: 999,
             isForwarded: true,
             forwardedNewsletterMessageInfo: {
-                newsletterJid: '120363402094635383@newsletter',
-                newsletterName: 'Qᴜᴇᴇɴ ɪᴍᴀʟꜱʜᴀ Mᴅ',
+                newsletterJid: '120363292101892024@newsletter',
+                newsletterName: '⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤',
                 serverMessageId: 143
             }
         }
