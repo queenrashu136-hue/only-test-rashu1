@@ -2788,9 +2788,9 @@ case 'ping': {
       message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
     };
 
-    const text = `
-*ᴘɪɴɢ:* ${latency}ᴍꜱ
-*ᴛɪᴍᴇ ᴏꜰ ꜱᴇʀᴠᴇʀ:* ${new Date().toLocaleString()}
+    const text = `*⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
+*🎈𝐒ρεε∂ :* ${latency}ᴍꜱ
+*🔐 𝐓เɱε 𝐎ɾ 𝐒εѵεɾ :* ${new Date().toLocaleString()}
 `;
 
     let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
@@ -2798,7 +2798,7 @@ case 'ping': {
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: text,
-      footer: `*> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**`,
+      footer: `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**`,
       buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote });
@@ -3038,12 +3038,12 @@ END:VCARD`
         },
         {
             buttonId: `${config.PREFIX}ping`,
-            buttonText: { displayText: '⚡ PING' },
+            buttonText: { displayText: '🍒 𝐒ρεε∂' },
             type: 1
         },
         {
             buttonId: `${config.PREFIX}owner`,
-            buttonText: { displayText: '👑 OWNER' },
+            buttonText: { displayText: '👑 𝐎ωɳεɾ' },
             type: 1
         }
     ];
@@ -3502,7 +3502,7 @@ END:VCARD`
     };
 
     const text = `
-👑 *QUEEN IMALSHA💗🙊*
+*🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*
 
 *👤 𝐍ame: ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
 *📞 𝐍umber: 94764085107*
