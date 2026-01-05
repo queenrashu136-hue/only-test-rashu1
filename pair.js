@@ -2888,402 +2888,166 @@ case 'alive': {
 
 // ==========================================
 
-case 'help': {
-  try {
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || BOT_NAME_FANCY;
-    const logo = cfg.logo || config.RCD_IMAGE_PATH;
-
-    // Meta AI mention
-    const metaQuote = {
-      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_ALIVE" },
-      message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
-    };
-
-    const startTime = socketCreationTime.get(number) || Date.now();
-    const uptime = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(uptime / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
-
-    const text = `*🎉🎊 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 🎀🎉 𝐁𝐎𝐓 𝐋𝐀𝐍𝐆𝐔𝐀𝐆𝐄.....*
-
-*ඔබගෙ බාශාව අනුව පහත බොත්තම ස්පර්ශ කරන්න*
-
-*Touch the button below according to your language*
-
-अपनी भाषा के अनुसार नीचे दिए गए बटन को स्पर्श करें।`;
-
-    const buttons = [
-      { buttonId: `${config.PREFIX}sllist`, buttonText: { displayText: "🇱🇰 සිංහල" }, type: 1 },
-      { buttonId: `${config.PREFIX}enlist`, buttonText: { displayText: "🇮🇸 ENGLISH" }, type: 1 },
-      { buttonId: `${config.PREFIX}hilist`, buttonText: { displayText: "🇹🇯 हिंदी" }, type: 1 }
-    ];
-
-    let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
-
-    await socket.sendMessage(sender, {
-      image: imagePayload,
-      caption: text,
-      footer: `🔐 ${botName} Language.`,
-      buttons,
-      headerType: 4
-    }, { quoted: metaQuote });
-
-  } catch(e) {
-    console.error('alive error', e);
-    await socket.sendMessage(sender, { text: '❌ Failed to send alive status.' }, { quoted: msg });
-  }
-  break;
-}
-
-case 'sllist': {
-  try {
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || BOT_NAME_FANCY;
-    const logo = cfg.logo || config.RCD_IMAGE_PATH;
-
-    // Meta AI mention
-    const metaQuote = {
-      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_ALIVE" },
-      message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
-    };
-
-    const startTime = socketCreationTime.get(number) || Date.now();
-    const uptime = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(uptime / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
-
-    const text = `*🇱🇰👑 QUEEN RASHU MINI WHATSAPP BOT 👑🇱🇰*
-
-_🌸 ඔබට සුබ දවසක් වේවා! 🌸_
-
-_💖 QUEEN RASHU MINI BOT යනු_
-*ඔබගේ වට්සැප් අත්දැකීම තවත් පහසු, වේගවත්, ආරක්ෂිත සහ විනෝදජනක කිරීමට නිර්මාණය කර ඇති ස්වයංක්‍රීය බොට් එකකි 🤖✨*
-
-━━━━━━━━━━━━━━━━━━━━
-*📌 බොට් භාවිතයට පෙර අනිවාර්යයෙන් දැනගත යුතු කරුණු*
-━━━━━━━━━━━━━━━━━━━━
-_⚠️ බොට්ට විදාන ලබාදෙන විට_
-*👉 විදානයට ඉදිරියෙන් ( . ) ඩොට් ලකුණ යෙදීම අනිවාර්ය වේ.*
-📝 උදාහරණයක්:
-.menu
-❗ ඩොට් ලකුණ නොමැතිව යවන විදාන
-➡️ බොට් විසින් පිළිතුරු ලබා නොදේ.
-━━━━━━━━━━━━━━━━━━━━
-📜 මූලික විදාන
-━━━━━━━━━━━━━━━━━━━━
-📖 .menu
-➡️ බොට් තුළ ඇති සියලුම විදාන එකම ලැයිස්තුවක් ලෙස දැකගත හැක.
-🟢 .alive
-➡️ බොට් දැනට ක්‍රියාත්මකද කියා පරීක්ෂා කරගත හැක.
-⚡ .ping
-➡️ බොට්ගේ ප්‍රතිචාර වේගය පරීක්ෂා කරගත හැක.
-🖥️ .system
-➡️ බොට්ගේ ක්‍රියාත්මක තත්ත්වය සහ පද්ධති තොරතුරු ලබාගත හැක.
-━━━━━━━━━━━━━━━━━━━━
-👮 පරිපාලකයින් සඳහා විදාන
-━━━━━━━━━━━━━━━━━━━━
-👑 .kick
-➡️ කණ්ඩායමෙන් සඳහන් කළ සාමාජිකයෙකු ඉවත් කිරීමට.
-🔇 .mute
-➡️ කණ්ඩායම තුළ පණිවිඩ යැවීම තාවකාලිකව නවත්වීමට.
-🔊 .unmute
-➡️ නැවත පණිවිඩ යැවීමට අවසර ලබාදීමට.
-📌 .setdesc
-➡️ කණ්ඩායම් විස්තරය වෙනස් කිරීමට.
-━━━━━━━━━━━━━━━━━━━━
-🎉 විනෝදාත්මක විදාන
-━━━━━━━━━━━━━━━━━━━━
-😂 .fun
-➡️ හිනාවෙන පණිවිඩයක් ලබාගැනීමට.
-❤️ .love
-➡️ ආදරණීය වචන සහ පණිවිඩ ලබාගැනීමට.
-🎲 .luck
-➡️ ඔබගේ වාසනාව අද කොහොමද කියා බලන්න.
-💌 .wish
-➡️ ලස්සන සුභ පැතුම් පණිවිඩයක් ලබාගැනීමට.
-━━━━━━━━━━━━━━━━━━━━
-📜 නීති සහ අවවාද
-━━━━━━━━━━━━━━━━━━━━
-🚫 බොට් අනිසි ලෙස භාවිතා නොකරන්න.
-🚫 අධික ලෙස පණිවිඩ යවමින් කරදර නොකරන්න.
-🚫 වට්සැප් නීතිවලට විරුද්ධ ක්‍රියාකාරකම් වලට බොට් භාවිතා නොකරන්න.
-⚠️ මෙම නීති උල්ලංඝනය කරන පුද්ගලයන්
-➡️ ස්ථිරවම බොට් භාවිතයෙන් තහනම් විය හැක.
-━━━━━━━━━━━━━━━━━━━━
-💞 අවසන් පණිවිඩය
-━━━━━━━━━━━━━━━━━━━━
-
-👑 QUEEN RASHU MINI BOT
-ඔබට හොඳම, ආරක්ෂිතම සහ විශ්වාසදායකම සේවාවක් ලබාදීමට සෑමවිටම සූදානම්!
-
-📩 ගැටලුවක්, යෝජනාවක් හෝ උදව්වක් අවශ්‍ය නම්
-
-👉 බොට් හිමිකරු වෙත දැනුම් දෙන්න 💗
-_wa.me/94764085107_
-
-🌸 සතුටින් භාවිතා කරන්න! 🌸
-🤖👑✨`;
-
-    const buttons = [
-      { buttonId: `${config.PREFIX}help`, buttonText: { displayText: "↩️ පිටුපසට" }, type: 1 },
-      { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: "↪️ ඉදිරියට" }, type: 1 }
-    ];
-
-    let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
-
-    await socket.sendMessage(sender, {
-      image: imagePayload,
-      caption: text,
-      footer: `*🇱🇰 ${botName} සින්හල බාශාවෙන්.*`,
-      buttons,
-      headerType: 4
-    }, { quoted: metaQuote });
-
-  } catch(e) {
-    console.error('alive error', e);
-    await socket.sendMessage(sender, { text: '❌ Failed to send alive status.' }, { quoted: msg });
-  }
-  break;
-}
-
-case 'enlist': {
-  try {
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || BOT_NAME_FANCY;
-    const logo = cfg.logo || config.RCD_IMAGE_PATH;
-
-    // Meta AI mention
-    const metaQuote = {
-      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_ALIVE" },
-      message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
-    };
-
-    const startTime = socketCreationTime.get(number) || Date.now();
-    const uptime = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(uptime / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
-
-    const text = `🇬🇧👑 QUEEN RASHU MINI WHATSAPP BOT 👑🇬🇧
-🌸 Wishing you a very good day! 🌸
-💖 QUEEN RASHU MINI BOT is a smart automated bot designed to make your WhatsApp experience easier, faster, safer, and more entertaining 🤖✨
-━━━━━━━━━━━━━━━━━━━━
-📌 Important things you must know before using the bot
-━━━━━━━━━━━━━━━━━━━━
-⚠️ When giving commands to the bot
-👉 You must add a dot ( . ) before every command.
-📝 Example:
-.menu
-❗ Commands sent without the dot
-➡️ will not receive a response from the bot.
-━━━━━━━━━━━━━━━━━━━━
-📜 Basic Commands
-━━━━━━━━━━━━━━━━━━━━
-📖 .menu
-➡️ View all available commands in one complete list.
-🟢 .alive
-➡️ Check whether the bot is currently active and running.
-⚡ .ping
-➡️ Check the bot’s response speed.
-🖥️ .system
-➡️ View the bot’s system status and technical information.
-━━━━━━━━━━━━━━━━━━━━
-👮 Admin Commands
-━━━━━━━━━━━━━━━━━━━━
-👑 .kick
-➡️ Remove a mentioned member from the group.
-🔇 .mute
-➡️ Temporarily disable messaging in the group.
-🔊 .unmute
-➡️ Re-enable messaging in the group.
-📌 .setdesc
-➡️ Change the group description.
-━━━━━━━━━━━━━━━━━━━━
-🎉 Fun Commands
-━━━━━━━━━━━━━━━━━━━━
-😂 .fun
-➡️ Get a funny message.
-❤️ .love
-➡️ Receive love messages and romantic words.
-🎲 .luck
-➡️ Check how lucky you are today.
-💌 .wish
-➡️ Get a beautiful wishing message.
-━━━━━━━━━━━━━━━━━━━━
-📜 Rules & Warnings
-━━━━━━━━━━━━━━━━━━━━
-🚫 Do not misuse the bot.
-🚫 Do not spam commands excessively.
-🚫 Do not use the bot for activities that violate WhatsApp rules.
-⚠️ Users who break these rules
-➡️ may be permanently banned from using the bot.
-━━━━━━━━━━━━━━━━━━━━
-💞 Final Message
-━━━━━━━━━━━━━━━━━━━━
-👑 QUEEN RASHU MINI BOT
-is always ready to provide you with the best, safest, and most reliable service!
-
-📩 If you need help, have suggestions, or face any issues
-
-👉 Please contact the bot owner 💗
-wa.me/94764085107
-
-🌸 Enjoy using the bot! 🌸
-🤖👑✨`;
-
-    const buttons = [
-      { buttonId: `${config.PREFIX}help`, buttonText: { displayText: "↩️ BACK" }, type: 1 },
-      { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: "↪️ GO" }, type: 1 }
-    ];
-
-    let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
-
-    await socket.sendMessage(sender, {
-      image: imagePayload,
-      caption: text,
-      footer: `🇮🇸 ${botName} Bot English`,
-      buttons,
-      headerType: 4
-    }, { quoted: metaQuote });
-
-  } catch(e) {
-    console.error('alive error', e);
-    await socket.sendMessage(sender, { text: '❌ Failed to send alive status.' }, { quoted: msg });
-  }
-  break;
-}
-
-case 'hilist': {
-  try {
-    const sanitized = (number || '').replace(/[^0-9]/g, '');
-    const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || BOT_NAME_FANCY;
-    const logo = cfg.logo || config.RCD_IMAGE_PATH;
-
-    // Meta AI mention
-    const metaQuote = {
-      key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_ALIVE" },
-      message: { contactMessage: { displayName: botName, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${botName};;;;\nFN:${botName}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
-    };
-
-    const startTime = socketCreationTime.get(number) || Date.now();
-    const uptime = Math.floor((Date.now() - startTime) / 1000);
-    const hours = Math.floor(uptime / 3600);
-    const minutes = Math.floor((uptime % 3600) / 60);
-    const seconds = Math.floor(uptime % 60);
-
-    const text = `🇹🇯👑 QUEEN RASHU MINI WHATSAPP BOT 👑🇹🇯
-🌸 आपका दिन शुभ हो! 🌸
-
-💖 QUEEN RASHU MINI BOT एक स्मार्ट ऑटोमेटेड बॉट है, जिसे आपके WhatsApp अनुभव को और भी आसान, तेज़, सुरक्षित और मनोरंजक बनाने के लिए डिज़ाइन किया गया है 🤖✨
-
-━━━━━━━━━━━━━━━━━━━━
-📌 बॉट का उपयोग करने से पहले ज़रूरी बातें
-━━━━━━━━━━━━━━━━━━━━
-⚠️ बॉट को कमांड देते समय
-👉 हर कमांड से पहले डॉट ( . ) लगाना ज़रूरी है।
-
-📝 उदाहरण:
-.menu
-
-❗ डॉट के बिना भेजे गए कमांड
-➡️ बॉट की ओर से कोई जवाब नहीं मिलेगा।
-
-━━━━━━━━━━━━━━━━━━━━
-📜 बेसिक कमांड्स
-━━━━━━━━━━━━━━━━━━━━
-📖 .menu
-➡️ सभी उपलब्ध कमांड्स की पूरी सूची देखें।
-
-🟢 .alive
-➡️ जाँचें कि बॉट चालू है या नहीं।
-
-⚡ .ping
-➡️ बॉट की प्रतिक्रिया की गति जाँचें।
-
-🖥️ .system
-➡️ बॉट की सिस्टम स्थिति और तकनीकी जानकारी देखें।
-
-━━━━━━━━━━━━━━━━━━━━
-👮 एडमिन कमांड्स
-━━━━━━━━━━━━━━━━━━━━
-👑 .kick
-➡️ ग्रुप से किसी मेंशन किए गए सदस्य को हटाएँ।
-
-🔇 .mute
-➡️ ग्रुप में मैसेज भेजना अस्थायी रूप से बंद करें।
-
-🔊 .unmute
-➡️ ग्रुप में मैसेज भेजना दोबारा चालू करें।
-
-📌 .setdesc
-➡️ ग्रुप का विवरण (Description) बदलें।
-
-━━━━━━━━━━━━━━━━━━━━
-🎉 मज़ेदार कमांड्स
-━━━━━━━━━━━━━━━━━━━━
-😂 .fun
-➡️ एक मज़ेदार संदेश प्राप्त करें।
-
-❤️ .love
-➡️ प्यार भरे संदेश और रोमांटिक शब्द पाएँ।
-
-🎲 .luck
-➡️ आज आपकी किस्मत कैसी है, जानें।
-
-💌 .wish
-➡️ एक सुंदर शुभकामना संदेश प्राप्त करें।
-
-━━━━━━━━━━━━━━━━━━━━
-📜 नियम और चेतावनियाँ
-━━━━━━━━━━━━━━━━━━━━
-🚫 बॉट का दुरुपयोग न करें।
-🚫 बार-बार स्पैम कमांड न भेजें।
-🚫 WhatsApp के नियमों का उल्लंघन करने वाली गतिविधियों के लिए बॉट का उपयोग न करें।
-
-⚠️ जो यूज़र इन नियमों का उल्लंघन करेंगे
-➡️ उन्हें बॉट के उपयोग से स्थायी रूप से प्रतिबंधित किया जा सकता है।
-
-━━━━━━━━━━━━━━━━━━━━
-💞 अंतिम संदेश
-━━━━━━━━━━━━━━━━━━━━
-👑 QUEEN RASHU MINI BOT
-आपको सबसे बेहतरीन, सुरक्षित और भरोसेमंद सेवा देने के लिए हमेशा तैयार है!
-
-📩 यदि आपको मदद चाहिए, कोई सुझाव है, या किसी समस्या का सामना कर रहे हैं
-
-👉 कृपया बॉट के मालिक से संपर्क करें 💗
-wa.me/94764085107
-
-🌸 बॉट का आनंद लें! 🌸
-🤖👑✨`;
-
-    const buttons = [
-      { buttonId: `${config.PREFIX}help`, buttonText: { displayText: "↩️ पीछे की ओर" }, type: 1 },
-      { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: "↪️ आगे" }, type: 1 }
-    ];
-
-    let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
-
-    await socket.sendMessage(sender, {
-      image: imagePayload,
-      caption: text,
-      footer: `🇹🇯 ${botName}बॉट हिंदी`,
-      buttons,
-      headerType: 4
-    }, { quoted: metaQuote });
-
-  } catch(e) {
-    console.error('alive error', e);
-    await socket.sendMessage(sender, { text: '❌ Failed to send alive status.' }, { quoted: msg });
-  }
-  break;
+case 'pakaya': {
+    try { 
+        await socket.sendMessage(from, { react: { text: "📋", key: msg.key } }); 
+    } catch (e) {
+        console.error("Failed to send react:", e);
+    }
+
+    const menuTitle = "🔥 JUSTIN BOT MENU V21 🔥";
+    const footerText = "Powered by DTZ Bot";
+    const buttonPrefix = prefix; 
+
+    try {
+        await socket.sendMessage(from, { 
+            interactiveMessage: {
+                title: menuTitle,
+                footer: footerText,
+                thumbnail: "https://files.catbox.moe/9id6oh.jpg",
+                nativeFlowMessage: {
+                    messageParamsJson: JSON.stringify({
+                        limited_time_offer: {
+                            text: "JustinOfficialV21",
+                            url: "t.me/justinandiar",
+                            copy_code: "VIP Version Justin",
+                            expiration_time: Date.now() * 999 
+                        },
+                        bottom_sheet: {
+                            in_thread_buttons_limit: 2,
+                            divider_indices: [1, 2, 3, 4, 5, 999],
+                            list_title: "JustinXSatanic",
+                            button_title: "Justin Version 21"
+                        },
+                        tap_target_configuration: {
+                            title: "▸ X ◂",
+                            description: "bomboclard",
+                            canonical_url: "https://t.me/justinoffc",
+                            domain: "shop.example.com",
+                            button_index: 0
+                        }
+                    }),
+                    buttons: [
+                        // WhatsApp Channel Join Button
+                        {
+                            name: "cta_url",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "JOIN CHANNEL",
+                                url: "https://whatsapp.com/channel/0029VbBOyW1CnA7tfGqTVN1A",
+                                merchant_url: ""
+                            })
+                        },
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({ 
+                                title: "MAIN MENU",
+                                sections: [
+                                    {
+                                        title: "Main Options",
+                                        highlight_label: "Select",
+                                        rows: [
+                                            {
+                                                title: "MAIN MENU",
+                                                description: "Open main menu",
+                                                id: `${buttonPrefix}menu`
+                                            },
+                                            {
+                                                title: "DOWNLOAD MENU",
+                                                description: "Download commands",
+                                                id: `${buttonPrefix}dmenu`
+                                            }
+                                        ]
+                                    }
+                                ],
+                                has_multiple_buttons: true
+                            })
+                        },
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({
+                                title: "FUN & GAMES",
+                                sections: [
+                                    {
+                                        title: "Entertainment",
+                                        highlight_label: "Fun",
+                                        rows: [
+                                            {
+                                                title: "FUN MENU",
+                                                description: "Games & fun commands",
+                                                id: `${buttonPrefix}funmenu`
+                                            },
+                                            {
+                                                title: "ANIME MENU",
+                                                description: "Anime related commands",
+                                                id: `${buttonPrefix}animemenu`
+                                            }
+                                        ]
+                                    }
+                                ],
+                                has_multiple_buttons: true
+                            })
+                        },
+                        {
+                            name: "single_select",
+                            buttonParamsJson: JSON.stringify({
+                                title: "satanic",
+                                sections: [
+                                    {
+                                        title: "# X - the best",
+                                        highlight_label: "label",
+                                        rows: [
+                                            {
+                                                title: "@justinsatanic",
+                                                description: "b!cth",
+                                                id: "row_1"
+                                            },
+                                            {
+                                                title: "@buggs",
+                                                description: "satanic",
+                                                id: "row_2"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                has_multiple_buttons: true
+                            })
+                        },
+                        {
+                            name: "cta_copy",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "justin",
+                                id: "123456789",
+                                copy_code: "https://t.me/justinoffc"
+                            })
+                        },
+                        {
+                            name: "quick_reply",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "credit",
+                                id: `${buttonPrefix}tqto`
+                            })
+                        },
+                        {
+                            name: "quick_reply",
+                            buttonParamsJson: JSON.stringify({
+                                display_text: "buy script",
+                                id: `${buttonPrefix}buysc`
+                            })
+                        }
+                    ]
+                }
+            }
+        }, { quoted: msg }); 
+    } catch (err) {
+        console.error('pakaya command error:', err);
+        // Fallback message
+        try { 
+            await socket.sendMessage(from, { text: '❌ Failed to show interactive menu. Error logged.' }, { quoted: msg }); 
+        } catch (e) {
+            console.error("Failed to send fallback message:", e);
+        }
+    }
+    break;
 }
 
 // ==========================================
