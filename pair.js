@@ -870,8 +870,7 @@ END:VCARD`
     break;
 	}
 	
-case 'setting':
-case 'st': {
+case 'setting': {
   await socket.sendMessage(sender, { react: { text: '⚙️', key: msg.key } });
   try {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
