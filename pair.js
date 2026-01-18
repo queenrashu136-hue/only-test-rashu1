@@ -28,7 +28,7 @@ const {
 } = require('baileys');
 // ---------------- CONFIG ----------------
 
-const BOT_NAME_FANCY = '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+const BOT_NAME_FANCY = '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
 const config = {
   AUTO_VIEW_STATUS: 'true',
@@ -38,18 +38,18 @@ const config = {
   PREFIX: '.',
   MAX_RETRIES: 3,
   GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Jumzn66rDOx9UHSs9z4qIL?mode=hqrt2',
-  RCD_IMAGE_PATH: 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg',
+  RCD_IMAGE_PATH: 'https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg',
   NEWSLETTER_JID: '120363292101892024@newsletter',
   OTP_EXPIRY: 300000,
   WORK_TYPE: 'public',
   OWNER_NUMBER: process.env.OWNER_NUMBER || '94764085107',
   CHANNEL_LINK: 'https://whatsapp.com/channel/0029VaicB1MISTkGyQ7Bqe23',
-  BOT_NAME: '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀',
+  BOT_NAME: '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️',
   BOT_VERSION: '1.0.0V',
   OWNER_NAME: 'Nipun Harshana',
-  IMAGE_PATH: 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg',
+  IMAGE_PATH: 'https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg',
   BOT_FOOTER: '> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎀*',
-  BUTTON_IMAGES: { ALIVE: 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg' }
+  BUTTON_IMAGES: { ALIVE: 'https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg' }
 };
 
 // ---------------- MONGO SETUP ----------------
@@ -594,7 +594,7 @@ if (!isOwner) {
     // 🔹 Load bot name dynamically
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     // 🔹 Fake contact for quoting
     const shonux = {
@@ -665,7 +665,7 @@ case 'mp4': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // 🔹 Fake contact for Meta AI mention
         const botMention = {
@@ -696,7 +696,7 @@ END:VCARD`
             caption: formatMessage(
                 '❌ ERROR',
                 'Please provide a valid Fb URL!\nExample: .youtube https://www.youtube.com/@user/video/rashu',
-                `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
             )
 		});
     }
@@ -720,7 +720,7 @@ END:VCARD`
                 caption: formatMessage(
                     '❌ ERROR',
                     'Failed to fetch TikTok video! Please try again later.',
-                    `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                    `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                 )
             });
         }
@@ -740,7 +740,7 @@ END:VCARD`
 ┆ 3. *ɢᴇᴛ 144𝚙 ᴠɪᴅᴇᴏ*
 ┊ 4. *ɢᴇᴛ ᴀᴜᴅɪᴏ ꜰɪʟᴇ*
 ╰──────────────◉◈▻
-> *\`> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*\`*
+> *\`𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
 > *\`© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ʀᴀꜱʜᴜ\`*
             `);
 
@@ -788,7 +788,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ YT VIDEO',
                             '360p VIDEO DOWNLOADED BY QUEEN RASHU MINI',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -801,7 +801,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ YT VIDEO',
                             '240p VIDEO DOWNLOADED BY QUEEN RASHU MINI',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -814,7 +814,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ YT VIDEO',
                             '144p VIDEO DOWNLOADED BY QUEEN RASHU MINI',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -827,7 +827,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ YT AUDIO',
                             'AUDIO DOWNLOADED BY QUEEN RASHU MINI',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -839,7 +839,7 @@ END:VCARD`
                         caption: formatMessage(
                             '❌ INVALID SELECTION',
                             'Please reply with 1, 2, 3, or 4.',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     });
                     return;
@@ -870,7 +870,8 @@ END:VCARD`
     break;
 	}
 	
-case 'setting': {
+case 'setting':
+case 'st': {
   await socket.sendMessage(sender, { react: { text: '⚙️', key: msg.key } });
   try {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
@@ -883,7 +884,7 @@ case 'setting': {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_SETTING1" },
         message: { contactMessage: { displayName: BOT_NAME_FANCY, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${BOT_NAME_FANCY};;;;\nFN:${BOT_NAME_FANCY}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
       };
-      return await socket.sendMessage(sender, { text: '❌ Permission denied. Only the session owner or bot owner can change settings.' }, { quoted: shonux });
+      return await socket.sendMessage(sender, { text: '*🌿  සමා වෙන්න ඔයාට \`𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈\` බොට් වැඩ් නැහැ සත්තලන් ❤️*\n\n*🌿 බොට්ව ඔයාටත් Link කරගන්න ඕනි නම් 😚*\n\n*🌿 .freebot හෝ .pair කියලා ගහලා ඔයාගෙ නම්බරේ ගහන්න පැට්ටො 🤭*\n\n> .pair 947XXXXX\n\n*🌿 ඊට පස්සෙ ලින්ක් කලගන්න එතකොට වැඩ සත්තලම් 😚*\n\n> 𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤' }, { quoted: shonux });
     }
 
     // Get current settings from MongoDB
@@ -894,7 +895,7 @@ case 'setting': {
     const settingOptions = {
       name: 'single_select',
       paramsJson: JSON.stringify({
-        title: `⚙️ 𝐒𝐄𝐓𝐓𝐈𝐍𝐆𝐒 🔐`,
+        title: `⚙️ 𝐀ℓℓ 𝐒єттιηgѕ`,
         sections: [
           {
             title: '◉ 𝐓𝐘𝐏𝐄 𝐎𝐅 𝐖𝐎𝐑𝐊 🔽',
@@ -1650,7 +1651,7 @@ case 'gpt': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     // Load bot name from DB or default
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     // Meta AI mention for quote
     const metaQuote = {
@@ -1795,7 +1796,7 @@ case 'aiimg2': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // 🔹 Fake contact with dynamic bot name
         const shonux = {
@@ -1988,7 +1989,7 @@ END:VCARD`
                 `📈 *now speed*: ${crr}\n\n` +
                 `🌐 *link*: ${link}`,
                 
-                '> *🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*'
+                '> *🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*'
             )
         });
         console.log('Message sent successfully.');
@@ -2043,7 +2044,7 @@ END:VCARD`
             caption: formatMessage(
                 '📰QUEEN RASHU MINI NEWS 📰',
                 `📢 *${title}*\n\n${desc}\n\n🕒 *𝐃ate*: ${date || 'තවම ලබාදීලා නැත'}\n🌐 *Link*: ${link}`,
-                '> *🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*'
+                '> *🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*'
             )
         });
     } catch (error) {
@@ -2115,7 +2116,7 @@ case 'fbdl': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // 🔹 Fake contact for Meta AI mention
         const botMention = {
@@ -2146,7 +2147,7 @@ END:VCARD`
             caption: formatMessage(
                 '❌ ERROR',
                 'Please provide a valid Fb URL!\nExample: .facebook https://www.facebook.com/@user/video/nuro',
-                `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
             )
 		});
     }
@@ -2169,7 +2170,7 @@ END:VCARD`
                 caption: formatMessage(
                     '❌ ERROR',
                     'Failed to fetch TikTok video! Please try again later.',
-                    `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                    `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                 )
             });
         }
@@ -2186,7 +2187,7 @@ END:VCARD`
 ┊ 3. *Gᴇᴛ Aᴜᴅɪᴏ Fɪʟᴇ*
 ┆ 4. *Gᴇᴛ Vɪᴅᴇᴏ Nᴏᴛᴇ*
 ╰──────────────◉◈▻
-> *\`> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*\`*
+> *\`𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
 > *\`⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
             `);
 
@@ -2232,7 +2233,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ FB VIDEO',
                             'HD VIDEO DOWNLOADED BY QUEEN RASHU MINI',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -2245,7 +2246,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ FB VIDEO',
                             'SD VIDEO DOWNLOADED BY QUEEN RASHU MINI',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -2258,7 +2259,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ FB AUDIO',
                             'Audio Only',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -2272,7 +2273,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ FB VIDEO',
                             'Video Note (PTV)',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -2284,7 +2285,7 @@ END:VCARD`
                         caption: formatMessage(
                             '❌ INVALID SELECTION',
                             'Please reply with 1, 2, 3, or 4.',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     });
                     return;
@@ -2531,7 +2532,7 @@ END:VCARD`
         // Catch block Meta mention
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         const shonux = {
             key: {
@@ -2568,7 +2569,7 @@ case 'xvdl': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -2861,7 +2862,7 @@ case 'alive': {
 *│🏳️ ᴘʟᴀᴛꜰᴏʀᴍ :* ${process.env.PLATFORM || 'Heroku'}
 *│📟 ᴜᴘᴛɪᴍᴇ :* ${hours}h ${minutes}m ${seconds}s
 *╰───────────────┈⊷*
-> *> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**
+> *𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
 `;
 
     const buttons = [
@@ -2930,7 +2931,7 @@ case 'song': {
         const payloadDoc = JSON.stringify({ u: url, t: cleanTitle, f: 'd' });
         const payloadPtt = JSON.stringify({ u: url, t: cleanTitle, f: 'p' });
 
-        const caption = `🎧 *🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀* 🎧
+        const caption = `🎧 *🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️* 🎧
         
 📌 *Title:* ${title}
 ⏱️ *Duration:* ${video.timestamp}
@@ -3122,7 +3123,7 @@ case 'video': {
         const payloadVideo = JSON.stringify({ u: url, t: cleanTitle, f: 'v' });
         const payloadDoc = JSON.stringify({ u: url, t: cleanTitle, f: 'd' });
 
-        const caption = `* 📽️ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*
+        const caption = `* 📽️ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*
         
 📌 *Title:* ${title}
 ⏱️ *Duration:* ${video.timestamp}
@@ -3215,7 +3216,7 @@ case 'video-dl': {
             await socket.sendMessage(sender, { 
                 video: { url: downloadUrl }, 
                 mimetype: "video/mp4", 
-                caption: `🎬 *${title}*\n> Powered by 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀` 
+                caption: `🎬 *${title}*\n> Powered by 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️` 
             }, { quoted: msg });
         }
         
@@ -3252,7 +3253,7 @@ case 'pakaya': {
     }
 
     const menuTitle = "*⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*";
-    const footerText = "> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*";
+    const footerText = "> *ᴘᴏᴡᴇʀᴅ ʙʏ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*";
     const buttonPrefix = prefix; 
 
     try {
@@ -3260,7 +3261,7 @@ case 'pakaya': {
             interactiveMessage: {
                 title: menuTitle,
                 footer: footerText,
-                thumbnail: "https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg",
+                thumbnail: "https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg",
                 nativeFlowMessage: {
                     messageParamsJson: JSON.stringify({
                         limited_time_offer: {
@@ -3440,7 +3441,7 @@ case 'ping': {
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: text,
-      footer: `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**`,
+      footer: `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*`,
       buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote });
@@ -3535,7 +3536,7 @@ case 'system': {
     const os = require('os');
     const text = `
 *╭─────────────────┈⊷*
-*│⚙️ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀 ⚙️*
+*│⚙️ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️ ⚙️*
 *╰─────────────────┈⊷*
 *╭─────────────────┈⊷*
 *│🚀 ᴏꜱ:* ${os.type()} ${os.release()}
@@ -3543,7 +3544,7 @@ case 'system': {
 *│⛓️ ᴄᴘᴜ ᴄᴏʀᴇꜱ:* ${os.cpus().length}
 *│💽 ᴍᴇᴍᴏʀʏ:* ${(os.totalmem()/1024/1024/1024).toFixed(2)} GB
 *╰─────────────────┈⊷*
-> *> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**
+> *𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
 `;
 
     let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
@@ -3553,7 +3554,7 @@ case 'system': {
       caption: text,
       footer: `*${botName} 𝐒ʏꜱᴛᴇᴍ 𝐈ɴꜰᴏ* `,
       buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" },type: 1 },
-				{ buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "👑 OWNEE" }, type: 1 }],
+				{ buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "👑 𝐎ωηєя" }, type: 1 }],
       headerType: 4
     }, { quoted: metaQuote });
 
@@ -3578,7 +3579,7 @@ case 'menu': {
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; }
     catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
 
     // 🔹 Fake contact for Meta AI mention
@@ -3660,7 +3661,7 @@ END:VCARD`
 
    let buttonSections = [
         {
-            title: "🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀",
+            title: "🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️",
             highlight_label: "🅡🅐🅢🅗🅤",
             rows: rows
         }
@@ -3690,7 +3691,7 @@ END:VCARD`
             type: 1
         }
     ];
-    const MenuImg = 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg';
+    const MenuImg = 'https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg';
     const useLogo = userCfg.logo || MenuImg;
 
     await socket.sendMessage(sender, {
@@ -3724,7 +3725,7 @@ case 'download': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: {
@@ -3786,7 +3787,7 @@ END:VCARD`
 
 *╰──────────◉◉➢*
 
-> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
+𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`.trim();
 
     const buttons = [
       { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
@@ -3812,7 +3813,7 @@ case 'tool': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: {
@@ -3908,7 +3909,7 @@ END:VCARD`
 * ${config.PREFIX}ping
 * ${config.PREFIX}alive
 *╰──────────◉◉➢*
-> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
+𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`.trim();
 
     const buttons = [
       { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
@@ -3935,7 +3936,7 @@ case 'creative': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: {
@@ -3986,7 +3987,7 @@ END:VCARD`
 * ${config.PREFIX}getdp 
 > < ᴅᴘ ᴅᴀᴡɴʟᴏᴀᴅ ɴᴜᴍʙᴇʀ >
 *╰──────────◉◉➢*
-> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`.trim();
+𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`.trim();
 
     const buttons = [
       { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: "📄 𝐌αíղ 𝐌ҽղմ" }, type: 1 },
@@ -4030,7 +4031,7 @@ case 'getdp': {
         try {
             ppUrl = await socket.profilePictureUrl(jid, "image");
         } catch {
-            ppUrl = "https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg"; // default dp
+            ppUrl = "https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg"; // default dp
         }
 
         // 🔹 BotName meta mention
@@ -4121,7 +4122,7 @@ case 'owner': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: {
@@ -4145,12 +4146,12 @@ END:VCARD`
     };
 
     const text = `
-*🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*
+*🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*
 
 *👤 𝐍ame: ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
 *📞 𝐍umber: 94764085107*
 
-> *> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈**
+> *𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤*
 `.trim();
 
     const buttons = [
@@ -4260,7 +4261,7 @@ END:VCARD` } }
         const buttonMessage = {
             image: { url: randomImage },
             caption: `🖼️ *𝐈mage 𝐒earch:* ${q}\n\n*𝐏rovided 𝐁y ${botName}*`,
-            footer: config.FOOTER || '> *🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*',
+            footer: config.FOOTER || '> *🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*',
             buttons: buttons,
              headerType: 4,
             contextInfo: { mentionedJid: [sender] }
@@ -4458,7 +4459,7 @@ END:VCARD` } }
   if (!jid) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW" },
@@ -4475,7 +4476,7 @@ END:VCARD` } }
   if (!(isOwner || isAdmin)) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW2" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4486,7 +4487,7 @@ END:VCARD` } }
   if (!jid.endsWith('@newsletter')) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW3" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4502,7 +4503,7 @@ END:VCARD` } }
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW4" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4513,7 +4514,7 @@ END:VCARD` } }
     console.error('unfollow error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW5" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4530,7 +4531,7 @@ case 'tiktokdl': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // 🔹 Fake contact for Meta AI mention
         const botMention = {
@@ -4561,7 +4562,7 @@ END:VCARD`
             caption: formatMessage(
                 '❌ ERROR',
                 'Please provide a valid TikTok URL!\nExample: .tiktok https://www.tiktok.com/@user/video/nuro',
-                `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
             )
 		});
     }
@@ -4585,7 +4586,7 @@ END:VCARD`
                 caption: formatMessage(
                     '❌ ERROR',
                     'Failed to fetch TikTok video! Please try again later.',
-                    `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                    `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                 )
             });
         }
@@ -4602,7 +4603,7 @@ END:VCARD`
 ┊ 3. *Gᴇᴛ Aᴜᴅɪᴏ Fɪʟᴇ*
 ┆ 4. *Gᴇᴛ Vɪᴅᴇᴏ Nᴏᴛᴇ*
 ╰──────────────◉◈▻
-> *\`> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*\`*
+> *\`𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
 *\`⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤\`*
             `);
 
@@ -4645,7 +4646,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ TIKTOK VIDEO',
                             'No Watermark Video',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -4658,7 +4659,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ TIKTOK VIDEO',
                             'With Watermark Video',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -4671,7 +4672,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ TIKTOK AUDIO',
                             'Audio Only',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -4685,7 +4686,7 @@ END:VCARD`
                         caption: formatMessage(
                             '✅ TIKTOK PTV',
                             'Video Note (PTV)',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     };
                     break;
@@ -4697,7 +4698,7 @@ END:VCARD`
                         caption: formatMessage(
                             '❌ INVALID SELECTION',
                             'Please reply with 1, 2, 3, or 4.',
-                            `> *ᴘᴏᴡᴇʀᴅ ʙʏ 𝐐ᴜᴇᴇɴ 𝐑ᴀꜱʜᴜ 𝐌ɪɴɪ 🎊🎉💗🎈*`
+                            `𝐏σωεɾ∂ 𝐁ყ ⏤͟͟͞͞ 𝐂𝐘𝐁𝚵𝐑 ꪶ鍶ꫂ 𝐑𝐔𝐒𝐇 𝐌𝚯𝐃𝐙  ͟͞⏤`
                         )
                     });
                     return;
@@ -4999,7 +5000,7 @@ case 'upload': {
                 message: {
                     interactiveMessage: {
                         body: {
-                            text: `📂 *Type:* ${typeStr}\n📊 *Size:* ${fileSize}\n\n🚀 *URL:* ${mediaUrl}\n\n_> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*_`
+                            text: `📂 *Type:* ${typeStr}\n📊 *Size:* ${fileSize}\n\n🚀 *URL:* ${mediaUrl}\n\n_> *ᴘᴏᴡᴇʀᴅ ʙʏ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*_`
                         },
                         footer: {
                             text: "Press button below to copy link"
@@ -5097,7 +5098,7 @@ case 'topdf': {
 ✅ *Status:* Conversion Successful!
 📉 *Size:* ${(pdfBuffer.length / 1024).toFixed(2)} KB
 
-> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`;
+> *ᴘᴏᴡᴇʀᴅ ʙʏ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*`;
 
         // Send PDF Document
         await socket.sendMessage(sender, {
@@ -5161,7 +5162,7 @@ case 'xnxx': {
 
         const cleanTitle = title.substring(0, 30);
 
-        const caption = `🔥 *XNXX Search: ${query}*\n\n📖 *Title:* ${title}\n📊 *Info:* ${info}\n\n*Select Quality & Type:*\n> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`;
+        const caption = `🔥 *XNXX Search: ${query}*\n\n📖 *Title:* ${title}\n📊 *Info:* ${info}\n\n*Select Quality & Type:*\n> *ᴘᴏᴡᴇʀᴅ ʙʏ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*`;
 
         const buttons = [
 
@@ -5225,7 +5226,7 @@ case 'xnxx-dl': {
             break;
         }
 
-        const caption = `🔥 *XNXX: ${title}*\n\n📺 *Quality:* ${quality === 'h' ? 'High' : 'Low'}\n> *ᴘᴏᴡᴇʀᴅ ʙʏ 🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀*`;
+        const caption = `🔥 *XNXX: ${title}*\n\n📺 *Quality:* ${quality === 'h' ? 'High' : 'Low'}\n> *ᴘᴏᴡᴇʀᴅ ʙʏ 🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️*`;
 
 
         if (type === 'n') {
@@ -5533,7 +5534,7 @@ case 'font': {
     // ?? Load bot name dynamically
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     // 🔹 Fake contact for Meta AI mention
     const botMention = {
@@ -5611,7 +5612,7 @@ case 'mfdl': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // ✅ Fake Meta contact message (like Facebook style)
         const shonux = {
@@ -5681,7 +5682,7 @@ END:VCARD`
         // ✅ In catch also send Meta mention style
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         const shonux = {
             key: {
@@ -5718,7 +5719,7 @@ case 'apkfind': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -5783,7 +5784,7 @@ END:VCARD`
 
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+        let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
         const shonux = {
             key: {
@@ -5893,7 +5894,7 @@ case 'newslist': {
     if (!docs || docs.length === 0) {
       let userCfg = {};
       try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-      const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+      const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
       const shonux = {
           key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST" },
           message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -5908,7 +5909,7 @@ case 'newslist': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST2" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -5919,7 +5920,7 @@ case 'newslist': {
     console.error('newslist error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST3" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -5938,7 +5939,7 @@ case 'cid': {
     // ✅ Dynamic botName load
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    let botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     // ✅ Fake Meta AI vCard (for quoted msg)
     const shonux = {
@@ -6069,7 +6070,7 @@ case 'addadmin': {
   if (!args || args.length === 0) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN" },
@@ -6083,7 +6084,7 @@ case 'addadmin': {
   if (!isOwner) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN2" },
@@ -6098,7 +6099,7 @@ case 'addadmin': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN3" },
@@ -6110,7 +6111,7 @@ case 'addadmin': {
     console.error('addadmin error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN4" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -6133,7 +6134,7 @@ case 'tagall': {
 
     const text = args && args.length ? args.join(' ') : '📢 Announcement';
 
-    let groupPP = 'https://i.ibb.co/rf3DVYr1/20251231-223554-2.jpg';
+    let groupPP = 'https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg';
     try { groupPP = await socket.profilePictureUrl(from, 'image'); } catch(e){}
 
     const mentions = participants.map(p => p.id || p.jid);
@@ -6380,7 +6381,7 @@ case 'deladmin': {
   if (!args || args.length === 0) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN1" },
@@ -6394,7 +6395,7 @@ case 'deladmin': {
   if (!isOwner) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN2" },
@@ -6409,7 +6410,7 @@ case 'deladmin': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN3" },
@@ -6421,7 +6422,7 @@ case 'deladmin': {
     console.error('deladmin error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN4" },
       message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -6437,7 +6438,7 @@ case 'admins': {
     const list = await loadAdminsFromMongo();
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADMINS" },
@@ -6456,7 +6457,7 @@ case 'admins': {
     console.error('admins error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀';
+    const title = userCfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️';
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADMINS2" },
       message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -6528,7 +6529,7 @@ case 'setlogo': {
 case 'jid': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || '🎀 𝐐մҽҽղ 𝐑αsհմ 𝐌íղí ѵ2 🧸⃟❤️⃟🎀'; // dynamic bot name
+    const botName = cfg.botName || '🌿 𝐐𝐔𝐄𝐄𝐍 𝐑𝐀𝐒𝐇𝐔 𝐌𝐈𝐍𝐈 𝐕2 🌿❤️'; // dynamic bot name
 
     const userNumber = sender.split('@')[0]; 
 
@@ -6757,7 +6758,7 @@ async function setupCallRejection(socket, sessionNumber) {
                 
                 // Send rejection message to caller
                 await socket.sendMessage(from, {
-                    text: '*🔕 Auto call rejection is enabled. Calls are automatically rejected.*'
+                    text: '*🌿 𝐐υєєη 𝐑αѕнυ 𝐌ιηι 𝐀υтσ 𝐂αℓℓ 𝐑єנє¢т* ~Bot Owner Busy Now 😌❤️~ '
                 });
                 
                 console.log(`✅ Auto-rejected call from ${from}`);
