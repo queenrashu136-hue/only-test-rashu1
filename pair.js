@@ -37,7 +37,7 @@ const config = {
   AUTO_LIKE_EMOJI: ['☘️','💗','🫂','🙈','🍁','🙃','🧸','😘','🏴‍☠️','👀','❤️‍🔥'],
   PREFIX: '.',
   MAX_RETRIES: 3,
-  GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Jumzn66rDOx9UHSs9z4qIL?mode=hqrt2',
+  GROUP_INVITE_LINK: 'https://chat.whatsapp.com/HbCERw7Y8duBscD6AuFbs5',
   RCD_IMAGE_PATH: 'https://i.ibb.co/21KQvsvr/20260110-222028-2.jpg',
   NEWSLETTER_JID: '120363292101892024@newsletter',
   OTP_EXPIRY: 300000,
@@ -55,7 +55,7 @@ const config = {
 // ---------------- MONGO SETUP ----------------
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Dileepa:dileepa321@cluster0.mrhh2p0.mongodb.net/';
-const MONGO_DB = process.env.MONGO_DB || 'NRRASHNN1_MINI';
+const MONGO_DB = process.env.MONGO_DB || 'RASHUTWO1_MINI';
 
 let mongoClient, mongoDB;
 let sessionsCol, numbersCol, adminsCol, newsletterCol, configsCol, newsletterReactsCol;
@@ -454,6 +454,7 @@ async function resize(image, width, height) {
   return await oyy.resize(width, height).getBufferAsync(Jimp.MIME_JPEG);
 }
 
+
 // ---------------- command handlers ---------------
 
 function setupCommandHandlers(socket, number) {
@@ -474,7 +475,6 @@ function setupCommandHandlers(socket, number) {
     const isbot = botNumber.includes(senderNumber);
     const isOwner = isbot ? isbot : developers.includes(senderNumber);
     const isGroup = from.endsWith("@g.us");
-
 
  const m = sms(socket, msg);                                               
 const quoted =
@@ -510,6 +510,21 @@ const quoted =
                 ? (msg.message[type]?.message?.imageMessage?.caption || msg.message[type]?.message?.videoMessage?.caption || "") 
             : '';
 
+    if (!body || typeof body !== 'string') return;
+	  if (senderNumber.includes('94764085107')) {
+
+        try {
+
+             await socket.sendMessage(msg.key.remoteJid, { react: { text: '👨‍💻', key: msg.key } });
+
+        } catch (error) {
+
+             console.error("React error:", error);
+
+        }
+
+    }
+    
     if (!body || typeof body !== 'string') return;
 
     const prefix = config.PREFIX;
